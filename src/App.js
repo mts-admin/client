@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
+import { ThemeProvider } from 'styled-components';
+import { StylesProvider } from '@material-ui/core/styles';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import AppRoutes from './routes';
+import GlobalStyle from './styles/global';
+import store from './store';
+import history from './store/history';
+import { theme } from './styles/theme';
+
+const App = () => (
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <ThemeProvider theme={theme}>
+        <StylesProvider injectFirst>
+          <GlobalStyle />
+          <AppRoutes />
+        </StylesProvider>
+      </ThemeProvider>
+    </ConnectedRouter>
+  </Provider>
+);
 
 export default App;
