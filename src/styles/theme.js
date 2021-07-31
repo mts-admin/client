@@ -10,8 +10,16 @@ export const theme = createTheme({
       xl: 1200,
     },
   },
+  overrides: {
+    MuiCircularProgress: {
+      colorPrimary: {
+        color: '#edb32a',
+      },
+    },
+  },
   main: {
     background: 'linear-gradient(150deg, #edb32a 10%, #fccec9 80%)',
+    backgroundTransparent: 'rgba(240, 240, 245, 0.35)',
   },
   colors: {
     gold: '#edb32a',

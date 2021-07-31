@@ -1,5 +1,11 @@
 import React from 'react';
 
-const LoginPage = () => <div>Coming soon</div>;
+import { ButtonPrimary } from '../../../components/buttons';
+
+const LoginPage = () => (
+  <div>
+    <ButtonPrimary>Coming soon</ButtonPrimary>
+  </div>
+);
 
 export default LoginPage;

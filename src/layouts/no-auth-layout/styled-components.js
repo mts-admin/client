@@ -8,9 +8,9 @@ export const Layout = styled.section`
   width: 100%;
 `;
 
-export const Wrapper = styled.div`
+export const Content = styled.main`
   width: 555px;
   padding: 24px;
   border-radius: 12px;
-  background-color: rgba(240, 239, 220, 0.5);
+  background-color: ${({ theme }) => theme.main.backgroundTransparent};
 `;

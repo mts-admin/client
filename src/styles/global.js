@@ -13,6 +13,11 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     background-image: ${({ theme }) => theme.main.background};
   }
+
+  .Mui-disabled {
+    background: rgba(0, 0, 0, 0.12);
+    box-shadow: none;
+  }
 `;
 
 export default GlobalStyle;
