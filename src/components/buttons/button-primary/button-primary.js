@@ -3,8 +3,13 @@ import { node, bool } from 'prop-types';
 
 import { Button } from './styled-components';
 
-const ButtonPrimary = ({ children, disabled = false, loading = false }) => (
-  <Button disabled={disabled || loading}>
+const ButtonPrimary = ({
+  children,
+  disabled = false,
+  loading = false,
+  ...rest
+}) => (
+  <Button disabled={disabled || loading} {...rest}>
     {loading ? 'Loading...' : children}
   </Button>
 );

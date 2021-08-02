@@ -10,18 +10,11 @@ import { ROUTE } from './constants';
 const AuthRoute = ({ children, ...rest }) => {
   const isAuthorized = getToken();
 
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        isAuthorized ? (
-          children
-        ) : (
-          <Redirect to={{ pathname: ROUTE.LOGIN, state: { from: location } }} />
-        )
-      }
-    />
-  );
+  if (!isAuthorized) {
+    return <Redirect to={ROUTE.LOGIN} />;
+  }
+
+  return <Route {...rest}>{children}</Route>;
 };
 
 AuthRoute.propTypes = {

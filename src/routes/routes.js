@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect, Switch, Route } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import AuthRoute from './auth-route';
 import routesConfig from './routes-config';
+import { handleGetMe } from '../store/auth/thunk';
+import { selectLoggedInUser, selectInitLoading } from '../store/auth/selectors';
 import { ROUTE } from './constants';
 
-// eslint-disable-next-line arrow-body-style
 const AppRoutes = () => {
-  // TODO: add loader
-  return (
+  const dispatch = useDispatch();
+  const user = useSelector(selectLoggedInUser);
+  const initLoading = useSelector(selectInitLoading);
+
+  useEffect(() => {
+    dispatch(handleGetMe());
+  }, [dispatch]);
+
+  return initLoading ? (
+    <CircularProgress />
+  ) : (
     <Switch>
       <Redirect exact from={ROUTE.HOME} to={ROUTE.SCHEDULES} />
       {routesConfig
@@ -22,12 +34,12 @@ const AppRoutes = () => {
         ))}
       {routesConfig
         .filter(({ auth }) => auth)
-        .map(({ path, Layout, Component }) => (
+        .map(({ path, allowedRoles, Layout, Component }) => (
           <AuthRoute
             key={path}
             path={path}
-            // user={user}
-            // allowedRoles={allowedRoles}
+            user={user}
+            allowedRoles={allowedRoles}
             exact
           >
             <Layout>

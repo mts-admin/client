@@ -10,7 +10,7 @@ export const Layout = styled.section`
 
 export const Content = styled.main`
   width: 555px;
-  padding: 24px;
+  padding: 32px;
   border-radius: 12px;
   background-color: ${({ theme }) => theme.main.backgroundTransparent};
 `;

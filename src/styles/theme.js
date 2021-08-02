@@ -14,15 +14,24 @@ export const theme = createTheme({
     MuiCircularProgress: {
       colorPrimary: {
         color: '#edb32a',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        marginTop: '-20px',
+        marginLeft: '-20px',
       },
     },
   },
   main: {
     background: 'linear-gradient(150deg, #edb32a 10%, #fccec9 80%)',
-    backgroundTransparent: 'rgba(240, 240, 245, 0.35)',
+    backgroundTransparent: 'rgba(255,245,255,0.4)',
   },
   colors: {
     gold: '#edb32a',
     purple: '#fccec9',
+  },
+  fontSize: {
+    h1: '32px',
+    small: '14px',
   },
 });
