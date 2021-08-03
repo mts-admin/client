@@ -1,8 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 const GlobalStyle = createGlobalStyle`
   ${reset}
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,6 +20,19 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
     background-image: ${({ theme }) => theme.main.background};
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .Mui-disabled {
+    background: rgba(0, 0, 0, 0.12);
+    box-shadow: none;
   }
 `;
 

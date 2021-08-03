@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import config from '../../config';
+import config from '../config';
 import history from '../store/history';
 import { getToken, clearStorage } from '../utils/local-storage';
 import { ROUTE } from '../routes/constants';
@@ -25,7 +25,7 @@ const createAPI = () => {
       history.push(ROUTE.LOGIN);
     }
 
-    return;
+    return Promise.reject(err);
   };
 
   api.interceptors.response.use(onSuccess, onFail);
