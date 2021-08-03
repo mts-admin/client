@@ -5,10 +5,10 @@ import {
   ControlledInput,
   ControlledInputPassword,
 } from '../../../components/form-items';
-import { ButtonPrimary } from '../../../components/buttons';
 import {
   ForgotPasswordLink,
   LoginPageContent,
+  SubmitButton,
   Title,
   Form,
 } from './styled-components';
@@ -44,9 +44,9 @@ const LoginPage = () => {
           Forgot password?
         </ForgotPasswordLink>
 
-        <ButtonPrimary loading={loading} type="submit">
+        <SubmitButton loading={loading} type="submit">
           Login
-        </ButtonPrimary>
+        </SubmitButton>
       </Form>
     </LoginPageContent>
   );

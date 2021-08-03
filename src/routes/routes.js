@@ -7,6 +7,7 @@ import AuthRoute from './auth-route';
 import routesConfig from './routes-config';
 import { handleGetMe } from '../store/auth/thunk';
 import { selectLoggedInUser, selectInitLoading } from '../store/auth/selectors';
+import { getToken } from '../utils/local-storage';
 import { ROUTE } from './constants';
 
 const AppRoutes = () => {
@@ -15,7 +16,7 @@ const AppRoutes = () => {
   const initLoading = useSelector(selectInitLoading);
 
   useEffect(() => {
-    dispatch(handleGetMe());
+    getToken() && dispatch(handleGetMe());
   }, [dispatch]);
 
   return initLoading ? (
