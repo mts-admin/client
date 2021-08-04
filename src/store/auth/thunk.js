@@ -1,7 +1,12 @@
 import { toast } from 'react-toastify';
 
 import history from '../history';
-import { loginRequest, forgotPassword, getMe } from '../../api/auth';
+import {
+  getMe,
+  loginRequest,
+  forgotPassword,
+  resetPassword,
+} from '../../api/auth';
 import {
   actionError,
   signInRequest,
@@ -54,3 +59,19 @@ export const handleForgotPassword = (email, successCallback) => (dispatch) =>
       toast.error(getErrorMessage(error));
       dispatch(actionError(error));
     });
+
+export const handleResetPassword =
+  ({ token, password, passwordConfirm }) =>
+  (dispatch) =>
+    Promise.resolve(dispatch(forgotPasswordRequest()))
+      .then(() => resetPassword({ token, password, passwordConfirm }))
+      .then(({ data, token: userToken }) => {
+        setToken(userToken);
+        toast.success('You have successfully reset your password!');
+        dispatch(signInSuccess(data));
+        history.push(ROUTE.HOME);
+      })
+      .catch((error) => {
+        toast.error(getErrorMessage(error));
+        dispatch(actionError(error));
+      });
