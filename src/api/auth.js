@@ -1,6 +1,12 @@
 import apiRequest from './index';
 import endpoints from './endpoints';
 
+export const getMe = () =>
+  apiRequest({
+    method: 'GET',
+    url: endpoints.getMe,
+  }).then(({ data }) => data);
+
 export const loginRequest = ({ email, password }) =>
   apiRequest({
     method: 'POST',
@@ -15,8 +21,9 @@ export const forgotPassword = (email) =>
     data: { email },
   }).then(({ data }) => data);
 
-export const getMe = () =>
+export const resetPassword = ({ token, password, passwordConfirm }) =>
   apiRequest({
-    method: 'GET',
-    url: endpoints.getMe,
+    method: 'PATCH',
+    url: endpoints.resetPassword(token),
+    data: { password, passwordConfirm },
   }).then(({ data }) => data);
