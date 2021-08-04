@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
     background-image: ${({ theme }) => theme.main.background};
+    line-height: 1.5;
   }
 
   a {
@@ -30,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  .Mui-disabled {
+  button.Mui-disabled {
     background: rgba(0, 0, 0, 0.12);
     box-shadow: none;
   }

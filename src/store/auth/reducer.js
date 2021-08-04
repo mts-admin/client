@@ -2,18 +2,21 @@ import * as R from 'ramda';
 import { handleActions, combineActions } from 'redux-actions';
 
 import {
+  actionError,
   signInRequest,
   signInSuccess,
-  signInError,
   getMeRequest,
   getMeSuccess,
   getMeError,
+  forgotPasswordRequest,
+  forgotPasswordSuccess,
 } from './actions';
 
 const initialState = {
   user: {},
   loading: false,
   initLoading: false,
+  error: null,
 };
 
 const signInSuccessReducer = (state, { payload }) => ({
@@ -23,13 +26,19 @@ const signInSuccessReducer = (state, { payload }) => ({
   initLoading: false,
 });
 
+const errorReducer = (state, { payload }) => ({
+  ...state,
+  loading: false,
+  error: payload,
+});
+
 const authReducer = handleActions(
   {
-    [signInRequest]: R.mergeDeepLeft({
+    [combineActions(signInRequest, forgotPasswordRequest)]: R.mergeDeepLeft({
       loading: true,
     }),
     [combineActions(signInSuccess, getMeSuccess)]: signInSuccessReducer,
-    [signInError]: R.mergeDeepLeft({
+    [forgotPasswordSuccess]: R.mergeDeepLeft({
       loading: false,
     }),
     [getMeRequest]: R.mergeDeepLeft({
@@ -38,6 +47,7 @@ const authReducer = handleActions(
     [getMeError]: R.mergeDeepLeft({
       initLoading: false,
     }),
+    [actionError]: errorReducer,
   },
   initialState,
 );

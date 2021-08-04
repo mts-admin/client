@@ -1,8 +1,10 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import config from '../config';
 import history from '../store/history';
 import { getToken, clearStorage } from '../utils/local-storage';
+import { getErrorMessage } from '../utils/general';
 import { ROUTE } from '../routes/constants';
 import { HTTP_CODE } from '../constants/http-codes';
 
@@ -23,6 +25,7 @@ const createAPI = () => {
     if (err.response.status === HTTP_CODE.UNAUTHORIZED) {
       clearStorage();
       history.push(ROUTE.LOGIN);
+      toast.error(getErrorMessage(err));
     }
 
     return Promise.reject(err);
