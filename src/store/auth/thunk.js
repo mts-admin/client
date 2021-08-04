@@ -1,14 +1,16 @@
 import { toast } from 'react-toastify';
 
 import history from '../history';
-import { loginRequest, getMe } from '../../api/auth';
+import { loginRequest, forgotPassword, getMe } from '../../api/auth';
 import {
+  actionError,
   signInRequest,
   signInSuccess,
-  signInError,
   getMeRequest,
   getMeSuccess,
   getMeError,
+  forgotPasswordRequest,
+  forgotPasswordSuccess,
 } from './actions';
 import { getErrorMessage } from '../../utils/general';
 import { setToken } from '../../utils/local-storage';
@@ -23,11 +25,11 @@ export const handleLogin =
         setToken(token);
         toast.success('You have successfully logged in!');
         dispatch(signInSuccess(data));
-        history.push(ROUTE.SCHEDULES);
+        history.push(ROUTE.HOME);
       })
       .catch((error) => {
         toast.error(getErrorMessage(error));
-        dispatch(signInError());
+        dispatch(actionError(error));
       });
 
 export const handleGetMe = () => (dispatch) =>
@@ -38,4 +40,17 @@ export const handleGetMe = () => (dispatch) =>
     })
     .catch(() => {
       dispatch(getMeError());
+    });
+
+export const handleForgotPassword = (email, successCallback) => (dispatch) =>
+  Promise.resolve(dispatch(forgotPasswordRequest()))
+    .then(() => forgotPassword(email))
+    .then(({ message }) => {
+      toast.success(message);
+      dispatch(forgotPasswordSuccess());
+      successCallback();
+    })
+    .catch((error) => {
+      toast.error(getErrorMessage(error));
+      dispatch(actionError(error));
     });

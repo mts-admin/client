@@ -8,6 +8,13 @@ export const loginRequest = ({ email, password }) =>
     data: { email, password },
   }).then((result) => result?.data);
 
+export const forgotPassword = (email) =>
+  apiRequest({
+    method: 'POST',
+    url: endpoints.forgotPassword,
+    data: { email },
+  }).then(({ data }) => data);
+
 export const getMe = () =>
   apiRequest({
     method: 'GET',

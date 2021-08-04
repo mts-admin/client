@@ -33,5 +33,6 @@ export const theme = createTheme({
   fontSize: {
     h1: '32px',
     small: '14px',
+    normal: '16px',
   },
 });
