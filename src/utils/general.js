@@ -1,4 +1,4 @@
 import * as R from 'ramda';
 
 export const getErrorMessage = (error) =>
-  R.path(['response', 'data', 'message'], error);
+  R.pathOr('Something went wrong', ['response', 'data', 'message'], error);

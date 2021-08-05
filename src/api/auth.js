@@ -27,3 +27,16 @@ export const resetPassword = ({ token, password, passwordConfirm }) =>
     url: endpoints.resetPassword(token),
     data: { password, passwordConfirm },
   }).then(({ data }) => data);
+
+export const getInvitationData = (token) =>
+  apiRequest({
+    method: 'GET',
+    url: endpoints.invite(token),
+  }).then(({ data }) => data);
+
+export const signUpByInvitation = ({ token, password, passwordConfirm }) =>
+  apiRequest({
+    method: 'POST',
+    url: endpoints.invite(token),
+    data: { password, passwordConfirm },
+  }).then(({ data }) => data);

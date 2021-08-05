@@ -6,6 +6,8 @@ import {
   loginRequest,
   forgotPassword,
   resetPassword,
+  getInvitationData,
+  signUpByInvitation,
 } from '../../api/auth';
 import {
   actionError,
@@ -13,9 +15,12 @@ import {
   signInSuccess,
   getMeRequest,
   getMeSuccess,
-  getMeError,
   forgotPasswordRequest,
   forgotPasswordSuccess,
+  getInvitationDataRequest,
+  getInvitationDataSuccess,
+  signUpByInvitationRequest,
+  signUpByInvitationSuccess,
 } from './actions';
 import { getErrorMessage } from '../../utils/general';
 import { setToken } from '../../utils/local-storage';
@@ -23,55 +28,103 @@ import { ROUTE } from '../../routes/constants';
 
 export const handleLogin =
   ({ email, password }) =>
-  (dispatch) =>
-    Promise.resolve(dispatch(signInRequest()))
-      .then(() => loginRequest({ email, password }))
-      .then(({ data, token }) => {
-        setToken(token);
-        toast.success('You have successfully logged in!');
-        dispatch(signInSuccess(data));
-        history.push(ROUTE.HOME);
-      })
-      .catch((error) => {
-        toast.error(getErrorMessage(error));
-        dispatch(actionError(error));
-      });
+  async (dispatch) => {
+    try {
+      dispatch(signInRequest());
 
-export const handleGetMe = () => (dispatch) =>
-  Promise.resolve(dispatch(getMeRequest()))
-    .then(() => getMe())
-    .then(({ data }) => {
-      dispatch(getMeSuccess(data));
-    })
-    .catch(() => {
-      dispatch(getMeError());
-    });
+      const { data, token } = await loginRequest({ email, password });
 
-export const handleForgotPassword = (email, successCallback) => (dispatch) =>
-  Promise.resolve(dispatch(forgotPasswordRequest()))
-    .then(() => forgotPassword(email))
-    .then(({ message }) => {
-      toast.success(message);
-      dispatch(forgotPasswordSuccess());
-      successCallback();
-    })
-    .catch((error) => {
+      setToken(token);
+      dispatch(signInSuccess(data));
+      toast.success('You have successfully logged in!');
+      history.push(ROUTE.HOME);
+    } catch (error) {
       toast.error(getErrorMessage(error));
       dispatch(actionError(error));
-    });
+    }
+  };
+
+export const handleGetMe = () => async (dispatch) => {
+  try {
+    dispatch(getMeRequest());
+
+    const { data } = await getMe();
+
+    dispatch(getMeSuccess(data));
+  } catch (error) {
+    dispatch(actionError(error));
+  }
+};
+
+export const handleForgotPassword =
+  (email, successCallback) => async (dispatch) => {
+    try {
+      dispatch(forgotPasswordRequest());
+
+      const { message } = await forgotPassword(email);
+
+      dispatch(forgotPasswordSuccess());
+      toast.success(message);
+      successCallback();
+    } catch (error) {
+      toast.error(getErrorMessage(error));
+      dispatch(actionError(error));
+    }
+  };
 
 export const handleResetPassword =
   ({ token, password, passwordConfirm }) =>
-  (dispatch) =>
-    Promise.resolve(dispatch(forgotPasswordRequest()))
-      .then(() => resetPassword({ token, password, passwordConfirm }))
-      .then(({ data, token: userToken }) => {
-        setToken(userToken);
-        toast.success('You have successfully reset your password!');
-        dispatch(signInSuccess(data));
-        history.push(ROUTE.HOME);
-      })
-      .catch((error) => {
-        toast.error(getErrorMessage(error));
-        dispatch(actionError(error));
+  async (dispatch) => {
+    try {
+      dispatch(forgotPasswordRequest());
+
+      const { data, token: userToken } = await resetPassword({
+        token,
+        password,
+        passwordConfirm,
       });
+
+      setToken(userToken);
+      dispatch(signInSuccess(data));
+      toast.success('You have successfully reset your password!');
+      history.push(ROUTE.HOME);
+    } catch (error) {
+      toast.error(getErrorMessage(error));
+      dispatch(actionError(error));
+    }
+  };
+
+export const handleGetInvitationData = (token) => async (dispatch) => {
+  try {
+    dispatch(getInvitationDataRequest());
+
+    const { data } = await getInvitationData(token);
+
+    dispatch(getInvitationDataSuccess(data));
+  } catch (error) {
+    dispatch(actionError(error));
+    toast.error(getErrorMessage(error));
+  }
+};
+
+export const handleRegisterByInvite =
+  ({ token, password, passwordConfirm }) =>
+  async (dispatch) => {
+    try {
+      dispatch(signUpByInvitationRequest());
+
+      const { data, token: userToken } = await signUpByInvitation({
+        token,
+        password,
+        passwordConfirm,
+      });
+
+      setToken(userToken);
+      dispatch(signUpByInvitationSuccess(data));
+      toast.success('You have successfully registered!');
+      history.push(ROUTE.HOME);
+    } catch (error) {
+      toast.error(getErrorMessage(error));
+      dispatch(actionError(error));
+    }
+  };

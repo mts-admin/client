@@ -14,6 +14,7 @@ const ControlledInput = ({
   variant,
   fullWidth,
   defaultValue,
+  ...rest
 }) => (
   <Controller
     name={name}
@@ -23,6 +24,7 @@ const ControlledInput = ({
     render={({ field, fieldState }) => (
       <TextField
         {...field}
+        {...rest}
         label={label}
         type={type}
         fullWidth={fullWidth}

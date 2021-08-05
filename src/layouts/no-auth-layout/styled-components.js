@@ -13,7 +13,7 @@ export const Content = styled.main`
   width: 555px;
   padding: 32px;
   border-radius: 12px;
-  background-color: ${({ theme }) => theme.main.backgroundTransparent};
+  background-color: ${({ theme }) => theme.backgrounds.backgroundTransparent};
 
   ${({ theme }) => theme.breakpoints.down('sm')} {
     display: flex;
