@@ -7,15 +7,19 @@ import {
   signInSuccess,
   getMeRequest,
   getMeSuccess,
-  getMeError,
   forgotPasswordRequest,
   forgotPasswordSuccess,
+  getInvitationDataRequest,
+  getInvitationDataSuccess,
+  signUpByInvitationRequest,
+  signUpByInvitationSuccess,
 } from './actions';
 
 const initialState = {
   user: {},
   loading: false,
   initLoading: false,
+  invitationLoading: false,
   error: null,
 };
 
@@ -24,28 +28,40 @@ const signInSuccessReducer = (state, { payload }) => ({
   user: payload,
   loading: false,
   initLoading: false,
+  invitationLoading: false,
 });
 
 const errorReducer = (state, { payload }) => ({
   ...state,
   loading: false,
+  initLoading: false,
+  invitationLoading: false,
   error: payload,
 });
 
 const authReducer = handleActions(
   {
-    [combineActions(signInRequest, forgotPasswordRequest)]: R.mergeDeepLeft({
+    [combineActions(
+      signInRequest,
+      forgotPasswordRequest,
+      signUpByInvitationRequest,
+    )]: R.mergeDeepLeft({
       loading: true,
-    }),
-    [combineActions(signInSuccess, getMeSuccess)]: signInSuccessReducer,
-    [forgotPasswordSuccess]: R.mergeDeepLeft({
-      loading: false,
     }),
     [getMeRequest]: R.mergeDeepLeft({
       initLoading: true,
     }),
-    [getMeError]: R.mergeDeepLeft({
-      initLoading: false,
+    [getInvitationDataRequest]: R.mergeDeepLeft({
+      invitationLoading: true,
+    }),
+    [combineActions(
+      signInSuccess,
+      getMeSuccess,
+      getInvitationDataSuccess,
+      signUpByInvitationSuccess,
+    )]: signInSuccessReducer,
+    [forgotPasswordSuccess]: R.mergeDeepLeft({
+      loading: false,
     }),
     [actionError]: errorReducer,
   },

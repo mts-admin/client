@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
-    background-image: ${({ theme }) => theme.main.background};
+    background-image: ${({ theme }) => theme.backgrounds.background};
     line-height: 1.5;
   }
 

@@ -25,6 +25,10 @@ const createAPI = () => {
       history.push(ROUTE.LOGIN);
     }
 
+    if (err.response.status === HTTP_CODE.SERVER_ERROR) {
+      history.push(ROUTE.ERROR);
+    }
+
     return Promise.reject(err);
   };
 

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { handleResetPassword } from '../../../store/auth/thunk';
 import { selectAuthLoading } from '../../../store/auth/selectors';
 
-const useLoginPageContainer = () => {
+const useResetPasswordPageContainer = () => {
   const { token } = useParams();
 
   const dispatch = useDispatch();
@@ -20,4 +20,4 @@ const useLoginPageContainer = () => {
   return { control, onSubmit, loading };
 };
 
-export default useLoginPageContainer;
+export default useResetPasswordPageContainer;

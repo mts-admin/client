@@ -22,7 +22,7 @@ export const theme = createTheme({
       },
     },
   },
-  main: {
+  backgrounds: {
     background: 'linear-gradient(150deg, #edb32a 10%, #fccec9 80%)',
     backgroundTransparent: 'rgba(255,245,255,0.4)',
   },
