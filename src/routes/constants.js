@@ -5,5 +5,11 @@ export const ROUTE = {
   RESET_PASSWORD: '/reset-password/:token',
   REGISTER_BY_INVITE: '/signup-by-invitation/:token',
   SCHEDULES: '/schedules',
+  FINANCES: '/finances',
+  NOTES: '/notes',
+  TASKS: '/tasks',
+  BONUSES: '/bonuses',
+  ACTIVITIES: '/activities',
+  SETTINGS: '/settings',
   ERROR: '/error',
 };

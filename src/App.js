@@ -9,6 +9,7 @@ import {
 
 import AppRoutes from './routes';
 import GlobalStyles from './styles/global';
+import Toast from './components/toast-container/toast-container';
 import store from './store';
 import history from './store/history';
 import { theme } from './styles/theme';
@@ -20,6 +21,7 @@ const App = () => (
         <MuiThemeProvider theme={theme}>
           <StylesProvider injectFirst>
             <GlobalStyles />
+            <Toast />
             <AppRoutes />
           </StylesProvider>
         </MuiThemeProvider>

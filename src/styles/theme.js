@@ -29,6 +29,7 @@ export const theme = createTheme({
   colors: {
     gold: '#edb32a',
     purple: '#fccec9',
+    lightGrey: 'rgba(251,242,223,0.75)',
   },
   fontSize: {
     h1: '32px',
