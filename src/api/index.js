@@ -1,4 +1,5 @@
 import axios from 'axios';
+import * as R from 'ramda';
 
 import config from '../config';
 import history from '../store/history';
@@ -20,12 +21,12 @@ const createAPI = () => {
   const onSuccess = (response) => response;
 
   const onFail = (err) => {
-    if (err.response.status === HTTP_CODE.UNAUTHORIZED) {
+    if (R.path(['response', 'status'], err) === HTTP_CODE.UNAUTHORIZED) {
       clearStorage();
       history.push(ROUTE.LOGIN);
     }
 
-    if (err.response.status === HTTP_CODE.SERVER_ERROR) {
+    if (R.path(['response', 'status'], err) === HTTP_CODE.SERVER_ERROR) {
       history.push(ROUTE.ERROR);
     }
 

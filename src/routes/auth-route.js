@@ -6,7 +6,7 @@ import { getToken } from '../utils/local-storage';
 import { ROUTE } from './constants';
 
 // TODO: create func which will check user permissions
-// rest props: user, allowedRoles
+// rest props: allowedRoles; 'user' will be taken from useSelector
 const AuthRoute = ({ children, ...rest }) => {
   const isAuthorized = getToken();
 
