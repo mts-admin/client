@@ -1,0 +1,38 @@
+import React from 'react';
+import { arrayOf, string, number, shape } from 'prop-types';
+import Tooltip from '@material-ui/core/Tooltip';
+
+import { ContentWrapper, Image, RestCount } from './styled-components';
+import { getUserAvatar } from '../../utils/general';
+
+const UserImagesList = ({ images, maxCount }) => {
+  const data = images.slice(0, maxCount);
+  const restCount = images.length - maxCount;
+
+  return (
+    <ContentWrapper>
+      {data.map(({ image, name }) => (
+        <Tooltip key={name} title={name} placement="top">
+          <Image src={getUserAvatar(image)} alt="user avatar" />
+        </Tooltip>
+      ))}
+      {restCount > 0 && <RestCount>+{restCount}</RestCount>}
+    </ContentWrapper>
+  );
+};
+
+UserImagesList.propTypes = {
+  images: arrayOf(
+    shape({
+      image: string,
+      name: string,
+    }),
+  ).isRequired,
+  maxCount: number,
+};
+
+UserImagesList.defaultProps = {
+  maxCount: 5,
+};
+
+export default UserImagesList;

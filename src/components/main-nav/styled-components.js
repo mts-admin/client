@@ -17,10 +17,10 @@ export const Nav = styled.nav`
 
     .MuiSvgIcon-root {
       position: absolute;
-      top: -20px;
-      left: -20px;
-      width: 30px;
-      height: 30px;
+      top: -27px;
+      left: -25px;
+      width: 35px;
+      height: 35px;
     }
   }
 `;
@@ -44,7 +44,12 @@ export const Drawer = styled(MuiDrawer)`
 
   .MuiTabs-indicator {
     width: 3px;
-    background-color: ${({ theme }) => theme.colors.gold};
+  }
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    .MuiTabs-root {
+      min-width: 180px;
+    }
   }
 `;
 
