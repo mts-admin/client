@@ -3,6 +3,7 @@ import { Switch } from 'react-router-dom';
 
 import AuthRoute from '../../routes/auth-route';
 import MainNav from '../../components/main-nav';
+import ModalWindow from '../../modals/modal-window';
 import { Layout, Content } from './styled-components';
 import routesConfig from '../../routes/routes-config';
 
@@ -23,6 +24,7 @@ const AuthLayout = () => (
     <Content>
       <MainNav />
       <Routes />
+      <ModalWindow />
     </Content>
   </Layout>
 );
