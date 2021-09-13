@@ -13,3 +13,7 @@ export const ROUTE = {
   SETTINGS: '/dashboard/settings',
   ERROR: '/error',
 };
+
+export const DYNAMIC_ROUTE = {
+  SCHEDULE: (id) => `${ROUTE.SCHEDULES}/${id}`,
+};

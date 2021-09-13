@@ -15,6 +15,11 @@ class FormInputRules {
     this.minLength = { value, message };
     return this;
   }
+
+  maxLength(value, message) {
+    this.maxLength = { value, message };
+    return this;
+  }
 }
 
 const FormRules = () => new FormInputRules();

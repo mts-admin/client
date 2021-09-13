@@ -21,6 +21,24 @@ export const theme = createTheme({
         marginLeft: '-20px',
       },
     },
+    MuiButton: {
+      root: {
+        borderRadius: 12,
+      },
+      outlined: {
+        borderColor: '#edb32a',
+      },
+      contained: {
+        backgroundColor: 'rgba(251,242,223,0.75)',
+        border: 'none',
+        boxShadow: 'none',
+      },
+    },
+    MuiTabs: {
+      indicator: {
+        backgroundColor: '#edb32a',
+      },
+    },
   },
   backgrounds: {
     background: 'linear-gradient(150deg, #edb32a 10%, #fccec9 80%)',
@@ -33,6 +51,7 @@ export const theme = createTheme({
   },
   fontSize: {
     h1: '32px',
+    h2: '26px',
     small: '14px',
     normal: '16px',
   },
