@@ -3,7 +3,7 @@ import { arrayOf, string, number, shape } from 'prop-types';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import { ContentWrapper, Image, RestCount } from './styled-components';
-import { getUserAvatar } from '../../utils/general';
+import { getImageUrl } from '../../utils/general';
 
 const UserImagesList = ({ images, maxCount }) => {
   const data = images.slice(0, maxCount);
@@ -13,7 +13,7 @@ const UserImagesList = ({ images, maxCount }) => {
     <ContentWrapper>
       {data.map(({ image, name }) => (
         <Tooltip key={name} title={name} placement="top">
-          <Image src={getUserAvatar(image)} alt="user avatar" />
+          <Image src={getImageUrl(image)} alt="user avatar" />
         </Tooltip>
       ))}
       {restCount > 0 && <RestCount>+{restCount}</RestCount>}
