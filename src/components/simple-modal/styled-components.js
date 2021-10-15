@@ -21,8 +21,8 @@ export const ModalContent = styled.div`
   min-width: 300px;
   max-width: 800px;
   padding: 24px;
-  background-color: white;
-  border-radius: 12px;
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
   box-shadow: ${({ theme }) => theme.shadows[5]};
 
   ${({ theme }) => theme.breakpoints.down('sm')} {

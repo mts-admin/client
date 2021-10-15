@@ -9,7 +9,7 @@ export const Nav = styled.nav`
   margin-right: 24px;
   flex-shrink: 0;
   background-color: ${({ theme }) => theme.colors.lightGrey};
-  border-radius: 12px;
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
 
   ${({ theme }) => theme.breakpoints.down('sm')} {
     width: 0;
@@ -30,7 +30,7 @@ export const Drawer = styled(MuiDrawer)`
     background-color: transparent;
 
     ${({ theme }) => theme.breakpoints.down('sm')} {
-      background-color: #fff;
+      background-color: ${({ theme }) => theme.colors.white};
     }
   }
 

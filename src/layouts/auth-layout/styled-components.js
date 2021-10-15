@@ -15,12 +15,12 @@ export const Content = styled.main`
   max-width: 1300px;
   min-height: 85vh;
   padding: 24px;
-  border-radius: 12px;
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
   background-color: ${({ theme }) => theme.backgrounds.backgroundTransparent};
 
   ${({ theme }) => theme.breakpoints.down('sm')} {
     width: 100%;
     min-height: 100vh;
-    border-radius: 0;
+    border-radius: ${({ theme }) => theme.borderRadius.none};
   }
 `;

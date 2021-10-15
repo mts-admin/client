@@ -25,7 +25,6 @@ const CreateScheduleModal = () => {
   const loading = useSelector(selectSchedulesLoading);
   const payload = useSelector(selectModalPayload);
 
-  // TODO: move closeCurrentModal action inside thunk
   const closeModal = () => dispatch(closeCurrentModal());
   const onSubmit = handleSubmit((values) => {
     const body = R.filter(Boolean, values);

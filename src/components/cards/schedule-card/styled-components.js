@@ -7,7 +7,7 @@ export const Content = styled.article`
   padding: 16px;
   min-height: 150px;
   background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 12px;
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
   min-width: 0;
 `;
 
@@ -15,7 +15,7 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 `;
 
 export const TitleLink = styled(Link)`
@@ -23,13 +23,13 @@ export const TitleLink = styled(Link)`
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 500;
-  margin-right: 5px;
+  margin-right: 4px;
   color: inherit;
 `;
 
 export const Description = styled.p`
   font-size: ${({ theme }) => theme.fontSize.small};
-  color: grey;
+  color: ${({ theme }) => theme.colors.grey};
   margin-bottom: 16px;
 `;
 
@@ -42,5 +42,5 @@ export const Footer = styled.footer`
 
 export const CreatedAt = styled.span`
   font-size: ${({ theme }) => theme.fontSize.small};
-  color: grey;
+  color: ${({ theme }) => theme.colors.grey};
 `;

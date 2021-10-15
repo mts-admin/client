@@ -26,7 +26,7 @@ export const HeaderContent = styled.div`
 export const Tabs = styled(SimpleTabs)`
   width: 75%;
   background-color: ${({ theme }) => theme.colors.lightGrey};
-  border-radius: 12px;
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
   overflow: hidden;
 
   .MuiTab-root {
@@ -48,7 +48,7 @@ export const ContentWrapper = styled.div`
   align-content: flex-start;
   flex-grow: 1;
   margin-bottom: 24px;
-  border-radius: 12px;
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
   overflow: hidden;
 
   ${({ theme }) => theme.breakpoints.down('md')} {

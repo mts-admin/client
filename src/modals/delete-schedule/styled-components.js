@@ -12,7 +12,7 @@ export const Title = styled.h2`
 
 export const Text = styled.p`
   font-size: ${({ theme }) => theme.fontSize.normal};
-  color: grey;
+  color: ${({ theme }) => theme.colors.grey};
   margin-bottom: 24px;
 `;
 
