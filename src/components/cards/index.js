@@ -1,3 +1,3 @@
-import ScheduleCard from './schedule-card/schedule-card';
+import SimpleCard from './simple-card/simple-card';
 
-export { ScheduleCard };
+export { SimpleCard };

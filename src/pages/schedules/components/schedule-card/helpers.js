@@ -1,9 +1,9 @@
 import * as R from 'ramda';
 
-import history from '../../../store/history';
-import { SCHEDULE_TYPE } from '../../../constants/schedules';
-import { DYNAMIC_ROUTE } from '../../../routes/constants';
-import { MODAL_NAME } from '../../../modals/constants';
+import history from '../../../../store/history';
+import { SCHEDULE_TYPE } from '../../../../constants/schedules';
+import { DYNAMIC_ROUTE } from '../../../../routes/constants';
+import { MODAL_NAME } from '../../../../modals/constants';
 
 export const getMenuOptions = ({ id, type, page, openModal }) =>
   R.cond([
