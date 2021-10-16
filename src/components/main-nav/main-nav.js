@@ -5,14 +5,14 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Tabs from '@material-ui/core/Tabs';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import { Drawer, Tab, Nav } from './styled-components';
+import { Drawer, Tab, Nav, MenuButton } from './styled-components';
 import { mainNavItems } from '../../constants/navigation';
 
 const MainNav = () => {
   const location = useLocation();
 
   const [open, setOpen] = useState(false);
-  const [tabValue, setTabValue] = useState(
+  const [tabValue, setTabValue] = useState(() =>
     mainNavItems.findIndex(({ link }) => location.pathname.includes(link)),
   );
 
@@ -24,7 +24,11 @@ const MainNav = () => {
 
   return (
     <Nav>
-      {isSmDown && <MenuIcon onClick={toggleDrawer} />}
+      {isSmDown && (
+        <MenuButton onClick={toggleDrawer}>
+          <MenuIcon />
+        </MenuButton>
+      )}
 
       <Drawer
         open={open}

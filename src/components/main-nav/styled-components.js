@@ -14,14 +14,21 @@ export const Nav = styled.nav`
   ${({ theme }) => theme.breakpoints.down('sm')} {
     width: 0;
     margin-right: 0;
+  }
+`;
 
-    .MuiSvgIcon-root {
-      position: absolute;
-      top: -27px;
-      left: -25px;
-      width: 35px;
-      height: 35px;
-    }
+export const MenuButton = styled.div`
+  position: absolute;
+  top: -23px;
+  left: -23px;
+  padding: 1px;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
+  border-radius: ${({ theme }) => theme.borderRadius.small};
+
+  .MuiSvgIcon-root {
+    display: block;
+    width: 25px;
+    height: 25px;
   }
 `;
 
