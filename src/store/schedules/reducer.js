@@ -5,6 +5,8 @@ import { arrayToObject } from '../../utils/general';
 
 import {
   actionError,
+  clearSchedules,
+  clearCurrentSchedule,
   getScheduleRequest,
   getScheduleSuccess,
   getSchedulesRequest,
@@ -27,12 +29,14 @@ const initialState = {
 const getScheduleSuccessReducer = (state, { payload }) => ({
   ...state,
   loading: false,
-  current: payload,
+  error: null,
+  currentItem: payload,
 });
 
 const getSchedulesSuccessReducer = (state, { payload }) => ({
   ...state,
   loading: false,
+  error: null,
   items: {
     byId: arrayToObject(payload.data),
     allIds: payload.data.map(({ _id }) => _id),
@@ -46,6 +50,15 @@ const errorReducer = (state, { payload }) => ({
   error: payload,
 });
 
+const clearCurrentScheduleReducer = (state) => ({
+  ...state,
+  loading: false,
+  error: null,
+  currentItem: {},
+});
+
+const clearSchedulesReducer = () => initialState;
+
 const authReducer = handleActions(
   {
     [combineActions(
@@ -57,6 +70,8 @@ const authReducer = handleActions(
     [getSchedulesSuccess]: getSchedulesSuccessReducer,
     [getScheduleSuccess]: getScheduleSuccessReducer,
     [actionError]: errorReducer,
+    [clearCurrentSchedule]: clearCurrentScheduleReducer,
+    [clearSchedules]: clearSchedulesReducer,
   },
   initialState,
 );

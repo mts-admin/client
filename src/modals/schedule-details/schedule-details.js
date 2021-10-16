@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Alert from '@material-ui/lab/Alert';
+import * as R from 'ramda';
 
 import { handleScheduleGet } from '../../store/schedules/thunk';
+import { clearCurrentSchedule } from '../../store/schedules/actions';
 import { selectModalPayload } from '../modal-reducer';
 import {
   selectSchedulesLoading,
   selectSchedulesError,
   selectCurrentSchedule,
 } from '../../store/schedules/selectors';
-import { Title, Content } from './styled-components';
-import { getErrorMessage } from '../../utils/general';
+import { Title, Content, ErrorMessage } from './styled-components';
+import { getErrorMessage, getComponentState } from '../../utils/general';
+import { COMPONENT_STATE } from '../../constants/general';
 
 const ScheduleDetailsModal = () => {
   const dispatch = useDispatch();
@@ -21,24 +23,27 @@ const ScheduleDetailsModal = () => {
   const schedule = useSelector(selectCurrentSchedule);
   const { scheduleId } = useSelector(selectModalPayload);
 
+  const componentState = useMemo(
+    () => getComponentState(loading, error),
+    [loading, error],
+  );
+
   const hasParticipants = schedule?.participants?.length > 0;
 
   useEffect(() => {
     dispatch(handleScheduleGet(scheduleId));
-  }, [scheduleId, dispatch]);
 
-  if (error) {
-    return <Alert severity="error">{getErrorMessage(error)}</Alert>;
-  }
+    return () => dispatch(clearCurrentSchedule());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  return (
-    <Content>
-      <Title>Schedule details</Title>
-
-      {loading ? (
-        <CircularProgress />
-      ) : (
-        <>
+  return R.cond([
+    [R.equals(COMPONENT_STATE.LOADING), () => <CircularProgress />],
+    [
+      R.equals(COMPONENT_STATE.SUCCESS),
+      () => (
+        <Content>
+          <Title>Schedule details</Title>
           <h3>Name</h3>
           <p>{schedule.name}</p>
 
@@ -50,7 +55,7 @@ const ScheduleDetailsModal = () => {
 
           <h3>Owner</h3>
           {/* here will be usercard component */}
-          <div>{schedule.owner.name}</div>
+          <div>{schedule?.owner?.name}</div>
 
           {hasParticipants && (
             <>
@@ -59,10 +64,16 @@ const ScheduleDetailsModal = () => {
               <div>Participants list</div>
             </>
           )}
-        </>
-      )}
-    </Content>
-  );
+        </Content>
+      ),
+    ],
+    [
+      R.equals(COMPONENT_STATE.ERROR),
+      () => (
+        <ErrorMessage severity="error">{getErrorMessage(error)}</ErrorMessage>
+      ),
+    ],
+  ])(componentState);
 };
 
 export default ScheduleDetailsModal;

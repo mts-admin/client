@@ -1,7 +1,7 @@
 export const selectSchedule = (state, id) =>
   state.schedules.items.byId[id] || {};
 
-export const selectCurrentSchedule = (state, id) => state.schedules.current;
+export const selectCurrentSchedule = (state) => state.schedules.currentItem;
 
 export const selectSchedules = (state) => state.schedules.items.allIds;
 

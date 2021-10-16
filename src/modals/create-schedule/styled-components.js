@@ -10,9 +10,7 @@ export const Title = styled.h2`
   font-weight: 600;
 `;
 
-export const Form = styled.form`
-  margin-bottom: 16px;
-`;
+export const Form = styled.form``;
 
 export const Buttons = styled.div`
   display: flex;

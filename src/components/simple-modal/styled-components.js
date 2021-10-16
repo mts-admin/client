@@ -27,5 +27,6 @@ export const ModalContent = styled.div`
 
   ${({ theme }) => theme.breakpoints.down('sm')} {
     width: 75vw;
+    padding: 20px;
   }
 `;

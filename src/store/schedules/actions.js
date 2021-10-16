@@ -5,6 +5,8 @@ export const types = {
   GET_SCHEDULES: 'schedules/GET_SCHEDULES',
   CREATE_SCHEDULE: 'schedules/CREATE_SCHEDULE',
   DELETE_SCHEDULE: 'schedules/DELETE_SCHEDULE',
+  CLEAR_CURRENT_SCHEDULE: 'schedules/CLEAR_CURRENT_SCHEDULE',
+  CLEAR_SCHEDULES: 'schedules/CLEAR_SCHEDULES',
   ERROR: 'schedules/error',
 };
 
@@ -33,3 +35,6 @@ export const deleteScheduleSuccess = createAction(
 );
 
 export const actionError = createAction(types.ERROR);
+
+export const clearCurrentSchedule = createAction(types.CLEAR_CURRENT_SCHEDULE);
+export const clearSchedules = createAction(types.CLEAR_SCHEDULES);
