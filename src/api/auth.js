@@ -1,5 +1,5 @@
 import apiRequest from './index';
-import endpoints from './endpoints';
+import { endpoints } from './endpoints';
 
 export const getMe = () =>
   apiRequest({
@@ -31,12 +31,12 @@ export const resetPassword = ({ token, password, passwordConfirm }) =>
 export const getInvitationData = (token) =>
   apiRequest({
     method: 'GET',
-    url: endpoints.invite(token),
+    url: endpoints.register(token),
   }).then(({ data }) => data);
 
 export const signUpByInvitation = ({ token, password, passwordConfirm }) =>
   apiRequest({
     method: 'POST',
-    url: endpoints.invite(token),
+    url: endpoints.register(token),
     data: { password, passwordConfirm },
   }).then(({ data }) => data);

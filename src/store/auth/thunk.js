@@ -22,7 +22,6 @@ import {
   signUpByInvitationRequest,
   signUpByInvitationSuccess,
 } from './actions';
-import { getErrorMessage } from '../../utils/general';
 import { setToken } from '../../utils/local-storage';
 import { ROUTE } from '../../routes/constants';
 
@@ -39,7 +38,6 @@ export const handleLogin =
       toast.success('You have successfully logged in!');
       history.push(ROUTE.HOME);
     } catch (error) {
-      toast.error(getErrorMessage(error));
       dispatch(actionError(error));
     }
   };
@@ -67,7 +65,6 @@ export const handleForgotPassword =
       toast.success(message);
       successCallback();
     } catch (error) {
-      toast.error(getErrorMessage(error));
       dispatch(actionError(error));
     }
   };
@@ -89,7 +86,6 @@ export const handleResetPassword =
       toast.success('You have successfully reset your password!');
       history.push(ROUTE.HOME);
     } catch (error) {
-      toast.error(getErrorMessage(error));
       dispatch(actionError(error));
     }
   };
@@ -103,7 +99,6 @@ export const handleGetInvitationData = (token) => async (dispatch) => {
     dispatch(getInvitationDataSuccess(data));
   } catch (error) {
     dispatch(actionError(error));
-    toast.error(getErrorMessage(error));
   }
 };
 
@@ -124,7 +119,6 @@ export const handleRegisterByInvite =
       toast.success('You have successfully registered!');
       history.push(ROUTE.HOME);
     } catch (error) {
-      toast.error(getErrorMessage(error));
       dispatch(actionError(error));
     }
   };

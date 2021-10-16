@@ -1,5 +1,5 @@
 import apiRequest from './index';
-import endpoints from './endpoints';
+import { endpoints } from './endpoints';
 
 export const getSchedules = (type, page, cancelToken) =>
   apiRequest({

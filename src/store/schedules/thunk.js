@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
 
 import {
   getSchedule,
@@ -16,7 +15,6 @@ import {
   createScheduleRequest,
   deleteScheduleRequest,
 } from './actions';
-import { getErrorMessage } from '../../utils/general';
 import { SCHEDULE_TYPE } from '../../constants/schedules';
 
 export const handleScheduleGet = (scheduleId) => async (dispatch) => {
@@ -27,7 +25,6 @@ export const handleScheduleGet = (scheduleId) => async (dispatch) => {
 
     dispatch(getScheduleSuccess(data));
   } catch (error) {
-    toast.error(getErrorMessage(error));
     dispatch(actionError(error));
   }
 };
@@ -43,7 +40,6 @@ export const handleSchedulesGet =
       dispatch(getSchedulesSuccess({ data, count }));
     } catch (error) {
       if (!axios.isCancel(error)) {
-        toast.error(getErrorMessage(error));
         dispatch(actionError(error));
       }
     }
@@ -61,7 +57,6 @@ export const handleScheduleCreate =
 
       callback && callback();
     } catch (error) {
-      toast.error(getErrorMessage(error));
       dispatch(actionError(error));
     }
   };
@@ -78,7 +73,6 @@ export const handleScheduleDelete =
 
       callback && callback();
     } catch (error) {
-      toast.error(getErrorMessage(error));
       dispatch(actionError(error));
     }
   };
