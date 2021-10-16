@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import * as R from 'ramda';
 
 import useSchedulesPageContainer from './container';
 import {
@@ -9,17 +10,20 @@ import {
   ContentWrapper,
   SchedulesPageContent,
 } from './styled-components';
-import { ScheduleCard } from '../../components/cards';
+import SimpleMessage from '../../components/simple-message';
+import { ScheduleCard } from './components';
 import { LoaderWithBackground } from '../../components/loaders/fullscreen-loader';
 import { SCHEDULE_TYPE } from '../../constants/schedules';
+import { COMPONENT_STATE } from '../../constants/general';
 
 const SchedulesPage = () => {
   const {
-    loading,
     page,
     pagesCount,
     schedules,
     scheduleType,
+    componentState,
+    emptyMessage,
     onTypeChange,
     onPageChange,
     onCreateButtonClick,
@@ -42,13 +46,19 @@ const SchedulesPage = () => {
       </HeaderContent>
 
       <ContentWrapper>
-        {loading && <LoaderWithBackground />}
-        {/* TODO: add empty content */}
-        {/* TODO: clear store after unmount */}
         {schedules.map((id) => (
           <ScheduleCard key={id} id={id} page={page} type={scheduleType} />
         ))}
       </ContentWrapper>
+
+      {R.cond([
+        [R.equals(COMPONENT_STATE.LOADING), () => <LoaderWithBackground />],
+        [
+          R.equals(COMPONENT_STATE.EMPTY),
+          () => <SimpleMessage {...emptyMessage} />,
+        ],
+        [R.equals(COMPONENT_STATE.ERROR), () => null],
+      ])(componentState)}
 
       <Pagination page={page} onChange={onPageChange} count={pagesCount} />
     </SchedulesPageContent>

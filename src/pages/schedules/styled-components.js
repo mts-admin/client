@@ -4,9 +4,12 @@ import MuiPagination from '@material-ui/lab/Pagination';
 import { SimpleTabs } from '../../components/tabs';
 
 export const SchedulesPageContent = styled.section`
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  overflow: hidden;
 `;
 
 export const HeaderContent = styled.div`
@@ -41,12 +44,10 @@ export const Tabs = styled(SimpleTabs)`
 `;
 
 export const ContentWrapper = styled.div`
-  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 24px;
   align-content: flex-start;
-  flex-grow: 1;
   margin-bottom: 24px;
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   overflow: hidden;

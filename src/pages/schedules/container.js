@@ -1,15 +1,21 @@
-import { useReducer, useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useMemo, useReducer, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { handleSchedulesGet } from '../../store/schedules/thunk';
 import {
   selectSchedules,
+  selectSchedulesError,
   selectSchedulesLoading,
   selectSchedulesTotalCount,
 } from '../../store/schedules/selectors';
+import { clearSchedules } from '../../store/schedules/actions';
 import { openModal } from '../../modals/modal-reducer';
 import useCancelToken from '../../hooks/use-cancel-token';
-import { getPaginationPagesCount } from '../../utils/general';
+import {
+  getComponentState,
+  getPaginationPagesCount,
+} from '../../utils/general';
 import { SCHEDULE_TYPE } from '../../constants/schedules';
 import { MODAL_NAME } from '../../modals/constants';
 
@@ -52,6 +58,18 @@ const stateReducer = (state, action) => {
   }
 };
 
+const emptyMessageText = {
+  [SCHEDULE_TYPE.MY]: {
+    title: "You haven't created any schedule yet",
+    description:
+      "Click the 'Create' button above to create your first schedule",
+  },
+  [SCHEDULE_TYPE.SHARED]: {
+    title: 'You are not a participant of any schedule',
+    description: 'Wait until someone invites you',
+  },
+};
+
 const useSchedulesPageContainer = () => {
   const [{ page, scheduleType }, stateDispatch] = useReducer(
     stateReducer,
@@ -62,6 +80,7 @@ const useSchedulesPageContainer = () => {
 
   const schedules = useSelector(selectSchedules);
   const loading = useSelector(selectSchedulesLoading);
+  const error = useSelector(selectSchedulesError);
   const totalCount = useSelector(selectSchedulesTotalCount);
 
   const [generateCancelToken, cancelRequest] = useCancelToken();
@@ -78,8 +97,9 @@ const useSchedulesPageContainer = () => {
     );
 
     return () => cancelRequest();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, scheduleType]);
+
+  useEffect(() => () => dispatch(clearSchedules()), []);
 
   const onTypeChange = (_, value) => stateDispatch(changeType(value));
   const onPageChange = (_, value) => stateDispatch(changePage(value));
@@ -98,13 +118,20 @@ const useSchedulesPageContainer = () => {
     );
 
   const pagesCount = getPaginationPagesCount(totalCount, MIN_ITEMS_PER_PAGE);
+  const isSchedulesEmpty = schedules.length === 0;
+  const componentState = useMemo(
+    () => getComponentState(loading, error, isSchedulesEmpty),
+    [loading, error, isSchedulesEmpty],
+  );
+  const emptyMessage = emptyMessageText[scheduleType];
 
   return {
-    loading,
-    schedules,
-    pagesCount,
     page,
+    pagesCount,
+    schedules,
     scheduleType,
+    componentState,
+    emptyMessage,
     onTypeChange,
     onPageChange,
     onCreateButtonClick,
