@@ -19,9 +19,9 @@ export const Nav = styled.nav`
 
 export const MenuButton = styled.div`
   position: absolute;
-  top: -23px;
-  left: -23px;
-  padding: 1px;
+  top: -41px;
+  left: -18px;
+  padding: 2px 3px;
   background-color: ${({ theme }) => theme.colors.lightGrey};
   border-radius: ${({ theme }) => theme.borderRadius.small};
 

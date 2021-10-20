@@ -7,6 +7,14 @@ export const Layout = styled.section`
   align-items: center;
   min-height: 100vh;
   width: 100vw;
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    padding: 36px 0;
+  }
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    padding: 0;
+  }
 `;
 
 export const Content = styled.main`
@@ -22,5 +30,6 @@ export const Content = styled.main`
     width: 100%;
     min-height: 100vh;
     border-radius: ${({ theme }) => theme.borderRadius.none};
+    padding-top: 48px;
   }
 `;

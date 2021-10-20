@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { TextButton } from '../../components/buttons';
+import { TextButton } from '../../../components/buttons';
 
 export const Content = styled.section``;
 

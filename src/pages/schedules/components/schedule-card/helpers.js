@@ -25,12 +25,18 @@ export const getMenuOptions = ({ id, type, page, openModal }) =>
         {
           label: 'Edit',
           onClick: () =>
-            openModal({ name: MODAL_NAME.EDIT_SCHEDULE, payload: id }),
+            openModal({
+              name: MODAL_NAME.EDIT_SCHEDULE,
+              payload: { scheduleId: id },
+            }),
         },
         {
           label: 'Manage participants',
           onClick: () =>
-            openModal({ name: MODAL_NAME.MANAGE_PARTICIPANTS, payload: id }),
+            openModal({
+              name: MODAL_NAME.MANAGE_PARTICIPANTS,
+              payload: { scheduleId: id },
+            }),
         },
         {
           label: 'Delete',
@@ -60,7 +66,10 @@ export const getMenuOptions = ({ id, type, page, openModal }) =>
         {
           label: 'Leave',
           onClick: () =>
-            openModal({ name: MODAL_NAME.LEAVE_SCHEDULE, payload: id }),
+            openModal({
+              name: MODAL_NAME.LEAVE_SCHEDULE,
+              payload: { page, scheduleId: id },
+            }),
         },
       ],
     ],

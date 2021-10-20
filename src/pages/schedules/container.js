@@ -6,7 +6,7 @@ import { handleSchedulesGet } from '../../store/schedules/thunk';
 import {
   selectSchedules,
   selectSchedulesError,
-  selectSchedulesLoading,
+  selectSchedulesInitLoading,
   selectSchedulesTotalCount,
 } from '../../store/schedules/selectors';
 import { clearSchedules } from '../../store/schedules/actions';
@@ -79,7 +79,7 @@ const useSchedulesPageContainer = () => {
   const dispatch = useDispatch();
 
   const schedules = useSelector(selectSchedules);
-  const loading = useSelector(selectSchedulesLoading);
+  const loading = useSelector(selectSchedulesInitLoading);
   const error = useSelector(selectSchedulesError);
   const totalCount = useSelector(selectSchedulesTotalCount);
 

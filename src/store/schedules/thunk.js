@@ -5,6 +5,11 @@ import {
   getSchedules,
   createSchedule,
   deleteSchedule,
+  leaveSchedule,
+  editSchedule,
+  addScheduleParticipant,
+  editScheduleParticipant,
+  deleteScheduleParticipant,
 } from '../../api/schedules';
 import {
   actionError,
@@ -14,6 +19,9 @@ import {
   getSchedulesSuccess,
   createScheduleRequest,
   deleteScheduleRequest,
+  leaveScheduleRequest,
+  editScheduleRequest,
+  editScheduleSuccess,
 } from './actions';
 import { SCHEDULE_TYPE } from '../../constants/schedules';
 
@@ -72,6 +80,84 @@ export const handleScheduleDelete =
       dispatch(handleSchedulesGet({ type: SCHEDULE_TYPE.MY, page }));
 
       callback && callback();
+    } catch (error) {
+      dispatch(actionError(error));
+    }
+  };
+
+export const handleScheduleLeave =
+  ({ page, scheduleId, callback }) =>
+  async (dispatch) => {
+    try {
+      dispatch(leaveScheduleRequest());
+
+      await leaveSchedule(scheduleId);
+
+      dispatch(handleSchedulesGet({ type: SCHEDULE_TYPE.SHARED, page }));
+
+      callback && callback();
+    } catch (error) {
+      dispatch(actionError(error));
+    }
+  };
+
+export const handleScheduleEdit =
+  ({ body, scheduleId, callback }) =>
+  async (dispatch) => {
+    try {
+      dispatch(editScheduleRequest());
+
+      const { data } = await editSchedule(body, scheduleId);
+
+      dispatch(editScheduleSuccess(data));
+
+      callback && callback();
+    } catch (error) {
+      dispatch(actionError(error));
+    }
+  };
+
+export const handleScheduleParticipantAdd =
+  ({ body, scheduleId, callback }) =>
+  async (dispatch) => {
+    try {
+      dispatch(editScheduleRequest());
+
+      const { data } = await addScheduleParticipant(body, scheduleId);
+
+      dispatch(editScheduleSuccess(data));
+
+      callback && callback();
+    } catch (error) {
+      dispatch(actionError(error));
+    }
+  };
+
+export const handleScheduleParticipantEdit =
+  ({ body, scheduleId, callback }) =>
+  async (dispatch) => {
+    try {
+      dispatch(editScheduleRequest());
+
+      const { data } = await editScheduleParticipant(body, scheduleId);
+
+      dispatch(editScheduleSuccess(data));
+
+      callback && callback();
+    } catch (error) {
+      dispatch(actionError(error));
+    }
+  };
+
+export const handleScheduleParticipantDelete =
+  ({ body, scheduleId }) =>
+  async (dispatch) => {
+    try {
+      dispatch(editScheduleRequest());
+
+      const { data } = await deleteScheduleParticipant(body, scheduleId);
+
+      dispatch(editScheduleSuccess(data));
     } catch (error) {
       dispatch(actionError(error));
     }

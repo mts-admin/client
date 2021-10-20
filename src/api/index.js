@@ -20,7 +20,9 @@ const api = axios.create({
 const onSuccess = (response) => response;
 
 const onFail = (err) => {
-  toast.error(getErrorMessage(err));
+  if (!axios.isCancel(err)) {
+    toast.error(getErrorMessage(err));
+  }
 
   if (R.path(['response', 'status'], err) === HTTP_CODE.UNAUTHORIZED) {
     clearStorage();

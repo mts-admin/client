@@ -8,6 +8,7 @@ const COLORS = {
   SILVER: 'silver',
   GREY: 'grey',
   WHITE: 'white',
+  SECONDARY_BLACK: '#333333',
 };
 
 export const theme = createTheme({
@@ -39,7 +40,6 @@ export const theme = createTheme({
         borderColor: COLORS.GOLD,
       },
       contained: {
-        backgroundColor: COLORS.LIGHT_GREY,
         border: 'none',
         boxShadow: 'none',
       },
@@ -61,12 +61,15 @@ export const theme = createTheme({
     grey: COLORS.GREY,
     silver: COLORS.SILVER,
     white: COLORS.WHITE,
+    secondaryBlack: COLORS.SECONDARY_BLACK,
   },
   fontSize: {
     h1: '32px',
     h2: '26px',
+    h3: '20px',
     normal: '16px',
     small: '14px',
+    smallest: '12px',
   },
   borderRadius: {
     none: '0',

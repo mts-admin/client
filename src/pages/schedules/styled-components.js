@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from '@material-ui/core/Button';
 import MuiPagination from '@material-ui/lab/Pagination';
 
 import { SimpleTabs } from '../../components/tabs';
@@ -63,4 +64,8 @@ export const ContentWrapper = styled.div`
 
 export const Pagination = styled(MuiPagination)`
   margin: auto auto 0 auto;
+`;
+
+export const CreateButton = styled(Button)`
+  background-color: ${({ theme }) => theme.colors.lightGrey};
 `;

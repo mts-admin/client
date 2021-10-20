@@ -13,6 +13,9 @@ import {
   getSchedulesSuccess,
   createScheduleRequest,
   deleteScheduleRequest,
+  leaveScheduleRequest,
+  editScheduleRequest,
+  editScheduleSuccess,
 } from './actions';
 
 const initialState = {
@@ -23,12 +26,14 @@ const initialState = {
   totalCount: 0,
   currentItem: {},
   loading: false,
+  initLoading: false,
   error: null,
 };
 
 const getScheduleSuccessReducer = (state, { payload }) => ({
   ...state,
   loading: false,
+  initLoading: false,
   error: null,
   currentItem: payload,
 });
@@ -36,6 +41,7 @@ const getScheduleSuccessReducer = (state, { payload }) => ({
 const getSchedulesSuccessReducer = (state, { payload }) => ({
   ...state,
   loading: false,
+  initLoading: false,
   error: null,
   items: {
     byId: arrayToObject(payload.data),
@@ -44,15 +50,32 @@ const getSchedulesSuccessReducer = (state, { payload }) => ({
   totalCount: payload.count,
 });
 
+const editScheduleSuccessReducer = (state, { payload }) => ({
+  ...state,
+  loading: false,
+  initLoading: false,
+  error: null,
+  currentItem: payload,
+  items: {
+    byId: {
+      ...state.items.byId,
+      [payload._id]: payload,
+    },
+    allIds: state.items.allIds,
+  },
+});
+
 const errorReducer = (state, { payload }) => ({
   ...state,
   loading: false,
+  initLoading: false,
   error: payload,
 });
 
 const clearCurrentScheduleReducer = (state) => ({
   ...state,
   loading: false,
+  initLoading: false,
   error: null,
   currentItem: {},
 });
@@ -61,14 +84,17 @@ const clearSchedulesReducer = () => initialState;
 
 const authReducer = handleActions(
   {
+    [getSchedulesRequest]: R.mergeDeepLeft({ initLoading: true }),
     [combineActions(
       getScheduleRequest,
-      getSchedulesRequest,
       createScheduleRequest,
       deleteScheduleRequest,
+      leaveScheduleRequest,
+      editScheduleRequest,
     )]: R.mergeDeepLeft({ loading: true }),
     [getSchedulesSuccess]: getSchedulesSuccessReducer,
     [getScheduleSuccess]: getScheduleSuccessReducer,
+    [editScheduleSuccess]: editScheduleSuccessReducer,
     [actionError]: errorReducer,
     [clearCurrentSchedule]: clearCurrentScheduleReducer,
     [clearSchedules]: clearSchedulesReducer,

@@ -13,6 +13,7 @@ export const CloseButton = styled(IconButton)`
   top: 12px;
   right: 12px;
   padding: 0;
+  z-index: 1;
 `;
 
 export const ModalContent = styled.div`
@@ -25,8 +26,12 @@ export const ModalContent = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   box-shadow: ${({ theme }) => theme.shadows[5]};
 
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     width: 75vw;
     padding: 20px;
+  }
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    width: 85vw;
   }
 `;

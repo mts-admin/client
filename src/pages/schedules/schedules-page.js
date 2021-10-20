@@ -1,11 +1,11 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import * as R from 'ramda';
 
 import useSchedulesPageContainer from './container';
 import {
   Tabs,
   Pagination,
+  CreateButton,
   HeaderContent,
   ContentWrapper,
   SchedulesPageContent,
@@ -39,9 +39,9 @@ const SchedulesPage = () => {
           aria-label="schedule types"
         />
         {scheduleType === SCHEDULE_TYPE.MY && (
-          <Button variant="contained" onClick={onCreateButtonClick}>
+          <CreateButton variant="contained" onClick={onCreateButtonClick}>
             + Create
-          </Button>
+          </CreateButton>
         )}
       </HeaderContent>
 

@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import { string, oneOf, number } from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { DateTime } from 'luxon';
 import TextTruncate from 'react-text-truncate';
 
 import { Description, Footer, CreatedAt } from './styled-components';
@@ -12,6 +11,7 @@ import { openModal } from '../../../../modals/modal-reducer';
 import { DYNAMIC_ROUTE } from '../../../../routes/constants';
 import { SCHEDULE_TYPE } from '../../../../constants/schedules';
 import { getMenuOptions } from './helpers';
+import { formatISO } from '../../../../utils/date';
 
 const ScheduleCard = ({ id, type, page }) => {
   const dispatch = useDispatch();
@@ -53,9 +53,7 @@ const ScheduleCard = ({ id, type, page }) => {
       <Footer>
         <UserImagesList images={participants} />
         {schedule.createdAt && (
-          <CreatedAt>
-            {DateTime.fromISO(schedule.createdAt).toFormat('D')}
-          </CreatedAt>
+          <CreatedAt>{formatISO(schedule.createdAt, 'D')}</CreatedAt>
         )}
       </Footer>
     </SimpleCard>

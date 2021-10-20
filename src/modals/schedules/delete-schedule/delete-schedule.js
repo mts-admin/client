@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { ButtonPrimary } from '../../components/buttons';
-import { handleScheduleDelete } from '../../store/schedules/thunk';
-import { closeCurrentModal, selectModalPayload } from '../modal-reducer';
-import { selectSchedulesLoading } from '../../store/schedules/selectors';
+import { ButtonPrimary } from '../../../components/buttons';
+import { handleScheduleDelete } from '../../../store/schedules/thunk';
+import { closeCurrentModal, selectModalPayload } from '../../modal-reducer';
+import { selectSchedulesLoading } from '../../../store/schedules/selectors';
 import {
   Text,
   Title,

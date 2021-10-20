@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import * as R from 'ramda';
 
-import { ControlledInput } from '../../components/form-items';
-import { ButtonPrimary } from '../../components/buttons';
-import { closeCurrentModal, selectModalPayload } from '../modal-reducer';
-import { selectSchedulesLoading } from '../../store/schedules/selectors';
-import FormRules from '../../utils/form-input-rules';
+import { ControlledInput } from '../../../components/form-items';
+import { ButtonPrimary } from '../../../components/buttons';
+import { closeCurrentModal, selectModalPayload } from '../../modal-reducer';
+import { selectSchedulesLoading } from '../../../store/schedules/selectors';
+import FormRules from '../../../utils/form-input-rules';
 import {
   Form,
   Title,
@@ -15,7 +15,7 @@ import {
   Buttons,
   CancelButton,
 } from './styled-components';
-import { handleScheduleCreate } from '../../store/schedules/thunk';
+import { handleScheduleCreate } from '../../../store/schedules/thunk';
 
 const CreateScheduleModal = () => {
   const { control, handleSubmit } = useForm();
@@ -43,7 +43,7 @@ const CreateScheduleModal = () => {
 
   return (
     <Content>
-      <Title>Create shedule</Title>
+      <Title>Create schedule</Title>
 
       <Form onSubmit={onSubmit}>
         <ControlledInput
@@ -60,12 +60,10 @@ const CreateScheduleModal = () => {
           name="description"
           label="Description"
           control={control}
-          rules={FormRules()
-            .minLength(3, 'Description must be at least 3 characters long')
-            .maxLength(
-              100,
-              'Description must be no more than 100 characters long',
-            )}
+          rules={FormRules().maxLength(
+            100,
+            'Description must be no more than 100 characters long',
+          )}
         />
 
         <Buttons>
