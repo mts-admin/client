@@ -1,5 +1,16 @@
 import { createTheme } from '@material-ui/core/styles';
 
+const COLORS = {
+  GOLD: '#edb32a',
+  PURPLE: '#fccec9',
+  LIGHT_GREY: 'rgba(251,242,223,0.75)',
+  LIGHT_GREY_SECONDARY: 'rgba(255,245,255,0.4)',
+  SILVER: 'silver',
+  GREY: 'grey',
+  WHITE: 'white',
+  SECONDARY_BLACK: '#333333',
+};
+
 export const theme = createTheme({
   breakpoints: {
     values: {
@@ -13,7 +24,7 @@ export const theme = createTheme({
   overrides: {
     MuiCircularProgress: {
       colorPrimary: {
-        color: '#edb32a',
+        color: COLORS.GOLD,
         position: 'absolute',
         top: '50%',
         left: '50%',
@@ -21,19 +32,48 @@ export const theme = createTheme({
         marginLeft: '-20px',
       },
     },
+    MuiButton: {
+      root: {
+        borderRadius: 12,
+      },
+      outlined: {
+        borderColor: COLORS.GOLD,
+      },
+      contained: {
+        border: 'none',
+        boxShadow: 'none',
+      },
+    },
+    MuiTabs: {
+      indicator: {
+        backgroundColor: COLORS.GOLD,
+      },
+    },
   },
   backgrounds: {
-    background: 'linear-gradient(150deg, #edb32a 10%, #fccec9 80%)',
-    backgroundTransparent: 'rgba(255,245,255,0.4)',
+    mainBackground: `linear-gradient(150deg, ${COLORS.GOLD} 10%, ${COLORS.PURPLE} 80%)`,
+    backgroundTransparent: COLORS.LIGHT_GREY_SECONDARY,
   },
   colors: {
-    gold: '#edb32a',
-    purple: '#fccec9',
-    lightGrey: 'rgba(251,242,223,0.75)',
+    gold: COLORS.GOLD,
+    purple: COLORS.PURPLE,
+    lightGrey: COLORS.LIGHT_GREY,
+    grey: COLORS.GREY,
+    silver: COLORS.SILVER,
+    white: COLORS.WHITE,
+    secondaryBlack: COLORS.SECONDARY_BLACK,
   },
   fontSize: {
     h1: '32px',
-    small: '14px',
+    h2: '26px',
+    h3: '20px',
     normal: '16px',
+    small: '14px',
+    smallest: '12px',
+  },
+  borderRadius: {
+    none: '0',
+    small: '5px',
+    medium: '12px',
   },
 });

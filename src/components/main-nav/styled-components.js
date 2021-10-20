@@ -9,19 +9,26 @@ export const Nav = styled.nav`
   margin-right: 24px;
   flex-shrink: 0;
   background-color: ${({ theme }) => theme.colors.lightGrey};
-  border-radius: 12px;
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
 
   ${({ theme }) => theme.breakpoints.down('sm')} {
     width: 0;
     margin-right: 0;
+  }
+`;
 
-    .MuiSvgIcon-root {
-      position: absolute;
-      top: -20px;
-      left: -20px;
-      width: 30px;
-      height: 30px;
-    }
+export const MenuButton = styled.div`
+  position: absolute;
+  top: -41px;
+  left: -18px;
+  padding: 2px 3px;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
+  border-radius: ${({ theme }) => theme.borderRadius.small};
+
+  .MuiSvgIcon-root {
+    display: block;
+    width: 25px;
+    height: 25px;
   }
 `;
 
@@ -30,7 +37,7 @@ export const Drawer = styled(MuiDrawer)`
     background-color: transparent;
 
     ${({ theme }) => theme.breakpoints.down('sm')} {
-      background-color: #fff;
+      background-color: ${({ theme }) => theme.colors.white};
     }
   }
 
@@ -44,7 +51,12 @@ export const Drawer = styled(MuiDrawer)`
 
   .MuiTabs-indicator {
     width: 3px;
-    background-color: ${({ theme }) => theme.colors.gold};
+  }
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    .MuiTabs-root {
+      min-width: 180px;
+    }
   }
 `;
 

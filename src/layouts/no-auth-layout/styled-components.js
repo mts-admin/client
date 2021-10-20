@@ -12,7 +12,7 @@ export const Layout = styled.section`
 export const Content = styled.main`
   width: 555px;
   padding: 32px;
-  border-radius: 12px;
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
   background-color: ${({ theme }) => theme.backgrounds.backgroundTransparent};
 
   ${({ theme }) => theme.breakpoints.down('sm')} {
@@ -20,6 +20,6 @@ export const Content = styled.main`
     flex-direction: column;
     width: 100vw;
     flex-grow: 1;
-    border-radius: 0;
+    border-radius: ${({ theme }) => theme.borderRadius.none};
   }
 `;

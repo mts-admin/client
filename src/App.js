@@ -6,13 +6,17 @@ import {
   StylesProvider,
   ThemeProvider as MuiThemeProvider,
 } from '@material-ui/core/styles';
+import { Settings } from 'luxon';
 
 import AppRoutes from './routes';
 import GlobalStyles from './styles/global';
-import Toast from './components/toast-container/toast-container';
+import Toast from './components/toast-container';
 import store from './store';
 import history from './store/history';
+import config from './config';
 import { theme } from './styles/theme';
+
+Settings.defaultZoneName = config.timezone;
 
 const App = () => (
   <Provider store={store}>

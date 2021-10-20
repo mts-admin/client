@@ -1,9 +1,23 @@
-const endpoints = {
-  login: '/api/v1/auth/login',
-  getMe: '/api/v1/auth/me',
-  forgotPassword: '/api/v1/auth/forgot-password',
-  resetPassword: (token) => `/api/v1/auth/reset-password/${token}`,
-  invite: (token) => `/api/v1/auth/signup-by-invitation/${token}`,
+export const endpoints = {
+  auth: {
+    login: '/api/v1/auth/login',
+    forgotPassword: '/api/v1/auth/forgot-password',
+    resetPassword: (token) => `/api/v1/auth/reset-password/${token}`,
+    register: (token) => `/api/v1/auth/signup-by-invitation/${token}`,
+    getMe: '/api/v1/auth/me',
+  },
+  schedules: {
+    schedules: '/api/v1/schedules',
+    getSchedules: (type) => `/api/v1/schedules/${type}`,
+    scheduleById: (id) => `/api/v1/schedules/${id}`,
+    leaveSchedule: (id) => `/api/v1/schedules/${id}/leave`,
+    scheduleParticipants: (id) => `/api/v1/schedules/${id}/participants`,
+  },
 };
 
-export default endpoints;
+export const noAuthEndpoints = [
+  'login',
+  'forgot-password',
+  'reset-password',
+  'signup-by-invitation',
+];

@@ -1,5 +1,3 @@
-import NoAuthLayout from '../layouts/no-auth-layout';
-import AuthLayout from '../layouts/auth-layout';
 import LoginPage from '../pages/auth/login';
 import ForgotPasswordPage from '../pages/auth/forgot-password';
 import ResetPasswordPage from '../pages/auth/reset-password';
@@ -9,34 +7,29 @@ import { ROUTE } from './constants';
 
 const routesConfig = [
   {
+    auth: false,
     path: ROUTE.LOGIN,
-    Component: LoginPage,
-    Layout: NoAuthLayout,
-    auth: false,
+    component: LoginPage,
   },
   {
+    auth: false,
     path: ROUTE.FORGOT_PASSWORD,
-    Component: ForgotPasswordPage,
-    Layout: NoAuthLayout,
-    auth: false,
+    component: ForgotPasswordPage,
   },
   {
+    auth: false,
     path: ROUTE.RESET_PASSWORD,
-    Component: ResetPasswordPage,
-    Layout: NoAuthLayout,
-    auth: false,
+    component: ResetPasswordPage,
   },
   {
+    auth: false,
     path: ROUTE.REGISTER_BY_INVITE,
-    Component: RegisterPage,
-    Layout: NoAuthLayout,
-    auth: false,
+    component: RegisterPage,
   },
   {
-    path: ROUTE.SCHEDULES,
-    Component: SchedulesPage,
-    Layout: AuthLayout,
     auth: true,
+    path: ROUTE.SCHEDULES,
+    component: SchedulesPage,
   },
 ];
 
