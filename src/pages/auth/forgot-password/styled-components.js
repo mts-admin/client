@@ -4,7 +4,7 @@ import { ButtonPrimary, TextButton } from '../../../components/buttons';
 
 export const ForgotPasswordContent = styled.section`
   font-size: ${({ theme }) => theme.fontSize.normal};
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -33,14 +33,14 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
 
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     flex-grow: 1;
   }
 `;
 
 export const SubmitButton = styled(ButtonPrimary)`
   margin-bottom: 8px;
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     margin-top: auto;
   }
 `;

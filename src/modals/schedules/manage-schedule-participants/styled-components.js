@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Alert from '@material-ui/lab/Alert';
 
 import { ControlledInput } from '../../../components/form-items';
 import { ButtonPrimary } from '../../../components/buttons';
@@ -19,14 +18,9 @@ export const Description = styled.p`
   font-size: ${({ theme }) => theme.fontSize.small};
   color: ${({ theme }) => theme.colors.grey};
 
-  ${({ theme }) => theme.breakpoints.down('xs')} {
+  ${({ theme }) => theme.breakpoints.down('sm')} {
     font-size: ${({ theme }) => theme.fontSize.smallest};
   }
-`;
-
-export const ErrorMessage = styled(Alert)`
-  width: 90%;
-  margin: 0 auto;
 `;
 
 // invite form
@@ -41,7 +35,7 @@ export const InviteFormControls = styled.div`
   justify-content: space-between;
   margin-bottom: 8px;
 
-  ${({ theme }) => theme.breakpoints.down('xs')} {
+  ${({ theme }) => theme.breakpoints.down('sm')} {
     flex-direction: column;
   }
 `;
@@ -55,7 +49,7 @@ export const InviteButton = styled(ButtonPrimary)`
   line-height: 1.5;
   align-self: center;
 
-  ${({ theme }) => theme.breakpoints.down('xs')} {
+  ${({ theme }) => theme.breakpoints.down('sm')} {
     align-self: flex-end;
     margin: 4px 0;
   }
@@ -70,7 +64,7 @@ export const ParticipantItemCheckboxes = styled.div`
   align-items: center;
   padding: 0 8px;
 
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     flex-direction: column;
     align-items: flex-start;
     padding: 0 0;
@@ -78,14 +72,15 @@ export const ParticipantItemCheckboxes = styled.div`
 `;
 
 export const ParticipantItemButtons = styled.div`
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     align-self: flex-end;
   }
 
   button {
     border-radius: ${({ theme }) => theme.borderRadius.small};
-    padding: 4px 8px;
-    font-size: ${({ theme }) => theme.fontSize.small};
+    padding: 2px 8px;
+    font-size: ${({ theme }) => theme.fontSize.smallest};
     margin: 0 4px;
+    line-height: 1.5;
   }
 `;

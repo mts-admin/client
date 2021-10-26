@@ -1,8 +1,8 @@
 import React from 'react';
 import { bool, func, node } from 'prop-types';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import Backdrop from '@mui/material/Backdrop';
+import Fade from '@mui/material/Fade';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 import { Modal, CloseButton, ModalContent } from './styled-components';
 

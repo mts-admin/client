@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Button from '@material-ui/core/Button';
-import MuiPagination from '@material-ui/lab/Pagination';
+import Button from '@mui/material/Button';
+import MuiPagination from '@mui/lab/Pagination';
 
 import { SimpleTabs } from '../../components/tabs';
 
@@ -18,7 +18,7 @@ export const HeaderContent = styled.div`
   justify-content: space-between;
   margin-bottom: 24px;
 
-  ${({ theme }) => theme.breakpoints.down('md')} {
+  ${({ theme }) => theme.breakpoints.down('lg')} {
     flex-direction: column;
 
     button {
@@ -38,7 +38,7 @@ export const Tabs = styled(SimpleTabs)`
     max-width: 100%;
   }
 
-  ${({ theme }) => theme.breakpoints.down('md')} {
+  ${({ theme }) => theme.breakpoints.down('lg')} {
     width: 100%;
     margin-bottom: 16px;
   }
@@ -53,11 +53,11 @@ export const ContentWrapper = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   overflow: hidden;
 
-  ${({ theme }) => theme.breakpoints.down('md')} {
+  ${({ theme }) => theme.breakpoints.down('lg')} {
     grid-template-columns: 1fr 1fr;
   }
 
-  ${({ theme }) => theme.breakpoints.down('xs')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     grid-template-columns: 1fr;
   }
 `;
@@ -68,4 +68,9 @@ export const Pagination = styled(MuiPagination)`
 
 export const CreateButton = styled(Button)`
   background-color: ${({ theme }) => theme.colors.lightGrey};
+  color: ${({ theme }) => theme.colors.secondaryBlack};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.lightGreySecondary};
+  }
 `;

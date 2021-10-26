@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Alert from '@material-ui/lab/Alert';
+import Alert from '@mui/lab/Alert';
 
 export const Content = styled.section`
   & > section:not(:last-of-type) {

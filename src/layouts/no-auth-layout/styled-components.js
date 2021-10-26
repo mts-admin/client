@@ -15,7 +15,7 @@ export const Content = styled.main`
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   background-color: ${({ theme }) => theme.backgrounds.backgroundTransparent};
 
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     display: flex;
     flex-direction: column;
     width: 100vw;

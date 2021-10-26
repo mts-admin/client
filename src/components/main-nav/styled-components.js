@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import MuiDrawer from '@material-ui/core/Drawer';
-import MuiTab from '@material-ui/core/Tab';
+import MuiDrawer from '@mui/material/Drawer';
+import MuiTab from '@mui/material/Tab';
 
 export const Nav = styled.nav`
   position: relative;
@@ -11,7 +11,7 @@ export const Nav = styled.nav`
   background-color: ${({ theme }) => theme.colors.lightGrey};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
 
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     width: 0;
     margin-right: 0;
   }
@@ -36,7 +36,7 @@ export const Drawer = styled(MuiDrawer)`
   .MuiPaper-root {
     background-color: transparent;
 
-    ${({ theme }) => theme.breakpoints.down('sm')} {
+    ${({ theme }) => theme.breakpoints.down('md')} {
       background-color: ${({ theme }) => theme.colors.white};
     }
   }
@@ -44,7 +44,7 @@ export const Drawer = styled(MuiDrawer)`
   .MuiDrawer-paper {
     position: static;
 
-    ${({ theme }) => theme.breakpoints.down('sm')} {
+    ${({ theme }) => theme.breakpoints.down('md')} {
       position: absolute;
     }
   }
@@ -53,7 +53,7 @@ export const Drawer = styled(MuiDrawer)`
     width: 3px;
   }
 
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     .MuiTabs-root {
       min-width: 180px;
     }
@@ -62,8 +62,10 @@ export const Drawer = styled(MuiDrawer)`
 
 export const Tab = styled(MuiTab)`
   min-height: auto;
-  padding: 15px 10px;
+  padding: 15px;
   font-size: ${({ theme }) => theme.fontSize.normal};
+  flex-direction: row;
+  justify-content: flex-start;
 
   .MuiTab-wrapper {
     flex-direction: row;

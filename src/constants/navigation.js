@@ -1,10 +1,10 @@
-import ScheduleOutlinedIcon from '@material-ui/icons/ScheduleOutlined';
-import TrendingUpOutlinedIcon from '@material-ui/icons/TrendingUpOutlined';
-import NoteOutlinedIcon from '@material-ui/icons/NoteOutlined';
-import FormatListBulletedOutlinedIcon from '@material-ui/icons/FormatListBulletedOutlined';
-import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
-import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
-import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
+import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined';
+import NoteOutlinedIcon from '@mui/icons-material/NoteOutlined';
+import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { ROUTE } from '../routes/constants';
 
 export const mainNavItems = [

@@ -2,10 +2,9 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { ThemeProvider } from 'styled-components';
-import {
-  StylesProvider,
-  ThemeProvider as MuiThemeProvider,
-} from '@material-ui/core/styles';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DateAdapter from '@mui/lab/AdapterLuxon';
 import { Settings } from 'luxon';
 
 import AppRoutes from './routes';
@@ -23,11 +22,11 @@ const App = () => (
     <ConnectedRouter history={history}>
       <ThemeProvider theme={theme}>
         <MuiThemeProvider theme={theme}>
-          <StylesProvider injectFirst>
+          <LocalizationProvider dateAdapter={DateAdapter}>
             <GlobalStyles />
             <Toast />
             <AppRoutes />
-          </StylesProvider>
+          </LocalizationProvider>
         </MuiThemeProvider>
       </ThemeProvider>
     </ConnectedRouter>

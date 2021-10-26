@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Tabs from '@material-ui/core/Tabs';
-import MenuIcon from '@material-ui/icons/Menu';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import Tabs from '@mui/material/Tabs';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import { Drawer, Tab, Nav, MenuButton } from './styled-components';
 import { mainNavItems } from '../../constants/navigation';
@@ -17,14 +17,14 @@ const MainNav = () => {
   );
 
   const theme = useTheme();
-  const isSmDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMdDown = useMediaQuery(theme.breakpoints.down('md'));
 
   const toggleDrawer = () => setOpen((prevState) => !prevState);
   const handleTabsChange = (_, newValue) => setTabValue(newValue);
 
   return (
     <Nav>
-      {isSmDown && (
+      {isMdDown && (
         <MenuButton onClick={toggleDrawer}>
           <MenuIcon />
         </MenuButton>
@@ -33,7 +33,7 @@ const MainNav = () => {
       <Drawer
         open={open}
         onClose={toggleDrawer}
-        variant={isSmDown ? 'temporary' : 'permanent'}
+        variant={isMdDown ? 'temporary' : 'permanent'}
         anchor="left"
       >
         <Tabs

@@ -1,6 +1,6 @@
 import React from 'react';
 import { arrayOf, string, number, shape } from 'prop-types';
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '@mui/material/Tooltip';
 
 import { ContentWrapper, Image, RestCount } from './styled-components';
 import { getImageUrl } from '../../utils/general';
@@ -32,7 +32,7 @@ UserImagesList.propTypes = {
 };
 
 UserImagesList.defaultProps = {
-  maxCount: 5,
+  maxCount: 3,
 };
 
 export default UserImagesList;

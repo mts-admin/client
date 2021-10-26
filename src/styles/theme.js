@@ -1,4 +1,4 @@
-import { createTheme } from '@material-ui/core/styles';
+import { createTheme } from '@mui/material/styles';
 
 const COLORS = {
   GOLD: '#edb32a',
@@ -21,32 +21,44 @@ export const theme = createTheme({
       xl: 1200,
     },
   },
-  overrides: {
+  components: {
     MuiCircularProgress: {
-      colorPrimary: {
-        color: COLORS.GOLD,
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        marginTop: '-20px',
-        marginLeft: '-20px',
+      styleOverrides: {
+        colorPrimary: {
+          color: COLORS.GOLD,
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          marginTop: '-20px',
+          marginLeft: '-20px',
+        },
       },
     },
     MuiButton: {
-      root: {
-        borderRadius: 12,
-      },
-      outlined: {
-        borderColor: COLORS.GOLD,
-      },
-      contained: {
-        border: 'none',
-        boxShadow: 'none',
+      styleOverrides: {
+        root: {
+          borderRadius: 12,
+          color: COLORS.SECONDARY_BLACK,
+        },
+        contained: {
+          border: 'none',
+          boxShadow: 'none',
+          color: COLORS.WHITE,
+        },
       },
     },
     MuiTabs: {
-      indicator: {
-        backgroundColor: COLORS.GOLD,
+      styleOverrides: {
+        indicator: {
+          backgroundColor: COLORS.GOLD,
+        },
+      },
+    },
+    MuiRadio: {
+      styleOverrides: {
+        root: {
+          padding: 6,
+        },
       },
     },
   },
@@ -57,8 +69,9 @@ export const theme = createTheme({
   colors: {
     gold: COLORS.GOLD,
     purple: COLORS.PURPLE,
-    lightGrey: COLORS.LIGHT_GREY,
     grey: COLORS.GREY,
+    lightGrey: COLORS.LIGHT_GREY,
+    lightGreySecondary: COLORS.LIGHT_GREY_SECONDARY,
     silver: COLORS.SILVER,
     white: COLORS.WHITE,
     secondaryBlack: COLORS.SECONDARY_BLACK,
