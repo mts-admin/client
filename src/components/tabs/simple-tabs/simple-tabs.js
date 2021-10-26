@@ -1,7 +1,8 @@
 import React from 'react';
 import { string, number, func, arrayOf, oneOfType } from 'prop-types';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import Tabs from '@mui/material/Tabs';
+
+import { Tab } from './styled-components';
 
 const SimpleTabs = ({ value, onChange, options, ...rest }) => (
   <Tabs value={value} onChange={onChange} {...rest}>

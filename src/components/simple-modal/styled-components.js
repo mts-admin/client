@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import MuiModal from '@material-ui/core/Modal';
-import IconButton from '@material-ui/core/IconButton';
+import MuiModal from '@mui/material/Modal';
+import IconButton from '@mui/material/IconButton';
 
 export const Modal = styled(MuiModal)`
   display: flex;
@@ -26,12 +26,12 @@ export const ModalContent = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   box-shadow: ${({ theme }) => theme.shadows[5]};
 
-  ${({ theme }) => theme.breakpoints.down('md')} {
+  ${({ theme }) => theme.breakpoints.down('lg')} {
     width: 75vw;
     padding: 20px;
   }
 
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     width: 85vw;
   }
 `;

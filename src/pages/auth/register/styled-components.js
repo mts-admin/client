@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ButtonPrimary } from '../../../components/buttons';
 
 export const RegisterContent = styled.section`
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -20,7 +20,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
 
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     flex-grow: 1;
   }
 `;
@@ -34,7 +34,7 @@ export const TextBold = styled.span`
 `;
 
 export const SubmitButton = styled(ButtonPrimary)`
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     margin-top: auto;
   }
 `;

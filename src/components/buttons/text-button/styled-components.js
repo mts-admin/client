@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import MuiButton from '@material-ui/core/Button';
+import MuiButton from '@mui/material/Button';
 
 export const Button = styled(MuiButton)`
   padding: 4px 12px;

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { handleScheduleGet } from '../../../store/schedules/thunk';
 import { clearCurrentSchedule } from '../../../store/schedules/actions';
@@ -8,19 +8,16 @@ import { selectModalPayload } from '../../modal-reducer';
 import {
   selectSchedulesLoading,
   selectCurrentSchedule,
-  selectSchedulesError,
 } from '../../../store/schedules/selectors';
-import { Title, Content, Description, ErrorMessage } from './styled-components';
+import { Title, Content, Description } from './styled-components';
 import ContentSection from '../../../components/content-section';
 import InviteParticipantForm from './components/invite-participant-form';
 import ParticipantItem from './components/participant-item';
-import { getErrorMessage } from '../../../utils/general';
 
 const ManageScheduleParticipantsModal = () => {
   const dispatch = useDispatch();
 
   const loading = useSelector(selectSchedulesLoading);
-  const error = useSelector(selectSchedulesError);
   const schedule = useSelector(selectCurrentSchedule);
   const { scheduleId } = useSelector(selectModalPayload);
 
@@ -33,9 +30,7 @@ const ManageScheduleParticipantsModal = () => {
 
   const hasParticipants = schedule?.participants?.length > 0;
 
-  return error ? (
-    <ErrorMessage severity="error">{getErrorMessage(error)}</ErrorMessage>
-  ) : (
+  return (
     <Content>
       <Title>Manage participants</Title>
 

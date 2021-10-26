@@ -16,6 +16,10 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 4px;
+
+  .MuiIconButton-root {
+    margin-right: -8px;
+  }
 `;
 
 export const TitleLink = styled(Link)`

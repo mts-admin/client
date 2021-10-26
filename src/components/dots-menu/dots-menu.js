@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { arrayOf, shape, string, func } from 'prop-types';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import IconButton from '@mui/material/IconButton';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const DotsMenu = ({ options }) => {
   const [anchorEl, setAnchorEl] = useState(null);

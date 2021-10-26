@@ -8,11 +8,11 @@ export const Layout = styled.section`
   min-height: 100vh;
   width: 100vw;
 
-  ${({ theme }) => theme.breakpoints.down('md')} {
+  ${({ theme }) => theme.breakpoints.down('lg')} {
     padding: 36px 0;
   }
 
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     padding: 0;
   }
 `;
@@ -26,7 +26,7 @@ export const Content = styled.main`
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   background-color: ${({ theme }) => theme.backgrounds.backgroundTransparent};
 
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     width: 100%;
     min-height: 100vh;
     border-radius: ${({ theme }) => theme.borderRadius.none};
