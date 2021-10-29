@@ -12,6 +12,9 @@ export const endpoints = {
     scheduleById: (id) => `/api/v1/schedules/${id}`,
     leaveSchedule: (id) => `/api/v1/schedules/${id}/leave`,
     scheduleParticipants: (id) => `/api/v1/schedules/${id}/participants`,
+    scheduleVisits: (id) => `/api/v1/schedules/${id}/visits`,
+    scheduleOneOffVisit: (id) => `/api/v1/schedules/${id}/visits/one-off`,
+    scheduleRecurringVisits: (id) => `/api/v1/schedules/${id}/visits/recurring`,
   },
 };
 

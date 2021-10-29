@@ -3,6 +3,7 @@ import ForgotPasswordPage from '../pages/auth/forgot-password';
 import ResetPasswordPage from '../pages/auth/reset-password';
 import RegisterPage from '../pages/auth/register';
 import SchedulesPage from '../pages/schedules';
+import VisitsPage from '../pages/visits';
 import { ROUTE } from './constants';
 
 const routesConfig = [
@@ -30,6 +31,11 @@ const routesConfig = [
     auth: true,
     path: ROUTE.SCHEDULES,
     component: SchedulesPage,
+  },
+  {
+    auth: true,
+    path: ROUTE.SCHEDULE_VISITS,
+    component: VisitsPage,
   },
 ];
 

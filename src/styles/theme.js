@@ -9,6 +9,8 @@ const COLORS = {
   GREY: 'grey',
   WHITE: 'white',
   SECONDARY_BLACK: '#333333',
+  ERROR: '#d32f2f',
+  SUCCESS: '#28a745',
 };
 
 export const theme = createTheme({
@@ -75,6 +77,8 @@ export const theme = createTheme({
     silver: COLORS.SILVER,
     white: COLORS.WHITE,
     secondaryBlack: COLORS.SECONDARY_BLACK,
+    error: COLORS.ERROR,
+    success: COLORS.SUCCESS,
   },
   fontSize: {
     h1: '32px',

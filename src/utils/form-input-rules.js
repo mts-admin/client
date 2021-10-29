@@ -20,6 +20,11 @@ class FormInputRules {
     this.maxLength = { value, message };
     return this;
   }
+
+  validate(validator, message) {
+    this.validate = (value) => validator(value) || message;
+    return this;
+  }
 }
 
 const FormRules = () => new FormInputRules();
