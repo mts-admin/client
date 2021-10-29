@@ -1,7 +1,7 @@
 import React from 'react';
 import { string, node, arrayOf, shape, func } from 'prop-types';
 
-import DotsMenu from '../../dots-menu';
+import { DotsMenu } from '../../menus';
 import { Content, Header, TitleLink } from './styled-components';
 
 const SimpleCard = ({ link, title, menuOptions, children }) => (

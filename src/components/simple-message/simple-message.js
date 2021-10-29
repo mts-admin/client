@@ -1,10 +1,10 @@
 import React from 'react';
-import { string } from 'prop-types';
+import { string, bool } from 'prop-types';
 
 import { Message, Title, Description } from './styled-components';
 
-const SimpleMessage = ({ title, description }) => (
-  <Message>
+const SimpleMessage = ({ title, description, error }) => (
+  <Message error={error}>
     <Title>{title}</Title>
     {description && <Description>{description}</Description>}
   </Message>
@@ -13,6 +13,7 @@ const SimpleMessage = ({ title, description }) => (
 SimpleMessage.propTypes = {
   title: string.isRequired,
   description: string,
+  error: bool,
 };
 
 export default SimpleMessage;
