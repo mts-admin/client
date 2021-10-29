@@ -2,8 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { shape, arrayOf, string, bool } from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import Button from '@material-ui/core/Button';
-import * as R from 'ramda';
+import Button from '@mui/material/Button';
 
 import {
   ParticipantItemContent,
@@ -31,25 +30,21 @@ const getMenuOptions = ({ onEdit, onDelete }) => [
   },
 ];
 
-const getDefaultState = (data) => ({
-  checkboxes: data.reduce((acc, item) => ({ ...acc, [item]: true }), {}),
-});
-
 const ParticipantItem = ({ user, permissions, scheduleId, disabled }) => {
   const dispatch = useDispatch();
 
   const [editable, setEditable] = useState(false);
 
   const { control, reset, handleSubmit } = useForm({
-    defaultValues: getDefaultState(permissions),
+    defaultValues: { permissions },
   });
 
   const toggleEditable = () => setEditable((prevState) => !prevState);
 
-  const onSave = handleSubmit(({ checkboxes }) => {
+  const onSave = handleSubmit((values) => {
     const data = {
       participantId: user.id,
-      permissions: Object.keys(R.filter(Boolean, checkboxes)),
+      permissions: values.permissions,
     };
 
     dispatch(
@@ -61,7 +56,7 @@ const ParticipantItem = ({ user, permissions, scheduleId, disabled }) => {
     );
   });
   const onCancel = () => {
-    reset(getDefaultState(permissions));
+    reset({ permissions });
     toggleEditable();
   };
   const onDelete = useCallback(() => {
@@ -93,12 +88,15 @@ const ParticipantItem = ({ user, permissions, scheduleId, disabled }) => {
         <ParticipantItemCheckboxes>
           <ControlledCheckboxesGroup
             data={checkboxesList}
+            name="permissions"
             control={control}
             disabled={disabled}
             size="small"
           />
           <ParticipantItemButtons>
-            <TextButton onClick={onCancel}>Cancel</TextButton>
+            <TextButton onClick={onCancel} size="small">
+              Cancel
+            </TextButton>
             <Button variant="contained" onClick={onSave}>
               Update
             </Button>
@@ -120,4 +118,4 @@ ParticipantItem.propTypes = {
   disabled: bool,
 };
 
-export default ParticipantItem;
+export default React.memo(ParticipantItem);
