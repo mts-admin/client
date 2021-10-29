@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { string, object, bool } from 'prop-types';
 import { Controller } from 'react-hook-form';
-import { InputAdornment, IconButton } from '@material-ui/core';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import { InputAdornment, IconButton } from '@mui/material';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import * as R from 'ramda';
 
 import { TextField } from './styled-components';
