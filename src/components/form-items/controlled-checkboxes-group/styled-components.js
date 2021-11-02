@@ -12,10 +12,3 @@ export const FormControlLabel = styled(MuiFormControlLabel)`
       `}
   }
 `;
-
-export const ErrorMessage = styled.p`
-  color: ${({ theme }) => theme.colors.error};
-  font-weight: 400;
-  font-size: ${({ theme }) => theme.fontSize.smallest};
-  margin: 0 14px;
-`;

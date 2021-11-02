@@ -17,7 +17,7 @@ export const Layout = styled.section`
   }
 `;
 
-export const Content = styled.main`
+export const Container = styled.main`
   display: flex;
   width: 85%;
   max-width: 1300px;

@@ -19,6 +19,7 @@ export const CloseButton = styled(IconButton)`
 export const ModalContent = styled.div`
   position: relative;
   width: 50vw;
+  min-height: 100px;
   max-height: 95vh;
   min-width: 300px;
   max-width: 800px;

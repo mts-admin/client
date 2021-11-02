@@ -11,6 +11,11 @@ import LeaveScheduleModal from './schedules/leave-schedule';
 import EditScheduleModal from './schedules/edit-schedule';
 import ManageScheduleParticipantsModal from './schedules/manage-schedule-participants';
 import CreateVisitModal from './visits/create-visit';
+import ViewVisitModal from './visits/view-visit';
+import EditVisitModal from './visits/edit-visit';
+import EditAllVisitsModal from './visits/edit-all-visits';
+import DeleteVisitModal from './visits/delete-visit';
+import DeleteAllVisitsModal from './visits/delete-all-visits';
 
 const modals = {
   [MODAL_NAME.SCHEDULE_DETAILS]: ScheduleDetailsModal,
@@ -20,6 +25,11 @@ const modals = {
   [MODAL_NAME.LEAVE_SCHEDULE]: LeaveScheduleModal,
   [MODAL_NAME.DELETE_SCHEDULE]: DeleteScheduleModal,
   [MODAL_NAME.CREATE_VISIT]: CreateVisitModal,
+  [MODAL_NAME.EDIT_VISIT]: EditVisitModal,
+  [MODAL_NAME.EDIT_ALL_VISITS]: EditAllVisitsModal,
+  [MODAL_NAME.DELETE_VISIT]: DeleteVisitModal,
+  [MODAL_NAME.DELETE_ALL_VISITS]: DeleteAllVisitsModal,
+  [MODAL_NAME.VIEW_VISIT]: ViewVisitModal,
   empty: () => null,
 };
 

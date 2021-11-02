@@ -5,6 +5,7 @@ import ControlledRadioGroup from './controlled-radio-group/controlled-radio-grou
 import ControlledTimePicker from './controlled-time-picker/controlled-time-picker';
 import ControlledDatePicker from './controlled-date-picker/controlled-date-picker';
 import ControlledDateRangePicker from './controlled-date-range-picker/controlled-date-range-picker';
+import ControlledSelect from './controlled-select/controlled-select';
 
 export {
   ControlledInput,
@@ -14,4 +15,5 @@ export {
   ControlledTimePicker,
   ControlledDatePicker,
   ControlledDateRangePicker,
+  ControlledSelect,
 };

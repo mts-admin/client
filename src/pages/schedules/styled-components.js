@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Button from '@mui/material/Button';
-import MuiPagination from '@mui/lab/Pagination';
+import MuiPagination from '@mui/material/Pagination';
 
 import { SimpleTabs } from '../../components/tabs';
 

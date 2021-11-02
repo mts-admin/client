@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, object } from 'prop-types';
+import { string, object, bool } from 'prop-types';
 import { Controller } from 'react-hook-form';
 import MobileDatePicker from '@mui/lab/MobileDatePicker';
 import TextField from '@mui/material/TextField';
@@ -10,6 +10,7 @@ const ControlledDatePicker = ({
   label,
   rules,
   control,
+  clearable,
   defaultValue,
   ...rest
 }) => (
@@ -22,7 +23,7 @@ const ControlledDatePicker = ({
       <MobileDatePicker
         {...field}
         {...rest}
-        clearable
+        clearable={clearable}
         label={label}
         inputFormat="dd/LL/yyyy"
         renderInput={(params) => (
@@ -40,6 +41,7 @@ const ControlledDatePicker = ({
 ControlledDatePicker.defaultProps = {
   rules: {},
   defaultValue: '',
+  clearable: true,
 };
 
 ControlledDatePicker.propTypes = {
@@ -48,6 +50,7 @@ ControlledDatePicker.propTypes = {
   label: string.isRequired,
   rules: object,
   defaultValue: string,
+  clearable: bool,
 };
 
 export default React.memo(ControlledDatePicker);

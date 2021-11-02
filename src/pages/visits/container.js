@@ -11,7 +11,7 @@ import {
   selectSchedulesError,
   selectCurrentSchedule,
 } from '../../store/schedules/selectors';
-import { handleVisitsGet } from '../../store/visits/thunk';
+import { handleVisitsGet, handleVisitEdit } from '../../store/visits/thunk';
 import { clearVisits } from '../../store/visits/actions';
 import { handleScheduleGet } from '../../store/schedules/thunk';
 import { clearCurrentSchedule } from '../../store/schedules/actions';
@@ -31,7 +31,7 @@ import { getComponentState, getErrorMessage } from '../../utils/general';
 const useVisitsPageContainer = () => {
   const { id } = useParams();
 
-  const [{ start, end }, setDateRange] = useState({});
+  const [calendarRange, setDateRange] = useState({});
 
   const dispatch = useDispatch();
 
@@ -64,12 +64,14 @@ const useVisitsPageContainer = () => {
     dispatch(
       handleVisitsGet({
         id,
-        params: { start, end },
+        params: calendarRange,
         cancelToken: generateCancelToken(),
       }),
     );
+
+    return () => cancelRequest();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [start, end]);
+  }, [calendarRange]);
 
   const errorMessage = scheduleError && getErrorMessage(scheduleError);
 
@@ -85,11 +87,11 @@ const useVisitsPageContainer = () => {
           name: MODAL_NAME.CREATE_VISIT,
           payload: {
             scheduleId: id,
-            calendarRange: { start, end },
+            calendarRange,
           },
         }),
       ),
-    [start, end, id, dispatch],
+    [calendarRange, id, dispatch],
   );
   const handleDateRangeChange = useCallback(
     (data) =>
@@ -116,12 +118,45 @@ const useVisitsPageContainer = () => {
             scheduleId: id,
             successCallback,
             defaultDates: dates,
-            calendarRange: { start, end },
+            calendarRange,
           },
         }),
       );
     },
-    [start, end, id, dispatch],
+    [calendarRange, id, dispatch],
+  );
+  const eventChange = useCallback(
+    (changeInfo) => {
+      const data = changeInfo.event.toPlainObject();
+
+      dispatch(
+        handleVisitEdit({
+          scheduleId: data.extendedProps.scheduleId,
+          visitId: data.id,
+          params: calendarRange,
+          body: {
+            startTime: data.start,
+            endTime: data.end,
+          },
+        }),
+      );
+    },
+    [calendarRange, dispatch],
+  );
+  const eventClick = useCallback(
+    (clickInfo) => {
+      const data = clickInfo.event.toPlainObject();
+      const scheduleId = data.extendedProps?.scheduleId;
+      const visitId = data.id;
+
+      dispatch(
+        openModal({
+          name: MODAL_NAME.VIEW_VISIT,
+          payload: { scheduleId, visitId },
+        }),
+      );
+    },
+    [dispatch],
   );
 
   // prevent time selecting for more than 1 day (timeGridWeek view)
@@ -142,9 +177,13 @@ const useVisitsPageContainer = () => {
   );
   const eventContent = useCallback(
     (eventInfo) => (
-      <EventContent eventInfo={eventInfo} permissions={visitsPermissions} />
+      <EventContent
+        eventInfo={eventInfo}
+        permissions={visitsPermissions}
+        calendarRange={calendarRange}
+      />
     ),
-    [visitsPermissions],
+    [visitsPermissions, calendarRange],
   );
 
   return {
@@ -155,8 +194,10 @@ const useVisitsPageContainer = () => {
     errorMessage,
     visitsPermissions,
     selectAllow,
+    eventClick,
     eventContent,
     slotLabelFormat,
+    eventChange,
     handleDateSelect,
     handleDateRangeChange,
     handleAddVisitButtonClick,

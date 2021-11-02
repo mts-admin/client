@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, object, number } from 'prop-types';
+import { string, object, number, bool } from 'prop-types';
 import { Controller } from 'react-hook-form';
 import MobileTimePicker from '@mui/lab/MobileTimePicker';
 import TextField from '@mui/material/TextField';
@@ -10,6 +10,7 @@ const ControlledTimePicker = ({
   label,
   rules,
   control,
+  clearable,
   minutesStep,
   defaultValue,
   ...rest
@@ -23,7 +24,7 @@ const ControlledTimePicker = ({
       <MobileTimePicker
         {...field}
         {...rest}
-        clearable
+        clearable={clearable}
         ampm={false}
         label={label}
         minutesStep={minutesStep}
@@ -43,6 +44,7 @@ ControlledTimePicker.defaultProps = {
   rules: {},
   defaultValue: '',
   minutesStep: 5,
+  clearable: true,
 };
 
 ControlledTimePicker.propTypes = {
@@ -52,6 +54,7 @@ ControlledTimePicker.propTypes = {
   rules: object,
   minutesStep: number,
   defaultValue: string,
+  clearable: bool,
 };
 
 export default React.memo(ControlledTimePicker);

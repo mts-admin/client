@@ -17,12 +17,6 @@ import SimpleMessage from '../../components/simple-message';
 import { LoaderWithBackground } from '../../components/loaders/fullscreen-loader';
 import { COMPONENT_STATE } from '../../constants/general';
 
-// eventClick - triggers by clicking on event item // open modal with detailed info about the visit (edit/delete)
-// eventChange - trigger by dropping/moving event (month/week/day view) // change time/date and make request (edit)
-
-// REMINDER: view visit modal: edit, complete, cancel, delete
-
-// TODO: make calendar responsive
 const VisitsPage = () => {
   const {
     visits,
@@ -32,8 +26,10 @@ const VisitsPage = () => {
     errorMessage,
     visitsPermissions,
     selectAllow,
+    eventClick,
     eventContent,
     slotLabelFormat,
+    eventChange,
     handleDateSelect,
     handleDateRangeChange,
     handleAddVisitButtonClick,
@@ -94,8 +90,8 @@ const VisitsPage = () => {
                 selectAllow={selectAllow}
                 datesSet={handleDateRangeChange}
                 select={handleDateSelect}
-                // eventClick={this.handleEventClick}
-                // eventChange={(data) => console.log(data.event.toPlainObject())}
+                eventClick={eventClick}
+                eventChange={eventChange}
                 eventContent={eventContent}
               />
             </>

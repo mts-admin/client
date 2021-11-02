@@ -1,5 +1,7 @@
 import { createSelector } from 'reselect';
 
+export const selectCurrentVisit = (state) => state.visits.currentItem;
+
 export const selectVisitsLoading = (state) => state.visits.loading;
 export const selectVisitsInitLoading = (state) => state.visits.initLoading;
 

@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
-const COLORS = {
+export const COLORS = {
   GOLD: '#edb32a',
   PURPLE: '#fccec9',
   LIGHT_GREY: 'rgba(251,242,223,0.75)',
@@ -11,6 +11,7 @@ const COLORS = {
   SECONDARY_BLACK: '#333333',
   ERROR: '#d32f2f',
   SUCCESS: '#28a745',
+  BLUE: '#1976d2',
 };
 
 export const theme = createTheme({

@@ -73,8 +73,8 @@ const CreateVisitModal = () => {
     );
     const formValues = R.pick(fields, values);
     const data = {
-      title: formValues.title,
-      notes: formValues.notes,
+      title: formValues.title.trim(),
+      notes: formValues.notes.trim(),
       startTime: setTime(formValues.date, formValues.startTime),
       endTime: setTime(formValues.date, formValues.endTime),
       ...(formValues.dateRange && {

@@ -10,9 +10,11 @@ import {
 } from 'prop-types';
 import { Controller } from 'react-hook-form';
 import Checkbox from '@mui/material/Checkbox';
+import FormHelperText from '@mui/material/FormHelperText';
+
 import * as R from 'ramda';
 
-import { Group, ErrorMessage, FormControlLabel } from './styled-components';
+import { Group, FormControlLabel } from './styled-components';
 
 const ControlledCheckboxesGroup = ({
   data,
@@ -53,9 +55,9 @@ const ControlledCheckboxesGroup = ({
             />
           ))}
           {R.hasPath(['error', 'message'], fieldState) && (
-            <ErrorMessage>
+            <FormHelperText error>
               {R.path(['error', 'message'], fieldState)}
-            </ErrorMessage>
+            </FormHelperText>
           )}
         </>
       )}

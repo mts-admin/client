@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, object, array } from 'prop-types';
+import { string, object, array, bool } from 'prop-types';
 import { Controller } from 'react-hook-form';
 import MobileDateRangePicker from '@mui/lab/MobileDateRangePicker';
 import TextField from '@mui/material/TextField';
@@ -10,6 +10,7 @@ const ControlledDateRangePicker = ({
   name,
   rules,
   control,
+  clearable,
   defaultValue,
   ...rest
 }) => (
@@ -22,7 +23,7 @@ const ControlledDateRangePicker = ({
       <MobileDateRangePicker
         {...field}
         {...rest}
-        clearable
+        clearable={clearable}
         inputFormat="dd/LL/yyyy"
         renderInput={(startProps, endProps) => (
           <>
@@ -49,6 +50,7 @@ const ControlledDateRangePicker = ({
 ControlledDateRangePicker.defaultProps = {
   rules: {},
   defaultValue: [null, null],
+  clearable: true,
 };
 
 ControlledDateRangePicker.propTypes = {
@@ -56,6 +58,7 @@ ControlledDateRangePicker.propTypes = {
   name: string.isRequired,
   rules: object,
   defaultValue: array,
+  clearable: bool,
 };
 
 export default React.memo(ControlledDateRangePicker);
