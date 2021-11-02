@@ -15,31 +15,24 @@ import { ControlledCheckboxesGroup } from '../../../../components/form-items';
 import { SCHEDULE_PERMISSIONS } from '../../../../constants/permissions';
 import FormRules from '../../../../utils/form-input-rules';
 
-const getFormattedCheckboxesState = (checkboxes) =>
-  [SCHEDULE_PERMISSIONS.GET.value].concat(
-    Object.entries(checkboxes)
-      .filter(([_, checked]) => checked)
-      .map(([elem]) => elem),
-  );
-
 const getDefaultFormState = () => ({
   email: '',
-  checkboxes: Object.keys(SCHEDULE_PERMISSIONS)
-    .slice(1)
-    .reduce((acc, elem) => ({ ...acc, [elem]: false }), {}),
+  permissions: [SCHEDULE_PERMISSIONS.GET.value],
 });
 
 const InviteParticipantForm = ({ loading, scheduleId }) => {
   const dispatch = useDispatch();
 
-  const { control, handleSubmit, reset } = useForm();
+  const { control, handleSubmit, reset } = useForm({
+    defaultValues: getDefaultFormState(),
+  });
 
   const resetForm = () => reset(getDefaultFormState());
 
-  const onSubmit = handleSubmit(({ email, checkboxes }) => {
+  const onSubmit = handleSubmit(({ email, permissions }) => {
     const data = {
       participantEmail: email,
-      permissions: getFormattedCheckboxesState(checkboxes),
+      permissions,
     };
 
     dispatch(
@@ -70,6 +63,7 @@ const InviteParticipantForm = ({ loading, scheduleId }) => {
       <InviteFormControls>
         <ControlledCheckboxesGroup
           data={checkboxesList}
+          name="permissions"
           control={control}
           disabled={loading}
           size="small"
@@ -92,4 +86,4 @@ InviteParticipantForm.propTypes = {
   scheduleId: string.isRequired,
 };
 
-export default InviteParticipantForm;
+export default React.memo(InviteParticipantForm);

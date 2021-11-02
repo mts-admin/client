@@ -35,3 +35,6 @@ export const getComponentState = (loading, error, empty) => {
 
   return COMPONENT_STATE.SUCCESS;
 };
+
+export const capitalizeFirstLetter = (string) =>
+  string && string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();

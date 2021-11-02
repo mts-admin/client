@@ -4,7 +4,7 @@ import { endpoints } from './endpoints';
 export const getSchedules = (type, page, cancelToken) =>
   apiRequest({
     method: 'GET',
-    url: endpoints.schedules.getSchedules(type),
+    url: endpoints.schedules.schedulesByType(type),
     params: { page },
     cancelToken,
   }).then(({ data }) => data);

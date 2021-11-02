@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { arrayOf, shape, string, func } from 'prop-types';
+import { arrayOf, shape, string, func, bool } from 'prop-types';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
@@ -24,13 +24,14 @@ const DotsMenu = ({ options }) => {
         <MoreVertIcon />
       </IconButton>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-        {options.map(({ label, onClick }) => (
+        {options.map(({ label, onClick, disabled }) => (
           <MenuItem
             key={label}
             onClick={() => {
               onClick();
               handleClose();
             }}
+            disabled={disabled}
           >
             {label}
           </MenuItem>
@@ -45,6 +46,7 @@ DotsMenu.propTypes = {
     shape({
       label: string.isRequired,
       onClick: func.isRequired,
+      disabled: bool,
     }),
   ),
 };

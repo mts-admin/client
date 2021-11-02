@@ -5,6 +5,7 @@ export const ROUTE = {
   RESET_PASSWORD: '/auth/reset-password/:token',
   REGISTER_BY_INVITE: '/auth/signup-by-invitation/:token',
   SCHEDULES: '/dashboard/schedules',
+  SCHEDULE_VISITS: '/dashboard/schedules/:id',
   FINANCES: '/dashboard/finances',
   NOTES: '/dashboard/notes',
   TASKS: '/dashboard/tasks',

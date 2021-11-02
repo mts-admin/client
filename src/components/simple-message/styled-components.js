@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Message = styled.section`
   display: flex;
@@ -6,10 +6,16 @@ export const Message = styled.section`
   align-items: center;
   justify-content: center;
   flex-grow: 1;
+
+  ${({ error }) =>
+    error &&
+    css`
+      color: ${({ theme }) => theme.colors.error};
+    `}
 `;
 
-export const Title = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize.h1};
+export const Title = styled.h2`
+  font-size: ${({ theme }) => theme.fontSize.h2};
   font-weight: 600;
 `;
 

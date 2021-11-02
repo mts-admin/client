@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Redirect, Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import NoAuthLayout from '../layouts/no-auth-layout';
 import AuthLayout from '../layouts/auth-layout';

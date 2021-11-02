@@ -2,7 +2,7 @@ import React from 'react';
 import { string, arrayOf, shape, func } from 'prop-types';
 import LazyLoad from 'react-lazyload';
 
-import DotsMenu from '../dots-menu';
+import { DotsMenu } from '../menus';
 import {
   CardContent,
   CardImageWrapper,
@@ -42,4 +42,4 @@ UserCard.propTypes = {
   ),
 };
 
-export default UserCard;
+export default React.memo(UserCard);

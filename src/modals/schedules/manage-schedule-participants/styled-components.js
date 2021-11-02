@@ -64,7 +64,7 @@ export const ParticipantItemCheckboxes = styled.div`
   align-items: center;
   padding: 0 8px;
 
-  ${({ theme }) => theme.breakpoints.down('md')} {
+  ${({ theme }) => theme.breakpoints.down('sm')} {
     flex-direction: column;
     align-items: flex-start;
     padding: 0 0;
@@ -72,7 +72,7 @@ export const ParticipantItemCheckboxes = styled.div`
 `;
 
 export const ParticipantItemButtons = styled.div`
-  ${({ theme }) => theme.breakpoints.down('md')} {
+  ${({ theme }) => theme.breakpoints.down('sm')} {
     align-self: flex-end;
   }
 

@@ -82,7 +82,7 @@ const clearCurrentScheduleReducer = (state) => ({
 
 const clearSchedulesReducer = () => initialState;
 
-const authReducer = handleActions(
+const schedulesReducer = handleActions(
   {
     [getSchedulesRequest]: R.mergeDeepLeft({ initLoading: true }),
     [combineActions(
@@ -102,4 +102,4 @@ const authReducer = handleActions(
   initialState,
 );
 
-export default authReducer;
+export default schedulesReducer;

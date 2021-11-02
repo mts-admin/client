@@ -19,12 +19,15 @@ export const CloseButton = styled(IconButton)`
 export const ModalContent = styled.div`
   position: relative;
   width: 50vw;
+  min-height: 100px;
+  max-height: 95vh;
   min-width: 300px;
   max-width: 800px;
   padding: 24px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   box-shadow: ${({ theme }) => theme.shadows[5]};
+  overflow-y: auto;
 
   ${({ theme }) => theme.breakpoints.down('lg')} {
     width: 75vw;

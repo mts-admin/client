@@ -4,7 +4,7 @@ import { Switch } from 'react-router-dom';
 import AuthRoute from '../../routes/auth-route';
 import MainNav from '../../components/main-nav';
 import ModalWindow from '../../modals/modal-window';
-import { Layout, Content } from './styled-components';
+import { Layout, Container } from './styled-components';
 import routesConfig from '../../routes/routes-config';
 
 const Routes = () => (
@@ -21,12 +21,12 @@ const Routes = () => (
 
 const AuthLayout = () => (
   <Layout>
-    <Content>
+    <Container>
       <MainNav />
       <Routes />
       <ModalWindow />
-    </Content>
+    </Container>
   </Layout>
 );
 
-export default React.memo(AuthLayout);
+export default AuthLayout;
