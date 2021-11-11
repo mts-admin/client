@@ -47,7 +47,7 @@ ControlledInput.defaultProps = {
 ControlledInput.propTypes = {
   control: object.isRequired,
   name: string.isRequired,
-  label: string.isRequired,
+  label: string,
   type: string,
   rules: object,
   variant: string,

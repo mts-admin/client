@@ -6,6 +6,7 @@ import ControlledTimePicker from './controlled-time-picker/controlled-time-picke
 import ControlledDatePicker from './controlled-date-picker/controlled-date-picker';
 import ControlledDateRangePicker from './controlled-date-range-picker/controlled-date-range-picker';
 import ControlledSelect from './controlled-select/controlled-select';
+import ControlledInputNumber from './controlled-input-number/controlled-input-number';
 
 export {
   ControlledInput,
@@ -16,4 +17,5 @@ export {
   ControlledDatePicker,
   ControlledDateRangePicker,
   ControlledSelect,
+  ControlledInputNumber,
 };

@@ -15,4 +15,4 @@ ContentSection.propTypes = {
   children: node.isRequired,
 };
 
-export default ContentSection;
+export default React.memo(ContentSection);

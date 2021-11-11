@@ -33,4 +33,4 @@ SimpleModal.propTypes = {
   children: node.isRequired,
 };
 
-export default SimpleModal;
+export default React.memo(SimpleModal);

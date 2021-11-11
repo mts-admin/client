@@ -9,8 +9,14 @@ const DotsMenu = ({ options }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event) => setAnchorEl(event.currentTarget);
-  const handleClose = () => setAnchorEl(null);
+  const handleClick = (event) => {
+    event.stopPropagation();
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = (event) => {
+    event.stopPropagation();
+    setAnchorEl(null);
+  };
 
   return (
     <>
@@ -27,9 +33,9 @@ const DotsMenu = ({ options }) => {
         {options.map(({ label, onClick, disabled }) => (
           <MenuItem
             key={label}
-            onClick={() => {
-              onClick();
-              handleClose();
+            onClick={(event) => {
+              onClick(event);
+              handleClose(event);
             }}
             disabled={disabled}
           >

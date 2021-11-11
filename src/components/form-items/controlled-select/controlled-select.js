@@ -75,4 +75,4 @@ ControlledSelect.propTypes = {
   fullWidth: bool,
 };
 
-export default ControlledSelect;
+export default React.memo(ControlledSelect);
