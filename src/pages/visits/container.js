@@ -44,32 +44,36 @@ const useVisitsPageContainer = () => {
 
   const visitsPermissions = useVisitsPermissions(schedule);
 
-  const [generateCancelToken, cancelRequest] = useCancelToken();
+  const [generateScheduleCancelToken, cancelScheduleRequest] = useCancelToken();
+  const [generateVisitsCancelToken, cancelVisitsRequest] = useCancelToken();
 
   useEffect(() => {
-    dispatch(handleScheduleGet(id));
+    cancelScheduleRequest();
+
+    dispatch(handleScheduleGet(id, generateScheduleCancelToken()));
 
     return () => {
       batch(() => {
         dispatch(clearCurrentSchedule());
         dispatch(clearVisits());
       });
+      cancelScheduleRequest();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffectAfterMount(() => {
-    cancelRequest();
+    cancelVisitsRequest();
 
     dispatch(
       handleVisitsGet({
         id,
         params: calendarRange,
-        cancelToken: generateCancelToken(),
+        cancelToken: generateVisitsCancelToken(),
       }),
     );
 
-    return () => cancelRequest();
+    return () => cancelVisitsRequest();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [calendarRange]);
 

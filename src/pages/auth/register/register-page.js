@@ -38,7 +38,6 @@ const RegisterPage = () => {
           name="name"
           label="Name"
           control={control}
-          defaultValue={user.name}
           InputProps={{ disabled: true }}
         />
 
@@ -46,7 +45,6 @@ const RegisterPage = () => {
           name="email"
           label="Email"
           control={control}
-          defaultValue={user.email}
           InputProps={{ disabled: true }}
         />
 

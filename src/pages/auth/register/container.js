@@ -22,7 +22,12 @@ const useRegisterPageContainer = () => {
   const formLoading = useSelector(selectAuthLoading);
   const user = useSelector(selectAuthUser);
 
-  const { reset, control, handleSubmit } = useForm();
+  const { reset, control, handleSubmit } = useForm({
+    defaultValues: {
+      name: user.name,
+      email: user.email,
+    },
+  });
 
   useEffect(() => {
     dispatch(handleGetInvitationData(token));

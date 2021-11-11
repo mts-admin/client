@@ -38,3 +38,26 @@ export const getComponentState = (loading, error, empty) => {
 
 export const capitalizeFirstLetter = (string) =>
   string && string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+
+export const conditionalPropType =
+  (condition, message) => (props, propName, componentName) => {
+    if (condition(props, propName, componentName)) {
+      return new Error(
+        `Invalid prop '${propName}' '${props[propName]}' supplied to '${componentName}'. ${message}`,
+      );
+    }
+
+    return true;
+  };
+
+export const hexToRgba = (color, opacity = 1) => {
+  if (color.substring(0, 1) === '#') {
+    color = color.substring(1);
+  }
+
+  const r = parseInt(color.substring(0, 2), 16);
+  const g = parseInt(color.substring(2, 4), 16);
+  const b = parseInt(color.substring(4), 16);
+
+  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+};

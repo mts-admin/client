@@ -20,6 +20,10 @@ export const endpoints = {
     scheduleVisitsGroup: (scheduleId, visitId) =>
       `/api/v1/schedules/${scheduleId}/visits/${visitId}/group`,
   },
+  finances: {
+    financesList: '/api/v1/finances',
+    financeById: (id) => `/api/v1/finances/${id}`,
+  },
 };
 
 export const noAuthEndpoints = [

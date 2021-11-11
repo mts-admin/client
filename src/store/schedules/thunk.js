@@ -25,17 +25,18 @@ import {
 } from './actions';
 import { SCHEDULE_TYPE } from '../../constants/schedules';
 
-export const handleScheduleGet = (scheduleId) => async (dispatch) => {
-  try {
-    dispatch(getScheduleRequest());
+export const handleScheduleGet =
+  (scheduleId, cancelToken) => async (dispatch) => {
+    try {
+      dispatch(getScheduleRequest());
 
-    const { data } = await getSchedule(scheduleId);
+      const { data } = await getSchedule(scheduleId, cancelToken);
 
-    dispatch(getScheduleSuccess(data));
-  } catch (error) {
-    dispatch(actionError(error));
-  }
-};
+      dispatch(getScheduleSuccess(data));
+    } catch (error) {
+      dispatch(actionError(error));
+    }
+  };
 
 export const handleSchedulesGet =
   ({ type, page, cancelToken }) =>
