@@ -16,6 +16,10 @@ import EditVisitModal from './visits/edit-visit';
 import EditAllVisitsModal from './visits/edit-all-visits';
 import DeleteVisitModal from './visits/delete-visit';
 import DeleteAllVisitsModal from './visits/delete-all-visits';
+import CreateFinanceModal from './finances/create-finance';
+import EditFinanceModal from './finances/edit-finance';
+import DeleteFinanceModal from './finances/delete-finance';
+import ViewFinanceModal from './finances/view-finance';
 
 const modals = {
   [MODAL_NAME.SCHEDULE_DETAILS]: ScheduleDetailsModal,
@@ -30,6 +34,10 @@ const modals = {
   [MODAL_NAME.DELETE_VISIT]: DeleteVisitModal,
   [MODAL_NAME.DELETE_ALL_VISITS]: DeleteAllVisitsModal,
   [MODAL_NAME.VIEW_VISIT]: ViewVisitModal,
+  [MODAL_NAME.VIEW_FINANCE]: ViewFinanceModal,
+  [MODAL_NAME.CREATE_FINANCE]: CreateFinanceModal,
+  [MODAL_NAME.EDIT_FINANCE]: EditFinanceModal,
+  [MODAL_NAME.DELETE_FINANCE]: DeleteFinanceModal,
   empty: () => null,
 };
 

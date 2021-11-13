@@ -9,10 +9,11 @@ export const getSchedules = (type, page, cancelToken) =>
     cancelToken,
   }).then(({ data }) => data);
 
-export const getSchedule = (id) =>
+export const getSchedule = (id, cancelToken) =>
   apiRequest({
     method: 'GET',
     url: endpoints.schedules.scheduleById(id),
+    cancelToken,
   }).then(({ data }) => data);
 
 export const createSchedule = (body) =>

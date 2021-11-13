@@ -6,6 +6,7 @@ import { modalReducer } from '../modals/modal-reducer';
 import authReducer from './auth/reducer';
 import schedulesReducer from './schedules/reducer';
 import visitsReducer from './visits/reducer';
+import financesReducer from './finances/reducer';
 
 const reducer = combineReducers({
   router: connectRouter(history),
@@ -13,6 +14,7 @@ const reducer = combineReducers({
   auth: authReducer,
   schedules: schedulesReducer,
   visits: visitsReducer,
+  finances: financesReducer,
 });
 
 export default reducer;
