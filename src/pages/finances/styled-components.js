@@ -1,29 +1,22 @@
 import styled from 'styled-components';
 
-import { ButtonPrimary } from '../../components/buttons';
+import { SimpleTabs } from '../../components/tabs';
 
 export const Content = styled.section`
-  flex-grow: 1;
-  overflow-x: auto;
-  padding-top: 5px;
-`;
-
-export const TableWrapper = styled.section`
-  border-radius: ${({ theme }) => theme.borderRadius.small};
-  overflow: hidden;
-`;
-
-export const Controls = styled.section`
   display: flex;
-  margin-bottom: 16px;
-
-  ${({ theme }) => theme.breakpoints.down('lg')} {
-    flex-direction: column;
-  }
+  flex-direction: column;
+  flex-grow: 1;
 `;
 
-export const AddButton = styled(ButtonPrimary)`
-  padding: 6px 24.5px;
-  margin-left: auto;
-  white-space: nowrap;
+export const Tabs = styled(SimpleTabs)`
+  width: 100%;
+  margin-bottom: 24px;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  overflow: hidden;
+
+  .MuiTab-root {
+    flex-grow: 1;
+    max-width: 100%;
+  }
 `;

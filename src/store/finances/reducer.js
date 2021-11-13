@@ -10,6 +10,8 @@ import {
   manageFinancesSuccess,
   editFinancesRequest,
   editFinancesSuccess,
+  getFinancesStatisticsRequest,
+  getFinancesStatisticsSuccess,
   actionError,
   clearFinances,
 } from './actions';
@@ -24,6 +26,7 @@ const initialState = {
   loading: false,
   initLoading: false,
   error: null,
+  statistics: null,
 };
 
 const getFinancesSuccessReducer = (state, { payload }) => ({
@@ -60,6 +63,14 @@ const manageFinancesSuccessReducer = (state, { payload }) => ({
   currentItem: payload || {},
 });
 
+const getFinancesStatisticsSuccessReducer = (state, { payload }) => ({
+  ...state,
+  loading: false,
+  initLoading: false,
+  error: null,
+  statistics: payload,
+});
+
 const errorReducer = (state, { payload }) => ({
   ...state,
   loading: false,
@@ -74,9 +85,11 @@ const financesReducer = handleActions(
     [getFinancesRequest]: R.mergeDeepLeft({ initLoading: true }),
     [combineActions(manageFinancesRequest, editFinancesRequest)]:
       R.mergeDeepLeft({ loading: true }),
+    [getFinancesStatisticsRequest]: R.mergeDeepLeft({ loading: true }),
     [getFinancesSuccess]: getFinancesSuccessReducer,
     [editFinancesSuccess]: editFinanceSuccessReducer,
     [manageFinancesSuccess]: manageFinancesSuccessReducer,
+    [getFinancesStatisticsSuccess]: getFinancesStatisticsSuccessReducer,
     [actionError]: errorReducer,
     [clearFinances]: clearFinancesReducer,
   },

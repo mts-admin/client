@@ -1,55 +1,28 @@
-import React from 'react';
-import { FormProvider } from 'react-hook-form';
+import React, { useState } from 'react';
+import * as R from 'ramda';
 
-import {
-  Content,
-  TableWrapper,
-  Controls,
-  AddButton,
-} from './styled-components';
-import useFinancesContainer from './container';
-import DataTable from '../../components/data-table/data-table';
-import { FinanceFilters } from './components/finance-filters/finance-filters';
+import { Tabs, Content } from './styled-components';
+import StatementsTab from './components/statements-tab';
+import StatisticsTab from './components/statistics-tab';
+import { FINANCE_TAB } from '../../constants/finances';
 
 const FinancesPage = () => {
-  const {
-    form,
-    page,
-    order,
-    orderBy,
-    loading,
-    columns,
-    dataSource,
-    totalCount,
-    handleTableChange,
-    handleFiltersChange,
-    onCreateButtonClick,
-  } = useFinancesContainer();
+  const [activeTab, setActiveTab] = useState(FINANCE_TAB.STATEMENTS);
+
+  const handleTabChange = (_, value) => setActiveTab(value);
 
   return (
     <Content>
-      <Controls>
-        <FormProvider {...form}>
-          <FinanceFilters onSubmit={handleFiltersChange} />
-        </FormProvider>
+      <Tabs
+        value={activeTab}
+        onChange={handleTabChange}
+        options={Object.values(FINANCE_TAB)}
+      />
 
-        <AddButton onClick={onCreateButtonClick}>+ Add</AddButton>
-      </Controls>
-
-      <TableWrapper>
-        <DataTable
-          columns={columns}
-          dataSource={dataSource}
-          totalCount={totalCount}
-          onChange={handleTableChange}
-          // onRowClick={(data) => console.log(data)}
-          page={page}
-          order={order}
-          orderBy={orderBy}
-          rowsPerPage={9}
-          loading={loading}
-        />
-      </TableWrapper>
+      {R.cond([
+        [R.equals(FINANCE_TAB.STATEMENTS), () => <StatementsTab />],
+        [R.equals(FINANCE_TAB.STATISTICS), () => <StatisticsTab />],
+      ])(activeTab)}
     </Content>
   );
 };

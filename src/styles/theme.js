@@ -80,6 +80,7 @@ export const theme = createTheme({
     secondaryBlack: COLORS.SECONDARY_BLACK,
     error: COLORS.ERROR,
     success: COLORS.SUCCESS,
+    blue: COLORS.BLUE,
   },
   fontSize: {
     h1: '32px',

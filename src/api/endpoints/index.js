@@ -23,6 +23,8 @@ export const endpoints = {
   finances: {
     financesList: '/api/v1/finances',
     financeById: (id) => `/api/v1/finances/${id}`,
+    financesFullStatistics: '/api/v1/finances/stats/full',
+    financesStatisticsByDay: '/api/v1/finances/stats/date',
   },
 };
 

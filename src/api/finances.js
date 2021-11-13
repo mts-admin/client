@@ -35,3 +35,21 @@ export const deleteFinance = (id) =>
     method: 'DELETE',
     url: endpoints.finances.financeById(id),
   }).then(({ data }) => data);
+
+export const getFinancesFullStatistics = (params, cancelToken) =>
+  apiRequest({
+    method: 'GET',
+    url: endpoints.finances.financesFullStatistics,
+    // start, end
+    params,
+    cancelToken,
+  }).then(({ data }) => data);
+
+export const getFinancesStatisticsByDay = (params, cancelToken) =>
+  apiRequest({
+    method: 'GET',
+    url: endpoints.finances.financesStatisticsByDay,
+    // start, end
+    params,
+    cancelToken,
+  }).then(({ data }) => data);

@@ -4,6 +4,8 @@ export const selectFinanceCurrentItem = (state) => state.finances.currentItem;
 
 export const selectFinancesTotalCount = (state) => state.finances.totalCount;
 
+export const selectFinancesStatistics = (state) => state.finances.statistics;
+
 export const selectFinancesInitLoading = (state) => state.finances.initLoading;
 export const selectFinancesLoading = (state) => state.finances.loading;
 

@@ -4,6 +4,7 @@ export const types = {
   GET_FINANCES: 'finances/GET_FINANCES',
   MANAGE_FINANCES: 'finances/MANAGE_FINANCES',
   EDIT_FINANCES: 'finances/EDIT_FINANCES',
+  GET_FINANCES_STATISTICS: 'finances/GET_FINANCES_STATISTICS',
   CLEAR: 'finances/CLEAR',
   ERROR: 'finances/error',
 };
@@ -23,6 +24,13 @@ export const manageFinancesRequest = createAction(
 );
 export const manageFinancesSuccess = createAction(
   `${types.MANAGE_FINANCES}_SUCCESS`,
+);
+
+export const getFinancesStatisticsRequest = createAction(
+  `${types.GET_FINANCES_STATISTICS}_REQUEST`,
+);
+export const getFinancesStatisticsSuccess = createAction(
+  `${types.GET_FINANCES_STATISTICS}_SUCCESS`,
 );
 
 export const actionError = createAction(types.ERROR);

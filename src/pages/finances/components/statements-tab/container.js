@@ -2,15 +2,15 @@ import { useCallback, useEffect, useMemo, useReducer } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
-import { handleFinancesGet } from '../../store/finances/thunk';
+import { handleFinancesGet } from '../../../../store/finances/thunk';
 import {
   makeSelectFinances,
   selectFinancesInitLoading,
   selectFinancesTotalCount,
-} from '../../store/finances/selectors';
-import useCancelToken from '../../hooks/use-cancel-token';
-import { clearFinances } from '../../store/finances/actions';
-import { openModal } from '../../modals/modal-reducer';
+} from '../../../../store/finances/selectors';
+import useCancelToken from '../../../../hooks/use-cancel-token';
+import { clearFinances } from '../../../../store/finances/actions';
+import { openModal } from '../../../../modals/modal-reducer';
 import {
   initialState,
   stateReducer,
@@ -23,9 +23,9 @@ import {
   getDataSource,
   getDefaultFormState,
 } from './helpers';
-import { MODAL_NAME } from '../../modals/constants';
+import { MODAL_NAME } from '../../../../modals/constants';
 
-const useFinancesContainer = () => {
+const useStatementsTabContainer = () => {
   const dispatch = useDispatch();
 
   const form = useForm({
@@ -43,7 +43,7 @@ const useFinancesContainer = () => {
       sort: getSortValue(order, orderBy),
       search,
       start,
-      end,
+      ...(end && { end }),
     }),
     [page, order, orderBy, search, start, end],
   );
@@ -117,4 +117,4 @@ const useFinancesContainer = () => {
   };
 };
 
-export default useFinancesContainer;
+export default useStatementsTabContainer;

@@ -2,12 +2,12 @@ import React from 'react';
 import { DateTime } from 'luxon';
 import * as R from 'ramda';
 
-import DotsMenu from '../../components/menus/dots-menu/dots-menu';
-import { FINANCE_TYPE } from '../../constants/finances';
-import { COLORS } from '../../styles/theme';
-import { formatISO } from '../../utils/date';
-import { hexToRgba } from '../../utils/general';
-import { MODAL_NAME } from '../../modals/constants';
+import DotsMenu from '../../../../components/menus/dots-menu/dots-menu';
+import { FINANCE_TYPE } from '../../../../constants/finances';
+import { COLORS } from '../../../../styles/theme';
+import { formatISO } from '../../../../utils/date';
+import { hexToRgba } from '../../../../utils/general';
+import { MODAL_NAME } from '../../../../modals/constants';
 
 const getMenuOptions = (openModal, financeId, stateParams) => [
   {
