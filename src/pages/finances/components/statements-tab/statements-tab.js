@@ -21,6 +21,7 @@ const StatementsTab = () => {
     columns,
     dataSource,
     totalCount,
+    handleRowClick,
     handleTableChange,
     handleFiltersChange,
     onCreateButtonClick,
@@ -42,7 +43,7 @@ const StatementsTab = () => {
           dataSource={dataSource}
           totalCount={totalCount}
           onChange={handleTableChange}
-          // onRowClick={(data) => console.log(data)}
+          onRowClick={handleRowClick}
           page={page}
           order={order}
           orderBy={orderBy}

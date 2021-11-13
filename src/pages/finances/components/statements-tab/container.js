@@ -102,6 +102,14 @@ const useStatementsTabContainer = () => {
       }),
     );
 
+  const handleRowClick = (data) =>
+    dispatch(
+      openModal({
+        name: MODAL_NAME.VIEW_FINANCE,
+        payload: { financeId: data._id },
+      }),
+    );
+
   return {
     form,
     page,
@@ -111,6 +119,7 @@ const useStatementsTabContainer = () => {
     columns,
     dataSource,
     totalCount,
+    handleRowClick,
     handleTableChange,
     handleFiltersChange,
     onCreateButtonClick,

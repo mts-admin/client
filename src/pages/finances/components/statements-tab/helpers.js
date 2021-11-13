@@ -12,7 +12,11 @@ import { MODAL_NAME } from '../../../../modals/constants';
 const getMenuOptions = (openModal, financeId, stateParams) => [
   {
     label: 'View more',
-    onClick: () => {},
+    onClick: () =>
+      openModal({
+        name: MODAL_NAME.VIEW_FINANCE,
+        payload: { financeId },
+      }),
   },
   {
     label: 'Edit',
