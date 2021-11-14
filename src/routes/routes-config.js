@@ -5,6 +5,7 @@ import RegisterPage from '../pages/auth/register';
 import SchedulesPage from '../pages/schedules';
 import VisitsPage from '../pages/visits';
 import FinancesPage from '../pages/finances';
+import NotesPage from '../pages/notes';
 import { ROUTE } from './constants';
 
 const routesConfig = [
@@ -42,6 +43,11 @@ const routesConfig = [
     auth: true,
     path: ROUTE.FINANCES,
     component: FinancesPage,
+  },
+  {
+    auth: true,
+    path: ROUTE.NOTES,
+    component: NotesPage,
   },
 ];
 

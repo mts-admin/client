@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-quill/dist/quill.snow.css';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -29,6 +30,24 @@ const GlobalStyle = createGlobalStyle`
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  sup {
+    vertical-align: super;
+    font-size: smaller;
+  }
+
+  sub {
+    vertical-align: sub;
+    font-size: smaller;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  em {
+    font-style: italic;
   }
 
   button.Mui-disabled {
