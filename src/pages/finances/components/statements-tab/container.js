@@ -76,7 +76,8 @@ const useStatementsTabContainer = () => {
   );
 
   const columns = useMemo(
-    () => getColumns(openModalAction, params),
+    () => getColumns(openModalAction, params, generateCancelToken),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [openModalAction, params],
   );
   const dataSource = useMemo(() => getDataSource(finances), [finances]);

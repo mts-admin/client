@@ -4,7 +4,7 @@ import { endpoints } from './endpoints';
 export const getFinances = (params, cancelToken) =>
   apiRequest({
     method: 'GET',
-    url: endpoints.finances.financesList,
+    url: endpoints.finances.finances,
     // page, sort, search, start, end
     params,
     cancelToken,
@@ -19,7 +19,7 @@ export const getFinance = (id) =>
 export const createFinance = (body) =>
   apiRequest({
     method: 'POST',
-    url: endpoints.finances.financesList,
+    url: endpoints.finances.finances,
     data: body,
   }).then(({ data }) => data);
 

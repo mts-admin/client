@@ -90,14 +90,14 @@ export const handleFinanceGet = (id) => async (dispatch) => {
 };
 
 export const handleFinanceDelete =
-  ({ id, params, callback }) =>
+  ({ id, params, callback, cancelToken }) =>
   async (dispatch) => {
     try {
       dispatch(manageFinancesRequest());
 
       await deleteFinance(id);
 
-      dispatch(handleFinancesGet({ params }));
+      dispatch(handleFinancesGet({ params, cancelToken }));
 
       callback && callback();
     } catch (error) {

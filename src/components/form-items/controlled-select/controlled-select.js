@@ -21,9 +21,11 @@ const ControlledSelect = ({
   name,
   label,
   rules,
+  size,
   control,
   fullWidth,
   defaultValue,
+  ...rest
 }) => (
   <Controller
     name={name}
@@ -31,11 +33,14 @@ const ControlledSelect = ({
     rules={rules}
     defaultValue={defaultValue}
     render={({ field, fieldState }) => (
-      <FormControl fullWidth={fullWidth}>
-        <InputLabel id={`${name}-controlled-select-label`}>{label}</InputLabel>
+      <FormControl fullWidth={fullWidth} {...rest}>
+        <InputLabel id={`${name}-controlled-select-label`} size={size}>
+          {label}
+        </InputLabel>
         <Select
           {...field}
           label={label}
+          size={size}
           labelId={`${name}-controlled-select-label`}
         >
           {data.map((elem) => (
@@ -73,6 +78,7 @@ ControlledSelect.propTypes = {
   rules: object,
   defaultValue: string,
   fullWidth: bool,
+  size: string,
 };
 
 export default React.memo(ControlledSelect);
