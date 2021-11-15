@@ -102,20 +102,27 @@ export const handleNoteGet = (id) => async (dispatch) => {
   }
 };
 
-export const handleNoteDelete = (id) => async (dispatch) => {
-  try {
-    dispatch(manageNotesRequest());
+export const handleNoteDelete =
+  ({ id, params, callback }) =>
+  async (dispatch) => {
+    try {
+      dispatch(manageNotesRequest());
 
-    await deleteNote(id);
+      await deleteNote(id);
 
-    dispatch(manageNotesSuccess());
+      callback && callback();
 
-    history.push(ROUTE.NOTES);
+      if (params) {
+        dispatch(handleNotesGet({ params }));
+      } else {
+        dispatch(manageNotesSuccess());
+        history.push(ROUTE.NOTES);
+      }
 
-    toast.success('Note has been deleted successfully!');
-  } catch (error) {
-    if (!axios.isCancel(error)) {
-      dispatch(actionError(error));
+      toast.success('Note has been deleted successfully!');
+    } catch (error) {
+      if (!axios.isCancel(error)) {
+        dispatch(actionError(error));
+      }
     }
-  }
-};
+  };

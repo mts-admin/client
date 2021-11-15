@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 
-import history from '../../../store/history';
 import { handleNoteCreate } from '../../../store/notes/thunk';
 import { selectNotesLoading } from '../../../store/notes/selectors';
 import { ROUTE } from '../../../routes/constants';
 
 const useCreateNotePageContainer = () => {
   const dispatch = useDispatch();
+
+  const { push } = useHistory();
 
   const { control, handleSubmit } = useForm();
 
@@ -17,7 +19,7 @@ const useCreateNotePageContainer = () => {
     dispatch(handleNoteCreate(values));
   });
 
-  const handleCancelButtonClick = () => history.push(ROUTE.NOTES);
+  const handleCancelButtonClick = () => push(ROUTE.NOTES);
 
   return {
     control,

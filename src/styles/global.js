@@ -64,6 +64,22 @@ const GlobalStyle = createGlobalStyle`
     min-height: 150px;
   }
 
+  .ql-disabled.ql-snow {
+    border: none;
+
+    .ql-editor {
+      padding: 0;
+    }
+  }
+
+  .ql-editor ol {
+    padding-left: 0
+  }
+
+  .ql-editor ul {
+    padding-left: 6px
+  }
+
   .ql-toolbar.ql-snow,
   .ql-container.ql-snow {
     border-color: rgba(0, 0, 0, 0.23);

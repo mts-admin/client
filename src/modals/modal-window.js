@@ -20,6 +20,7 @@ import CreateFinanceModal from './finances/create-finance';
 import EditFinanceModal from './finances/edit-finance';
 import DeleteFinanceModal from './finances/delete-finance';
 import ViewFinanceModal from './finances/view-finance';
+import DeleteNoteModal from './notes/delete-note';
 
 const modals = {
   [MODAL_NAME.SCHEDULE_DETAILS]: ScheduleDetailsModal,
@@ -38,6 +39,7 @@ const modals = {
   [MODAL_NAME.CREATE_FINANCE]: CreateFinanceModal,
   [MODAL_NAME.EDIT_FINANCE]: EditFinanceModal,
   [MODAL_NAME.DELETE_FINANCE]: DeleteFinanceModal,
+  [MODAL_NAME.DELETE_NOTE]: DeleteNoteModal,
   empty: () => null,
 };
 

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import * as R from 'ramda';
 
 import { handleNotesGet } from '../../../store/notes/thunk';
@@ -13,7 +14,6 @@ import { clearNotes } from '../../../store/notes/actions';
 import useCancelToken from '../../../hooks/use-cancel-token';
 import { NOTES_SORT_VALUE, NOTES_TYPE_VALUE } from '../../../constants/notes';
 import { getFavoriteFilter } from './helpers';
-import history from '../../../store/history';
 import {
   getComponentState,
   getPaginationPagesCount,
@@ -31,6 +31,8 @@ const DEFAULT_STATE = {
 
 const useNotesPageContainer = () => {
   const dispatch = useDispatch();
+
+  const { push } = useHistory();
 
   const [generateCancelToken, cancelRequest] = useCancelToken();
 
@@ -80,7 +82,7 @@ const useNotesPageContainer = () => {
     (event, value) => setState((prevState) => ({ ...prevState, page: value })),
     [],
   );
-  const onCreateButtonClick = () => history.push(ROUTE.CREATE_NOTE);
+  const onCreateButtonClick = () => push(ROUTE.CREATE_NOTE);
 
   const componentState = useMemo(
     () => getComponentState(loading, error, notes.length === 0),
