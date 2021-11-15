@@ -50,7 +50,7 @@ const ControlledSelect = ({
           ))}
         </Select>
         {R.hasPath(['error', 'message'], fieldState) && (
-          <FormHelperText error>
+          <FormHelperText error style={{ marginLeft: 14 }}>
             {R.path(['error', 'message'], fieldState)}
           </FormHelperText>
         )}

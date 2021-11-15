@@ -5,7 +5,7 @@ const Toast = () => (
   <ToastContainer
     position="top-center"
     autoClose={3000}
-    limit={3}
+    limit={1}
     pauseOnFocusLoss
     hideProgressBar
     pauseOnHover

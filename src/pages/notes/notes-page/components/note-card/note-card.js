@@ -70,7 +70,7 @@ const NoteCard = ({ id, params }) => {
     setFavorite(newValue);
   };
 
-  const content = removeHTMLTagsFromString(note.content);
+  const content = removeHTMLTagsFromString(note.content, ' ');
   const hasTags = note?.tags?.length > 0;
 
   return (
@@ -86,7 +86,10 @@ const NoteCard = ({ id, params }) => {
         {hasTags && (
           <TagsWrapper>
             {note.tags.map((tag, i) => (
-              <TagItem key={`${tag}-${i + 1}`}>{`#${tag}`}</TagItem>
+              <TagItem key={`${tag}-${i + 1}`}>{`#${tag.replace(
+                ' ',
+                '-',
+              )}`}</TagItem>
             ))}
           </TagsWrapper>
         )}

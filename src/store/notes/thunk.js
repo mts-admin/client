@@ -45,6 +45,8 @@ export const handleNoteCreate = (body) => async (dispatch) => {
     dispatch(manageNotesSuccess());
 
     history.push(DYNAMIC_ROUTE.NOTE(data._id));
+
+    toast.success('Note has been created successfully!');
   } catch (error) {
     if (!axios.isCancel(error)) {
       dispatch(actionError(error));
@@ -61,6 +63,8 @@ export const handleNoteUpdate = (id, body) => async (dispatch) => {
     dispatch(manageNotesSuccess(data));
 
     history.push(DYNAMIC_ROUTE.NOTE(data._id));
+
+    toast.success('Note has been updated successfully!');
   } catch (error) {
     if (!axios.isCancel(error)) {
       dispatch(actionError(error));
