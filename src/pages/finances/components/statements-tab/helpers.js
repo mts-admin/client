@@ -9,7 +9,12 @@ import { formatISO } from '../../../../utils/date';
 import { hexToRgba } from '../../../../utils/general';
 import { MODAL_NAME } from '../../../../modals/constants';
 
-const getMenuOptions = (openModal, financeId, stateParams) => [
+const getMenuOptions = (
+  openModal,
+  financeId,
+  stateParams,
+  generateCancelToken,
+) => [
   {
     label: 'View more',
     onClick: () =>
@@ -31,12 +36,16 @@ const getMenuOptions = (openModal, financeId, stateParams) => [
     onClick: () =>
       openModal({
         name: MODAL_NAME.DELETE_FINANCE,
-        payload: { financeId, params: stateParams },
+        payload: {
+          financeId,
+          params: stateParams,
+          cancelToken: generateCancelToken(),
+        },
       }),
   },
 ];
 
-export const getColumns = (openModal, stateParams) => [
+export const getColumns = (openModal, stateParams, generateCancelToken) => [
   {
     name: 'title',
     label: 'Title',
@@ -70,7 +79,14 @@ export const getColumns = (openModal, stateParams) => [
     align: 'right',
     width: '10%',
     render: (row) => (
-      <DotsMenu options={getMenuOptions(openModal, row._id, stateParams)} />
+      <DotsMenu
+        options={getMenuOptions(
+          openModal,
+          row._id,
+          stateParams,
+          generateCancelToken,
+        )}
+      />
     ),
   },
 ];

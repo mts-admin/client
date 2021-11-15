@@ -5,6 +5,10 @@ import RegisterPage from '../pages/auth/register';
 import SchedulesPage from '../pages/schedules';
 import VisitsPage from '../pages/visits';
 import FinancesPage from '../pages/finances';
+import NotesPage from '../pages/notes/notes-page';
+import CreateNotePage from '../pages/notes/create-note-page';
+import EditNotePage from '../pages/notes/edit-note-page';
+import ViewNotePage from '../pages/notes/view-note-page';
 import { ROUTE } from './constants';
 
 const routesConfig = [
@@ -42,6 +46,26 @@ const routesConfig = [
     auth: true,
     path: ROUTE.FINANCES,
     component: FinancesPage,
+  },
+  {
+    auth: true,
+    path: ROUTE.NOTES,
+    component: NotesPage,
+  },
+  {
+    auth: true,
+    path: ROUTE.CREATE_NOTE,
+    component: CreateNotePage,
+  },
+  {
+    auth: true,
+    path: ROUTE.EDIT_NOTE,
+    component: EditNotePage,
+  },
+  {
+    auth: true,
+    path: ROUTE.NOTE,
+    component: ViewNotePage,
   },
 ];
 

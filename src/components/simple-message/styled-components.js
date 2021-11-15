@@ -6,6 +6,7 @@ export const Message = styled.section`
   align-items: center;
   justify-content: center;
   flex-grow: 1;
+  height: 100%;
 
   ${({ error }) =>
     error &&

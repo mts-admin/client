@@ -17,15 +17,16 @@ const DeleteFinanceModal = () => {
   const dispatch = useDispatch();
 
   const loading = useSelector(selectFinancesLoading);
-  const { financeId, params } = useSelector(selectModalPayload);
+  const { financeId, params, cancelToken } = useSelector(selectModalPayload);
 
   const closeModal = () => dispatch(closeCurrentModal());
   const onSubmit = () =>
     dispatch(
       handleFinanceDelete({
-        params,
         id: financeId,
+        params,
         callback: closeModal,
+        cancelToken,
       }),
     );
 

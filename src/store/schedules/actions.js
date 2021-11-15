@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 
 export const types = {
-  GET_SCHEDULE: 'schedule/GET_SCHEDULE',
+  GET_SCHEDULE: 'schedules/GET_SCHEDULE',
   GET_SCHEDULES: 'schedules/GET_SCHEDULES',
   CREATE_SCHEDULE: 'schedules/CREATE_SCHEDULE',
   DELETE_SCHEDULE: 'schedules/DELETE_SCHEDULE',

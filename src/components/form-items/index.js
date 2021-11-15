@@ -7,6 +7,7 @@ import ControlledDatePicker from './controlled-date-picker/controlled-date-picke
 import ControlledDateRangePicker from './controlled-date-range-picker/controlled-date-range-picker';
 import ControlledSelect from './controlled-select/controlled-select';
 import ControlledInputNumber from './controlled-input-number/controlled-input-number';
+import ControlledTagsInput from './controlled-tags-input/controlled-tags-input';
 
 export {
   ControlledInput,
@@ -18,4 +19,5 @@ export {
   ControlledDateRangePicker,
   ControlledSelect,
   ControlledInputNumber,
+  ControlledTagsInput,
 };

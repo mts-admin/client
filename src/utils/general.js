@@ -61,3 +61,6 @@ export const hexToRgba = (color, opacity = 1) => {
 
   return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 };
+
+export const removeHTMLTagsFromString = (value, replace = '') =>
+  value.replace(/<[^>]+>/g, replace).trim();
