@@ -34,9 +34,11 @@ const ControlledSelect = ({
     defaultValue={defaultValue}
     render={({ field, fieldState }) => (
       <FormControl fullWidth={fullWidth} {...rest}>
-        <InputLabel id={`${name}-controlled-select-label`} size={size}>
-          {label}
-        </InputLabel>
+        {label && (
+          <InputLabel id={`${name}-controlled-select-label`} size={size}>
+            {label}
+          </InputLabel>
+        )}
         <Select
           {...field}
           label={label}
@@ -74,7 +76,7 @@ ControlledSelect.propTypes = {
   ).isRequired,
   control: object.isRequired,
   name: string.isRequired,
-  label: string.isRequired,
+  label: string,
   rules: object,
   defaultValue: string,
   fullWidth: bool,

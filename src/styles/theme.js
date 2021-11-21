@@ -6,7 +6,7 @@ export const COLORS = {
   LIGHT_GREY: 'rgba(251,242,223,0.75)',
   LIGHT_GREY_SECONDARY: 'rgba(255,245,255,0.4)',
   SILVER: 'silver',
-  GREY: 'grey',
+  GREY: '#808080',
   WHITE: 'white',
   SECONDARY_BLACK: '#333333',
   ERROR: '#d32f2f',

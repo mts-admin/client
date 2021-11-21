@@ -14,7 +14,10 @@ import {
 import { handleVisitsGet, handleVisitEdit } from '../../store/visits/thunk';
 import { clearVisits } from '../../store/visits/actions';
 import { handleScheduleGet } from '../../store/schedules/thunk';
-import { clearCurrentSchedule } from '../../store/schedules/actions';
+import {
+  clearCurrentSchedule,
+  clearSchedules,
+} from '../../store/schedules/actions';
 import useVisitsPermissions from '../../hooks/use-visits-permissions';
 import { openModal } from '../../modals/modal-reducer';
 import { EventContent } from './components/event-content';
@@ -61,6 +64,8 @@ const useVisitsPageContainer = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => () => dispatch(clearSchedules()), [dispatch]);
 
   useEffectAfterMount(() => {
     cancelVisitsRequest();
