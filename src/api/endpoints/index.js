@@ -12,12 +12,16 @@ export const endpoints = {
     scheduleById: (id) => `/api/v1/schedules/${id}`,
     leaveSchedule: (id) => `/api/v1/schedules/${id}/leave`,
     scheduleParticipants: (id) => `/api/v1/schedules/${id}/participants`,
-    scheduleVisits: (id) => `/api/v1/schedules/${id}/visits`,
-    scheduleOneOffVisit: (id) => `/api/v1/schedules/${id}/visits/one-off`,
-    scheduleRecurringVisits: (id) => `/api/v1/schedules/${id}/visits/recurring`,
-    scheduleVisitById: (scheduleId, visitId) =>
+  },
+  visits: {
+    visits: (scheduleId) => `/api/v1/schedules/${scheduleId}/visits`,
+    oneOffVisit: (scheduleId) =>
+      `/api/v1/schedules/${scheduleId}/visits/one-off`,
+    recurringVisits: (scheduleId) =>
+      `/api/v1/schedules/${scheduleId}/visits/recurring`,
+    visitById: (scheduleId, visitId) =>
       `/api/v1/schedules/${scheduleId}/visits/${visitId}`,
-    scheduleVisitsGroup: (scheduleId, visitId) =>
+    visitsGroup: (scheduleId, visitId) =>
       `/api/v1/schedules/${scheduleId}/visits/${visitId}/group`,
   },
   finances: {
@@ -34,6 +38,11 @@ export const endpoints = {
     sprints: '/api/v1/sprints',
     sprintById: (id) => `/api/v1/sprints/${id}`,
     completeSprint: (id) => `/api/v1/sprints/${id}/complete`,
+  },
+  tasks: {
+    tasks: (sprintId) => `api/v1/sprints/${sprintId}/tasks`,
+    taskById: (sprintId, taskId) =>
+      `api/v1/sprints/${sprintId}/tasks/${taskId}`,
   },
 };
 

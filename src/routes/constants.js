@@ -12,6 +12,7 @@ export const ROUTE = {
   NOTE: '/dashboard/notes/:id',
   EDIT_NOTE: '/dashboard/notes/:id/edit',
   SPRINTS: '/dashboard/sprints',
+  SPRINT: '/dashboard/sprints/:id',
   BONUSES: '/dashboard/bonuses',
   ACTIVITIES: '/dashboard/activities',
   SETTINGS: '/dashboard/settings',

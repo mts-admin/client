@@ -18,22 +18,14 @@ import {
 import SimpleTag from '../../../../components/simple-tag';
 import { DYNAMIC_ROUTE } from '../../../../routes/constants';
 import { MODAL_NAME } from '../../../../modals/constants';
-import { SPRINT_PRIORITY, SPRINT_STATUS } from '../../../../constants/sprints';
+import {
+  SPRINT_PRIORITY,
+  SPRINT_STATUS,
+  SPRINT_STATUS_COLORS,
+  SPRINT_PRIORITY_COLORS,
+} from '../../../../constants/sprints';
 import { formatISO } from '../../../../utils/date';
 import { COLORS } from '../../../../styles/theme';
-
-const PRIORITY_COLORS = {
-  LOW: COLORS.BLUE,
-  MEDIUM: COLORS.SUCCESS,
-  HIGH: COLORS.ERROR,
-};
-
-const STATUS_COLORS = {
-  IN_PROGRESS: COLORS.BLUE,
-  DONE: COLORS.SUCCESS,
-  EXPIRED: COLORS.ERROR,
-  ARCHIVED: COLORS.GREY,
-};
 
 const getMenuOptions = (id, params, handleModalOpen) => [
   {
@@ -78,10 +70,10 @@ const SprintCard = ({ id, params }) => {
   const status = SPRINT_STATUS[sprint.status].label;
   const priority = SPRINT_PRIORITY[sprint.priority].label;
 
-  const statusColor = STATUS_COLORS[sprint.status];
-  const priorityColor = PRIORITY_COLORS[sprint.priority];
+  const statusColor = SPRINT_STATUS_COLORS[sprint.status];
+  const priorityColor = SPRINT_PRIORITY_COLORS[sprint.priority];
 
-  const progressValue = completedTasksCount / totalTasksCount || 0;
+  const progressValue = (completedTasksCount / totalTasksCount) * 100 || 0;
   const progressColor =
     completedTasksCount === totalTasksCount ? 'success' : 'primary';
 

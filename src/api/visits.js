@@ -4,7 +4,7 @@ import { endpoints } from './endpoints';
 export const getVisits = ({ id, params, cancelToken }) =>
   apiRequest({
     method: 'GET',
-    url: endpoints.schedules.scheduleVisits(id),
+    url: endpoints.visits.visits(id),
     // start, end
     params,
     cancelToken,
@@ -13,45 +13,45 @@ export const getVisits = ({ id, params, cancelToken }) =>
 export const createOneOffVisit = (id, body) =>
   apiRequest({
     method: 'POST',
-    url: endpoints.schedules.scheduleOneOffVisit(id),
+    url: endpoints.visits.oneOffVisit(id),
     data: body,
   }).then(({ data }) => data);
 
 export const createRecurringVisits = (id, body) =>
   apiRequest({
     method: 'POST',
-    url: endpoints.schedules.scheduleRecurringVisits(id),
+    url: endpoints.visits.recurringVisits(id),
     data: body,
   }).then(({ data }) => data);
 
 export const getVisit = (scheduleId, visitId) =>
   apiRequest({
     method: 'GET',
-    url: endpoints.schedules.scheduleVisitById(scheduleId, visitId),
+    url: endpoints.visits.visitById(scheduleId, visitId),
   }).then(({ data }) => data);
 
 export const editVisit = (scheduleId, visitId, body) =>
   apiRequest({
     method: 'PATCH',
-    url: endpoints.schedules.scheduleVisitById(scheduleId, visitId),
+    url: endpoints.visits.visitById(scheduleId, visitId),
     data: body,
   }).then(({ data }) => data);
 
 export const editAllVisits = (scheduleId, visitId, body) =>
   apiRequest({
     method: 'PATCH',
-    url: endpoints.schedules.scheduleVisitsGroup(scheduleId, visitId),
+    url: endpoints.visits.visitsGroup(scheduleId, visitId),
     data: body,
   }).then(({ data }) => data);
 
 export const deleteVisit = (scheduleId, visitId) =>
   apiRequest({
     method: 'DELETE',
-    url: endpoints.schedules.scheduleVisitById(scheduleId, visitId),
+    url: endpoints.visits.visitById(scheduleId, visitId),
   }).then(({ data }) => data);
 
 export const deleteAllVisits = (scheduleId, visitId) =>
   apiRequest({
     method: 'DELETE',
-    url: endpoints.schedules.scheduleVisitsGroup(scheduleId, visitId),
+    url: endpoints.visits.visitsGroup(scheduleId, visitId),
   }).then(({ data }) => data);

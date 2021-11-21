@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Alert from '@mui/lab/Alert';
 
 import ContentSection from '../../../components/content-section/content-section';
 
@@ -47,4 +48,9 @@ export const Buttons = styled.div`
   button:not(:last-child) {
     margin-right: 8px;
   }
+`;
+
+export const ErrorMessage = styled(Alert)`
+  width: 90%;
+  margin: 0 auto;
 `;
