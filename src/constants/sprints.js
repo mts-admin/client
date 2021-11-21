@@ -1,3 +1,5 @@
+import { COLORS } from '../styles/theme';
+
 export const SPRINT_STATUS = {
   IN_PROGRESS: {
     value: 'IN_PROGRESS',
@@ -65,4 +67,22 @@ export const SPRINT_TAB = {
   DONE: 'Done',
   EXPIRED: 'Expired',
   ARCHIVED: 'Archived',
+};
+
+export const TASK_STATUS = {
+  ACTIVE: 'ACTIVE',
+  DONE: 'DONE',
+};
+
+export const SPRINT_PRIORITY_COLORS = {
+  LOW: COLORS.BLUE,
+  MEDIUM: COLORS.SUCCESS,
+  HIGH: COLORS.ERROR,
+};
+
+export const SPRINT_STATUS_COLORS = {
+  IN_PROGRESS: COLORS.BLUE,
+  DONE: COLORS.SUCCESS,
+  EXPIRED: COLORS.ERROR,
+  ARCHIVED: COLORS.GREY,
 };

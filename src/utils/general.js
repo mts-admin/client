@@ -4,6 +4,7 @@ import config from '../config';
 import { COMPONENT_STATE } from '../constants/general';
 
 export const getErrorMessage = (error) =>
+  error &&
   R.pathOr('Something went wrong', ['response', 'data', 'message'], error);
 
 export const getImageUrl = (url, type = 'user') => {

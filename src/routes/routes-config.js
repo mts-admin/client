@@ -10,6 +10,7 @@ import CreateNotePage from '../pages/notes/create-note-page';
 import EditNotePage from '../pages/notes/edit-note-page';
 import ViewNotePage from '../pages/notes/view-note-page';
 import SprintsPage from '../pages/sprints';
+import TasksPage from '../pages/tasks';
 import { ROUTE } from './constants';
 
 const routesConfig = [
@@ -72,6 +73,11 @@ const routesConfig = [
     auth: true,
     path: ROUTE.SPRINTS,
     component: SprintsPage,
+  },
+  {
+    auth: true,
+    path: ROUTE.SPRINT,
+    component: TasksPage,
   },
 ];
 

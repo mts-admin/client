@@ -17,7 +17,9 @@ import {
   manageSprintsSuccess,
   actionError,
 } from './actions';
+import { handleTasksGet } from '../tasks/thunk';
 import { DYNAMIC_ROUTE, ROUTE } from '../../routes/constants';
+import { SPRINT_STATUS } from '../../constants/sprints';
 
 export const handleSprintsGet =
   ({ params, cancelToken }) =>
@@ -83,6 +85,8 @@ export const handleSprintEdit =
         dispatch(handleSprintsGet({ params }));
       } else {
         dispatch(manageSprintsSuccess(data));
+        data.status === SPRINT_STATUS.DONE.value &&
+          dispatch(handleTasksGet(data._id));
       }
 
       toast.success('Sprint has been updated successfully!');
@@ -100,6 +104,8 @@ export const handleSprintComplete = (id) => async (dispatch) => {
     const { data } = await completeSprint(id);
 
     dispatch(manageSprintsSuccess(data));
+
+    dispatch(handleTasksGet(data._id));
 
     toast.success('Sprint has been completed successfully!');
   } catch (error) {

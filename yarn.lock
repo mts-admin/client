@@ -10275,6 +10275,14 @@
   optionalDependencies:
     "fsevents" "^2.1.3"
 
+"react-show-more-text@^1.5.0":
+  "integrity" "sha512-8I0XSS/N9hIN0FTNmPn9NRBkTuDO1AkZOzmsXFuRjzwzyVY+wocnbFmivPi4431bAj966EnMIWaKGJUYRgBUQg=="
+  "resolved" "https://registry.npmjs.org/react-show-more-text/-/react-show-more-text-1.5.0.tgz"
+  "version" "1.5.0"
+  dependencies:
+    "@babel/polyfill" "^7.12.1"
+    "prop-types" "^15.7.2"
+
 "react-smooth@^2.0.0":
   "integrity" "sha512-wK4dBBR6P21otowgMT9toZk+GngMplGS1O5gk+2WSiHEXIrQgDvhR5IIlT74Vtu//qpTcipkgo21dD7a7AUNxw=="
   "resolved" "https://registry.npmjs.org/react-smooth/-/react-smooth-2.0.0.tgz"
@@ -10318,7 +10326,7 @@
     "prop-types" "^15.6.2"
     "react-lifecycles-compat" "^3.0.4"
 
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0", "react@^15.4.1 || ^16.0.0 || ^17.0.0", "react@^16 || ^17", "react@^16.0.0 || ^17.0.0", "react@^16.4.0 || ^17.0.0", "react@^16.7.0 || ^17", "react@^16.8.0 || ^17", "react@^16.8.3 || ^17", "react@^17.0.2", "react@>= 16", "react@>= 16.8.0", "react@>=15", "react@>=15.0.0", "react@>=16", "react@>=16.6.0", "react@>=16.8", "react@>=16.8.0", "react@17.0.2":
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0", "react@^15.4.1 || ^16.0.0 || ^17.0.0", "react@^16 || ^17", "react@^16.0.0 || ^17.0.0", "react@^16.4.0 || ^17.0.0", "react@^16.7.0 || ^17", "react@^16.8.0 || ^17", "react@^16.8.3 || ^17", "react@^17.0.2", "react@>= 16", "react@>= 16.8.0", "react@>= 16.x.x", "react@>=15", "react@>=15.0.0", "react@>=16", "react@>=16.6.0", "react@>=16.8", "react@>=16.8.0", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"

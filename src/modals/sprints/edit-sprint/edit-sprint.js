@@ -11,6 +11,7 @@ import {
   Form,
   FormSection,
   Buttons,
+  ErrorMessage,
 } from './styled-components';
 import {
   handleSprintEdit,
@@ -18,6 +19,7 @@ import {
 } from '../../../store/sprints/thunk';
 import {
   selectCurrentSprint,
+  selectSprintsError,
   selectSprintsLoading,
 } from '../../../store/sprints/selectors';
 import { closeCurrentModal, selectModalPayload } from '../../modal-reducer';
@@ -31,6 +33,7 @@ import { SPRINT_PRIORITY, SPRINT_STATUS } from '../../../constants/sprints';
 import useEffectAfterMount from '../../../hooks/use-effect-after-mount';
 import FormRules from '../../../utils/form-input-rules';
 import { areDatesInTheSameDay } from '../../../utils/date';
+import { getErrorMessage } from '../../../utils/general';
 
 const EditSprintModal = () => {
   const dispatch = useDispatch();
@@ -38,6 +41,7 @@ const EditSprintModal = () => {
   const { id, params } = useSelector(selectModalPayload);
   const sprint = useSelector(selectCurrentSprint);
   const loading = useSelector(selectSprintsLoading);
+  const error = useSelector(selectSprintsError);
 
   const { control, handleSubmit, reset } = useForm();
 
@@ -75,7 +79,9 @@ const EditSprintModal = () => {
     },
   );
 
-  return (
+  return error ? (
+    <ErrorMessage severity="error">{getErrorMessage(error)}</ErrorMessage>
+  ) : (
     <Content>
       <Title>Edit sprint</Title>
 
