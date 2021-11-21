@@ -9,6 +9,7 @@ import {
   selectNotesError,
   selectNotesLoading,
 } from '../../../store/notes/selectors';
+import { clearNotes } from '../../../store/notes/actions';
 import { openModal } from '../../../modals/modal-reducer';
 import { getComponentState, getErrorMessage } from '../../../utils/general';
 import { DYNAMIC_ROUTE, ROUTE } from '../../../routes/constants';
@@ -29,6 +30,8 @@ const useViewNotePageContainer = () => {
     dispatch(handleNoteGet(id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => () => dispatch(clearNotes()), [dispatch]);
 
   const componentState = useMemo(
     () => getComponentState(loading, error),

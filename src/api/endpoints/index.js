@@ -30,6 +30,11 @@ export const endpoints = {
     notes: '/api/v1/notes',
     noteById: (id) => `/api/v1/notes/${id}`,
   },
+  sprints: {
+    sprints: '/api/v1/sprints',
+    sprintById: (id) => `/api/v1/sprints/${id}`,
+    completeSprint: (id) => `/api/v1/sprints/${id}/complete`,
+  },
 };
 
 export const noAuthEndpoints = [

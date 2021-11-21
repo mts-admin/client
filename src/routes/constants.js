@@ -11,7 +11,7 @@ export const ROUTE = {
   CREATE_NOTE: '/dashboard/notes/create',
   NOTE: '/dashboard/notes/:id',
   EDIT_NOTE: '/dashboard/notes/:id/edit',
-  TASKS: '/dashboard/tasks',
+  SPRINTS: '/dashboard/sprints',
   BONUSES: '/dashboard/bonuses',
   ACTIVITIES: '/dashboard/activities',
   SETTINGS: '/dashboard/settings',
@@ -22,4 +22,5 @@ export const DYNAMIC_ROUTE = {
   SCHEDULE: (id) => `${ROUTE.SCHEDULES}/${id}`,
   NOTE: (id) => `${ROUTE.NOTES}/${id}`,
   EDIT_NOTE: (id) => `${ROUTE.NOTES}/${id}/edit`,
+  SPRINT: (id) => `${ROUTE.SPRINTS}/${id}`,
 };

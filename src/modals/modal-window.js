@@ -21,6 +21,9 @@ import EditFinanceModal from './finances/edit-finance';
 import DeleteFinanceModal from './finances/delete-finance';
 import ViewFinanceModal from './finances/view-finance';
 import DeleteNoteModal from './notes/delete-note';
+import CreateSprintModal from './sprints/create-sprint';
+import EditSprintModal from './sprints/edit-sprint';
+import DeleteSprintModal from './sprints/delete-sprint';
 
 const modals = {
   [MODAL_NAME.SCHEDULE_DETAILS]: ScheduleDetailsModal,
@@ -40,6 +43,9 @@ const modals = {
   [MODAL_NAME.EDIT_FINANCE]: EditFinanceModal,
   [MODAL_NAME.DELETE_FINANCE]: DeleteFinanceModal,
   [MODAL_NAME.DELETE_NOTE]: DeleteNoteModal,
+  [MODAL_NAME.CREATE_SPRINT]: CreateSprintModal,
+  [MODAL_NAME.EDIT_SPRINT]: EditSprintModal,
+  [MODAL_NAME.DELETE_SPRINT]: DeleteSprintModal,
   empty: () => null,
 };
 

@@ -8,6 +8,7 @@ import schedulesReducer from './schedules/reducer';
 import visitsReducer from './visits/reducer';
 import financesReducer from './finances/reducer';
 import notesReducer from './notes/reducer';
+import sprintsReducer from './sprints/reducer';
 
 const reducer = combineReducers({
   router: connectRouter(history),
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   visits: visitsReducer,
   finances: financesReducer,
   notes: notesReducer,
+  sprints: sprintsReducer,
 });
 
 export default reducer;

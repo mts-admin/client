@@ -47,7 +47,7 @@ ControlledDatePicker.defaultProps = {
 ControlledDatePicker.propTypes = {
   control: object.isRequired,
   name: string.isRequired,
-  label: string.isRequired,
+  label: string,
   rules: object,
   defaultValue: string,
   clearable: bool,

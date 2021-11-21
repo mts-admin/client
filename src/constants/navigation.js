@@ -24,9 +24,9 @@ export const mainNavItems = [
     link: ROUTE.NOTES,
   },
   {
-    label: 'Tasks',
+    label: 'Sprints',
     icon: FormatListBulletedOutlinedIcon,
-    link: ROUTE.TASKS,
+    link: ROUTE.SPRINTS,
   },
   {
     label: 'Bonuses',
