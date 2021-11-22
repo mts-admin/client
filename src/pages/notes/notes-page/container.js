@@ -19,14 +19,16 @@ import {
   getPaginationPagesCount,
 } from '../../../utils/general';
 import { ROUTE } from '../../../routes/constants';
+import useEffectAfterMount from '../../../hooks/use-effect-after-mount';
 
+const DEFAULT_PAGE = 1;
 const MIN_ITEMS_PER_PAGE = 9;
 
 const DEFAULT_STATE = {
   search: '',
   sort: NOTES_SORT_VALUE.NEW_FIRST.value,
   type: NOTES_TYPE_VALUE.SHOW_ALL.value,
-  page: 1,
+  page: DEFAULT_PAGE,
 };
 
 const useNotesPageContainer = () => {
@@ -73,6 +75,12 @@ const useNotesPageContainer = () => {
   const totalCount = useSelector(selectNotesTotalCount);
   const loading = useSelector(selectNotesInitLoading);
   const error = useSelector(selectNotesError);
+
+  useEffectAfterMount(() => {
+    if (page > DEFAULT_PAGE && notes.length === 0) {
+      setState((prevState) => ({ ...prevState, page: DEFAULT_PAGE }));
+    }
+  }, [notes]);
 
   const handleFiltersChange = useCallback(
     (values) => setState((prevState) => ({ ...prevState, ...values })),

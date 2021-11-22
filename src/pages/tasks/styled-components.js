@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Button from '@mui/material/Button';
 import ShowMoreText from 'react-show-more-text';
 
@@ -51,6 +51,18 @@ export const Buttons = styled.div`
 
 export const ButtonBack = styled(BackButton)`
   margin-right: auto;
+`;
+
+export const ButtonComplete = styled(Button)`
+  ${({ hasanimation }) =>
+    hasanimation === 'true' &&
+    css`
+      animation: pulse 2s infinite;
+
+      &:hover {
+        animation: none;
+      }
+    `}
 `;
 
 export const ButtonEdit = styled(Button)`

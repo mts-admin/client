@@ -23,6 +23,7 @@ import {
 } from '../../utils/general';
 import useCancelToken from '../../hooks/use-cancel-token';
 import { MODAL_NAME } from '../../modals/constants';
+import useEffectAfterMount from '../../hooks/use-effect-after-mount';
 
 const DEFAULT_PAGE = 1;
 const MIN_ITEMS_PER_PAGE = 9;
@@ -71,10 +72,24 @@ const useSprintsPageContainer = () => {
   const loading = useSelector(selectSprintsInitLoading);
   const error = useSelector(selectSprintsError);
 
+  useEffectAfterMount(() => {
+    if (page > DEFAULT_PAGE && sprints.length === 0) {
+      setState((prevState) => ({ ...prevState, page: DEFAULT_PAGE }));
+    }
+  }, [sprints]);
+
   const handleStatusChange = (event, value) =>
-    setState((prevState) => ({ ...prevState, status: value }));
+    setState((prevState) => ({
+      ...prevState,
+      status: value,
+      page: DEFAULT_PAGE,
+    }));
   const handleStatusMobileChange = (event) =>
-    setState((prevState) => ({ ...prevState, status: event.target.value }));
+    setState((prevState) => ({
+      ...prevState,
+      status: event.target.value,
+      page: DEFAULT_PAGE,
+    }));
   const handleSortChange = (event) =>
     setState((prevState) => ({ ...prevState, sort: event.target.value }));
   const handlePageChange = (event, value) =>

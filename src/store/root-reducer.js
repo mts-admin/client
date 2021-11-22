@@ -10,6 +10,7 @@ import financesReducer from './finances/reducer';
 import notesReducer from './notes/reducer';
 import sprintsReducer from './sprints/reducer';
 import tasksReducer from './tasks/reducer';
+import bonusesReducer from './bonuses/reducer';
 
 const reducer = combineReducers({
   router: connectRouter(history),
@@ -21,6 +22,7 @@ const reducer = combineReducers({
   notes: notesReducer,
   sprints: sprintsReducer,
   tasks: tasksReducer,
+  bonuses: bonusesReducer,
 });
 
 export default reducer;

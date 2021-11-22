@@ -24,6 +24,7 @@ import DeleteNoteModal from './notes/delete-note';
 import CreateSprintModal from './sprints/create-sprint';
 import EditSprintModal from './sprints/edit-sprint';
 import DeleteSprintModal from './sprints/delete-sprint';
+import ViewBonusModal from './bonuses/view-bonus';
 
 const modals = {
   [MODAL_NAME.SCHEDULE_DETAILS]: ScheduleDetailsModal,
@@ -46,6 +47,7 @@ const modals = {
   [MODAL_NAME.CREATE_SPRINT]: CreateSprintModal,
   [MODAL_NAME.EDIT_SPRINT]: EditSprintModal,
   [MODAL_NAME.DELETE_SPRINT]: DeleteSprintModal,
+  [MODAL_NAME.VIEW_BONUS]: ViewBonusModal,
   empty: () => null,
 };
 

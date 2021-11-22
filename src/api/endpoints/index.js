@@ -44,6 +44,10 @@ export const endpoints = {
     taskById: (sprintId, taskId) =>
       `api/v1/sprints/${sprintId}/tasks/${taskId}`,
   },
+  bonuses: {
+    myBonuses: 'api/v1/bonuses',
+    bonusById: (id) => `api/v1/bonuses/${id}`,
+  },
 };
 
 export const noAuthEndpoints = [

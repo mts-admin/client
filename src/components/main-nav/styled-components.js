@@ -27,8 +27,8 @@ export const MenuButton = styled.div`
 
   .MuiSvgIcon-root {
     display: block;
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
   }
 `;
 
@@ -75,6 +75,11 @@ export const Tab = styled(MuiTab)`
   .MuiSvgIcon-root {
     margin-bottom: 0 !important;
     margin-right: 7px;
+  }
+
+  .MuiBadge-dot {
+    top: -3px;
+    right: -5px;
   }
 
   &.Mui-selected {

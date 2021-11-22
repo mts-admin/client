@@ -10,6 +10,7 @@ import {
 } from '../../store/sprints/thunk';
 import {
   selectTasks,
+  selectTasksData,
   selectTasksInitLoading,
 } from '../../store/tasks/selectors';
 import {
@@ -25,6 +26,7 @@ import {
   SPRINT_PRIORITY,
   SPRINT_STATUS_COLORS,
   SPRINT_PRIORITY_COLORS,
+  TASK_STATUS,
 } from '../../constants/sprints';
 import { ROUTE } from '../../routes/constants';
 import { MODAL_NAME } from '../../modals/constants';
@@ -40,6 +42,7 @@ const useTasksPageContainer = () => {
   const sprintLoading = useSelector(selectSprintsLoading);
   const sprintError = useSelector(selectSprintsError);
   const tasks = useSelector(selectTasks);
+  const tasksData = useSelector(selectTasksData);
   const tasksLoading = useSelector(selectTasksInitLoading);
 
   const loading = sprintLoading || tasksLoading;
@@ -79,6 +82,10 @@ const useTasksPageContainer = () => {
     [loading, sprintError],
   );
 
+  const shouldBeCompleted =
+    sprint.status !== SPRINT_STATUS.DONE.value &&
+    Object.values(tasksData).every((item) => item.status === TASK_STATUS.DONE);
+
   const errorMessage = getErrorMessage(sprintError);
 
   return {
@@ -90,6 +97,7 @@ const useTasksPageContainer = () => {
     priorityColor,
     errorMessage,
     componentState,
+    shouldBeCompleted,
     handleBackButtonClick,
     handleEditButtonClick,
     handleDeleteButtonClick,

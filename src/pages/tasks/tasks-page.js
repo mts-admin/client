@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import * as R from 'ramda';
 
@@ -12,6 +11,7 @@ import {
   ButtonBack,
   ButtonEdit,
   ButtonDelete,
+  ButtonComplete,
   Description,
   EmptyMessage,
   Tags,
@@ -34,6 +34,7 @@ const TasksPage = () => {
     priorityColor,
     errorMessage,
     componentState,
+    shouldBeCompleted,
     handleBackButtonClick,
     handleEditButtonClick,
     handleDeleteButtonClick,
@@ -56,13 +57,14 @@ const TasksPage = () => {
                 <ButtonBack onClick={handleBackButtonClick}>Back</ButtonBack>
 
                 <Buttons>
-                  <Button
+                  <ButtonComplete
                     variant="contained"
                     color="success"
                     onClick={handleCompleteButtonClick}
+                    hasanimation={`${shouldBeCompleted}`}
                   >
                     Complete
-                  </Button>
+                  </ButtonComplete>
                   <ButtonEdit
                     variant="outlined"
                     color="primary"

@@ -18,6 +18,7 @@ import {
 } from '../../utils/general';
 import { SCHEDULE_TYPE } from '../../constants/schedules';
 import { MODAL_NAME } from '../../modals/constants';
+import useEffectAfterMount from '../../hooks/use-effect-after-mount';
 
 const DEFAULT_PAGE = 1;
 const MIN_ITEMS_PER_PAGE = 9;
@@ -100,6 +101,12 @@ const useSchedulesPageContainer = () => {
   }, [page, scheduleType]);
 
   useEffect(() => () => dispatch(clearSchedules()), []);
+
+  useEffectAfterMount(() => {
+    if (page > DEFAULT_PAGE && schedules.length === 0) {
+      stateDispatch(changePage(DEFAULT_PAGE));
+    }
+  }, [schedules]);
 
   const onTypeChange = (_, value) => stateDispatch(changeType(value));
   const onPageChange = (_, value) => stateDispatch(changePage(value));

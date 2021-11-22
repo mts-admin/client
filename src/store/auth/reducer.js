@@ -13,6 +13,7 @@ import {
   getInvitationDataSuccess,
   signUpByInvitationRequest,
   signUpByInvitationSuccess,
+  clearNavigationBadge,
 } from './actions';
 
 const initialState = {
@@ -29,6 +30,14 @@ const signInSuccessReducer = (state, { payload }) => ({
   loading: false,
   initLoading: false,
   invitationLoading: false,
+});
+
+const clearNavigationBadgeReducer = (state, { payload }) => ({
+  ...state,
+  user: {
+    ...state.user,
+    ...(payload && { [payload]: 0 }),
+  },
 });
 
 const errorReducer = (state, { payload }) => ({
@@ -63,6 +72,7 @@ const authReducer = handleActions(
     [forgotPasswordSuccess]: R.mergeDeepLeft({
       loading: false,
     }),
+    [clearNavigationBadge]: clearNavigationBadgeReducer,
     [actionError]: errorReducer,
   },
   initialState,

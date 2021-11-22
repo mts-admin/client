@@ -1,3 +1,4 @@
-import SimpleCard from './simple-card/simple-card';
+import SimpleCard from './simple-card';
+import UserCard from './user-card';
 
-export { SimpleCard };
+export { SimpleCard, UserCard };

@@ -19,4 +19,5 @@ export const MODAL_NAME = {
   CREATE_SPRINT: 'sprints/CREATE_SPRINT',
   EDIT_SPRINT: 'sprints/EDIT_SPRINT',
   DELETE_SPRINT: 'sprints/DELETE_SPRINT',
+  VIEW_BONUS: 'bonuses/VIEW_BONUS',
 };
