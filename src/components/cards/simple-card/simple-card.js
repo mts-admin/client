@@ -1,13 +1,20 @@
 import React from 'react';
-import { string, node, arrayOf, shape, func } from 'prop-types';
+import { string, node, arrayOf, shape, func, bool } from 'prop-types';
 
 import { DotsMenu } from '../../menus';
-import { Content, Header, TitleLink } from './styled-components';
+import { Content, Header, TitleLink, Title } from './styled-components';
 
-const SimpleCard = ({ link, title, menuOptions, children }) => (
-  <Content>
+const SimpleCard = ({
+  link,
+  title,
+  onClick,
+  menuOptions,
+  hasAnimation,
+  children,
+}) => (
+  <Content hasanimation={`${hasAnimation}`} onClick={onClick}>
     <Header>
-      <TitleLink to={link}>{title}</TitleLink>
+      {link ? <TitleLink to={link}>{title}</TitleLink> : <Title>{title}</Title>}
       {menuOptions && <DotsMenu options={menuOptions} />}
     </Header>
 
@@ -16,15 +23,17 @@ const SimpleCard = ({ link, title, menuOptions, children }) => (
 );
 
 SimpleCard.propTypes = {
-  link: string.isRequired,
   title: string.isRequired,
   children: node.isRequired,
+  link: string,
+  onClick: func,
   menuOptions: arrayOf(
     shape({
       label: string.isRequired,
       onClick: func.isRequired,
     }),
   ),
+  hasAnimation: bool,
 };
 
 export default React.memo(SimpleCard);

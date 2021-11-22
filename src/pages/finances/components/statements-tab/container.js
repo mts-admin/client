@@ -24,6 +24,9 @@ import {
   getDefaultFormState,
 } from './helpers';
 import { MODAL_NAME } from '../../../../modals/constants';
+import useEffectAfterMount from '../../../../hooks/use-effect-after-mount';
+
+const DEFAULT_PAGE = 1;
 
 const useStatementsTabContainer = () => {
   const dispatch = useDispatch();
@@ -69,6 +72,12 @@ const useStatementsTabContainer = () => {
   const finances = useSelector(selectFinances);
   const totalCount = useSelector(selectFinancesTotalCount);
   const loading = useSelector(selectFinancesInitLoading);
+
+  useEffectAfterMount(() => {
+    if (page > DEFAULT_PAGE && finances.length === 0) {
+      stateDispatch(changeTabel({ page: DEFAULT_PAGE }));
+    }
+  }, [finances]);
 
   const openModalAction = useCallback(
     (data) => dispatch(openModal(data)),

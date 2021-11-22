@@ -13,7 +13,7 @@ import {
   handleScheduleParticipantEdit,
   handleScheduleParticipantDelete,
 } from '../../../../store/schedules/thunk';
-import UserCard from '../../../../components/user-card';
+import { UserCard } from '../../../../components/cards';
 import { ControlledCheckboxesGroup } from '../../../../components/form-items';
 import { TextButton } from '../../../../components/buttons';
 import { getSchedulePermissionsLabels } from '../../../../utils/permissions';

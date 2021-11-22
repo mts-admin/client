@@ -13,7 +13,7 @@ import {
 } from '../../../store/schedules/selectors';
 import { Title, Text, Content, ErrorMessage } from './styled-components';
 import ContentSection from '../../../components/content-section';
-import UserCard from '../../../components/user-card';
+import { UserCard } from '../../../components/cards';
 import { getErrorMessage, getComponentState } from '../../../utils/general';
 import { formatISO } from '../../../utils/date';
 import { getSchedulePermissionsLabels } from '../../../utils/permissions';

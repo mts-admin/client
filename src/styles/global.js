@@ -96,6 +96,30 @@ const GlobalStyle = createGlobalStyle`
       border-color: red
     }
   }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(40, 40, 40, 0.3);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(40, 40, 40, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(40, 40, 40, 0);
+    }
+  }
+
+  @keyframes growing {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
 `;
 
 export default GlobalStyle;

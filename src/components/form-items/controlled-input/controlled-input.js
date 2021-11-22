@@ -29,6 +29,7 @@ const ControlledInput = ({
         type={type}
         fullWidth={fullWidth}
         variant={variant}
+        autoComplete="off"
         error={R.hasPath(['error', 'message'], fieldState)}
         helperText={R.path(['error', 'message'], fieldState)}
       />

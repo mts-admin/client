@@ -31,7 +31,7 @@ const ScheduleCard = ({ id, type, page }) => {
     () =>
       [schedule.owner]
         .concat(schedule.participants.map(({ user }) => user))
-        .map((user) => ({ image: user.avatar, name: user.name })),
+        .map((user) => ({ avatar: user.avatar, name: user.name })),
     [schedule],
   );
 

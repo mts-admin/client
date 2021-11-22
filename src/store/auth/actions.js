@@ -6,6 +6,7 @@ export const types = {
   FORGOT_PASSWORD: 'auth/FORGOT_PASSWORD',
   GET_INVITATION_DATA: 'auth/GET_INVITATION_DATA',
   SIGN_UP_BY_INVITATION: 'auth/SIGN_UP_BY_INVITATION',
+  CLEAR_NAVIGATION_BADGE: 'auth/CLEAR_NAVIGATION_BADGE',
   ERROR: 'auth/error',
 };
 
@@ -35,5 +36,7 @@ export const signUpByInvitationRequest = createAction(
 export const signUpByInvitationSuccess = createAction(
   `${types.SIGN_UP_BY_INVITATION}_SUCCESS`,
 );
+
+export const clearNavigationBadge = createAction(types.CLEAR_NAVIGATION_BADGE);
 
 export const actionError = createAction(types.ERROR);

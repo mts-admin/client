@@ -2,7 +2,7 @@ import React from 'react';
 import { string, arrayOf, shape, func } from 'prop-types';
 import LazyLoad from 'react-lazyload';
 
-import { DotsMenu } from '../menus';
+import { DotsMenu } from '../../menus';
 import {
   CardContent,
   CardImageWrapper,
@@ -11,7 +11,7 @@ import {
   CardName,
   CardDescription,
 } from './styled-components';
-import { getImageUrl } from '../../utils/general';
+import { getImageUrl } from '../../../utils/general';
 
 const UserCard = ({ name, image, description, menuOptions, ...rest }) => (
   <CardContent {...rest}>

@@ -7,7 +7,7 @@ import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { ROUTE } from '../routes/constants';
 
-export const mainNavItems = [
+export const getMainNavItems = (hasBonuses, hasActivities) => [
   {
     label: 'Schedules',
     icon: ScheduleOutlinedIcon,
@@ -32,11 +32,13 @@ export const mainNavItems = [
     label: 'Bonuses',
     icon: CardGiftcardIcon,
     link: ROUTE.BONUSES,
+    hasBadge: !!hasBonuses,
   },
   {
     label: 'Activities',
     icon: AssignmentOutlinedIcon,
     link: ROUTE.ACTIVITIES,
+    hasBadge: !!hasActivities,
   },
   {
     label: 'Settings',
