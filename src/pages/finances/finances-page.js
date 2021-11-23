@@ -7,7 +7,7 @@ import StatisticsTab from './components/statistics-tab';
 import { FINANCE_TAB } from '../../constants/finances';
 
 const FinancesPage = () => {
-  const [activeTab, setActiveTab] = useState(FINANCE_TAB.STATEMENTS);
+  const [activeTab, setActiveTab] = useState(FINANCE_TAB.STATEMENTS.value);
 
   const handleTabChange = (_, value) => setActiveTab(value);
 
@@ -20,8 +20,8 @@ const FinancesPage = () => {
       />
 
       {R.cond([
-        [R.equals(FINANCE_TAB.STATEMENTS), () => <StatementsTab />],
-        [R.equals(FINANCE_TAB.STATISTICS), () => <StatisticsTab />],
+        [R.equals(FINANCE_TAB.STATEMENTS.value), () => <StatementsTab />],
+        [R.equals(FINANCE_TAB.STATISTICS.value), () => <StatisticsTab />],
       ])(activeTab)}
     </Content>
   );

@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 
 import config from '../config';
-import { COMPONENT_STATE } from '../constants/general';
+import { COMPONENT_STATE, VIEWED_FILTER_VALUE } from '../constants/general';
 
 export const getErrorMessage = (error) =>
   error &&
@@ -65,3 +65,13 @@ export const hexToRgba = (color, opacity = 1) => {
 
 export const removeHTMLTagsFromString = (value, replace = '') =>
   value.replace(/<[^>]+>/g, replace).trim();
+
+export const getViewedFilterValue = (type) =>
+  R.cond([
+    [R.equals(VIEWED_FILTER_VALUE.SHOW_ALL.value), () => ({})],
+    [R.equals(VIEWED_FILTER_VALUE.SHOW_VIEWED.value), () => ({ viewed: true })],
+    [
+      R.equals(VIEWED_FILTER_VALUE.SHOW_UNVIEWED.value),
+      () => ({ viewed: false }),
+    ],
+  ])(type);

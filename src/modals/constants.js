@@ -20,4 +20,5 @@ export const MODAL_NAME = {
   EDIT_SPRINT: 'sprints/EDIT_SPRINT',
   DELETE_SPRINT: 'sprints/DELETE_SPRINT',
   VIEW_BONUS: 'bonuses/VIEW_BONUS',
+  VIEW_ACTIVITY: 'activities/VIEW_ACTIVITY',
 };

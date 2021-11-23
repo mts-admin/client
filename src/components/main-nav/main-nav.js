@@ -35,13 +35,9 @@ const MainNav = () => {
     <Nav>
       {isMdDown && (
         <MenuButton onClick={toggleDrawer}>
-          {hasNotification ? (
-            <Badge variant="dot" color="info">
-              <MenuIcon />
-            </Badge>
-          ) : (
+          <Badge variant="dot" color="info" invisible={!hasNotification}>
             <MenuIcon />
-          )}
+          </Badge>
         </MenuButton>
       )}
 
@@ -63,13 +59,9 @@ const MainNav = () => {
               onClick={toggleDrawer}
               icon={<Icon />}
               label={
-                hasBadge ? (
-                  <Badge variant="dot" color="info">
-                    {label}
-                  </Badge>
-                ) : (
-                  label
-                )
+                <Badge variant="dot" color="info" invisible={!hasBadge}>
+                  {label}
+                </Badge>
               }
               component={Link}
               to={link}

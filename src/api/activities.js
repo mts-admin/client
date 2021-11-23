@@ -1,17 +1,17 @@
 import apiRequest from './index';
 import { endpoints } from './endpoints';
 
-export const getMyBonuses = (params, cancelToken) =>
+export const getMyActivities = (params, cancelToken) =>
   apiRequest({
     method: 'GET',
-    url: endpoints.bonuses.myBonuses,
-    // viewed, search, page
+    url: endpoints.activities.myActivities,
+    // viewed, search, page, status
     params,
     cancelToken,
   }).then(({ data }) => data);
 
-export const getBonus = (id) =>
+export const getActivity = (id) =>
   apiRequest({
     method: 'GET',
-    url: endpoints.bonuses.bonusById(id),
+    url: endpoints.activities.activityById(id),
   }).then(({ data }) => data);

@@ -12,6 +12,7 @@ import ViewNotePage from '../pages/notes/view-note-page';
 import SprintsPage from '../pages/sprints';
 import TasksPage from '../pages/tasks';
 import BonusesPage from '../pages/bonuses';
+import ActivitiesPage from '../pages/activities';
 import { ROUTE } from './constants';
 
 const routesConfig = [
@@ -84,6 +85,11 @@ const routesConfig = [
     auth: true,
     path: ROUTE.BONUSES,
     component: BonusesPage,
+  },
+  {
+    auth: true,
+    path: ROUTE.ACTIVITIES,
+    component: ActivitiesPage,
   },
 ];
 

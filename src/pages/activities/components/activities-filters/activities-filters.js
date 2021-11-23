@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
-import { func, shape, string } from 'prop-types';
-import { useForm } from 'react-hook-form';
+import { func } from 'prop-types';
+import { useFormContext } from 'react-hook-form';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
@@ -11,8 +11,8 @@ import { VIEWED_FILTER_VALUE } from '../../../../constants/general';
 
 const MIN_SEARCH_VALUE = 3;
 
-const BonusesFilters = ({ onSubmit, defaultValues }) => {
-  const { control, handleSubmit, watch } = useForm({ defaultValues });
+const ActivitiesFilters = ({ onSubmit }) => {
+  const { control, handleSubmit, watch } = useFormContext();
 
   const typeValue = watch('type');
 
@@ -37,7 +37,10 @@ const BonusesFilters = ({ onSubmit, defaultValues }) => {
     handleFormSubmit();
   }, [typeValue]);
 
-  const bonusesTypeList = useMemo(() => Object.values(VIEWED_FILTER_VALUE), []);
+  const activitiesTypeList = useMemo(
+    () => Object.values(VIEWED_FILTER_VALUE),
+    [],
+  );
 
   return (
     <Form>
@@ -58,7 +61,7 @@ const BonusesFilters = ({ onSubmit, defaultValues }) => {
       />
 
       <SelectInput
-        data={bonusesTypeList}
+        data={activitiesTypeList}
         control={control}
         name="type"
         label="Type"
@@ -68,12 +71,8 @@ const BonusesFilters = ({ onSubmit, defaultValues }) => {
   );
 };
 
-BonusesFilters.propTypes = {
+ActivitiesFilters.propTypes = {
   onSubmit: func.isRequired,
-  defaultValues: shape({
-    search: string.isRequired,
-    type: string.isRequired,
-  }).isRequired,
 };
 
-export default React.memo(BonusesFilters);
+export default React.memo(ActivitiesFilters);

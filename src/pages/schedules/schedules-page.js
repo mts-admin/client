@@ -35,7 +35,10 @@ const SchedulesPage = () => {
         <Tabs
           value={scheduleType}
           onChange={onTypeChange}
-          options={Object.values(SCHEDULE_TYPE)}
+          options={Object.values(SCHEDULE_TYPE).map((elem) => ({
+            value: elem,
+            label: elem,
+          }))}
           aria-label="schedule types"
         />
         {scheduleType === SCHEDULE_TYPE.MY && (
