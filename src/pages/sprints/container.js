@@ -28,16 +28,13 @@ import useEffectAfterMount from '../../hooks/use-effect-after-mount';
 const DEFAULT_PAGE = 1;
 const MIN_ITEMS_PER_PAGE = 9;
 
-const getStatusValue = (value) =>
-  Object.values(SPRINT_STATUS).find(({ label }) => label === value)?.value;
-
 const useSprintsPageContainer = () => {
   const dispatch = useDispatch();
 
   const [{ page, sort, status }, setState] = useState({
     page: DEFAULT_PAGE,
     sort: SPRINT_SORT_VALUE.NEW_FIRST.value,
-    status: SPRINT_TAB.IN_PROGRESS,
+    status: SPRINT_TAB.IN_PROGRESS.value,
   });
 
   const [generateCancelToken, cancelRequest] = useCancelToken();
@@ -46,7 +43,7 @@ const useSprintsPageContainer = () => {
     () => ({
       page,
       sort,
-      status: getStatusValue(status),
+      status: SPRINT_STATUS[status]?.value,
     }),
     [page, sort, status],
   );

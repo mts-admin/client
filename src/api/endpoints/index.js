@@ -48,6 +48,10 @@ export const endpoints = {
     myBonuses: 'api/v1/bonuses',
     bonusById: (id) => `api/v1/bonuses/${id}`,
   },
+  activities: {
+    myActivities: 'api/v1/activities',
+    activityById: (id) => `api/v1/activities/${id}`,
+  },
 };
 
 export const noAuthEndpoints = [

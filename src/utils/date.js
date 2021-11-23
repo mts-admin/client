@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import { DateTime } from 'luxon';
 import * as R from 'ramda';
 
@@ -41,4 +42,20 @@ export const setTime = (date = DateTime.now(), time) => {
       millisecond: 0,
     })
     .toString();
+};
+
+export const getNextWeekDay = (dayOfWeek) => {
+  const currentDayOfWeek = DateTime.now().weekday;
+  const dataToSet = {
+    weekday: dayOfWeek,
+    hour: 0,
+    minute: 0,
+    second: 10,
+  };
+
+  if (currentDayOfWeek < dayOfWeek) {
+    return DateTime.fromObject(dataToSet).toJSDate();
+  }
+
+  return DateTime.fromObject(dataToSet).plus({ week: 1 }).toJSDate();
 };

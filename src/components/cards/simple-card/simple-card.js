@@ -10,9 +10,14 @@ const SimpleCard = ({
   onClick,
   menuOptions,
   hasAnimation,
+  minHeight,
   children,
 }) => (
-  <Content hasanimation={`${hasAnimation}`} onClick={onClick}>
+  <Content
+    hasanimation={`${hasAnimation}`}
+    minheight={minHeight}
+    onClick={onClick}
+  >
     <Header>
       {link ? <TitleLink to={link}>{title}</TitleLink> : <Title>{title}</Title>}
       {menuOptions && <DotsMenu options={menuOptions} />}
@@ -21,6 +26,10 @@ const SimpleCard = ({
     {children}
   </Content>
 );
+
+SimpleCard.defaultProps = {
+  minHeight: '150px',
+};
 
 SimpleCard.propTypes = {
   title: string.isRequired,
@@ -34,6 +43,7 @@ SimpleCard.propTypes = {
     }),
   ),
   hasAnimation: bool,
+  minHeight: string,
 };
 
 export default React.memo(SimpleCard);

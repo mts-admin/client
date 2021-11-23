@@ -6,7 +6,7 @@ export const Content = styled.article`
   display: flex;
   flex-direction: column;
   padding: 16px;
-  min-height: 150px;
+  min-height: ${({ minheight }) => minheight};
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   min-width: 0;

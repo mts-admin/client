@@ -53,10 +53,7 @@ const SprintsPage = () => {
               onChange={handleStatusMobileChange}
               name="status"
               label="Status"
-              data={Object.values(SPRINT_TAB).map((elem) => ({
-                label: elem,
-                value: elem,
-              }))}
+              data={Object.values(SPRINT_TAB)}
             />
           )}
           <SimpleSelect

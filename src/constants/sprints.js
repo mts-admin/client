@@ -62,11 +62,26 @@ export const SPRINT_SORT_VALUE = {
 };
 
 export const SPRINT_TAB = {
-  ALL: 'All',
-  IN_PROGRESS: 'In progress',
-  DONE: 'Done',
-  EXPIRED: 'Expired',
-  ARCHIVED: 'Archived',
+  ALL: {
+    value: 'ALL',
+    label: 'All',
+  },
+  IN_PROGRESS: {
+    value: 'IN_PROGRESS',
+    label: 'In progress',
+  },
+  DONE: {
+    value: 'DONE',
+    label: 'Done',
+  },
+  EXPIRED: {
+    value: 'EXPIRED',
+    label: 'Expired',
+  },
+  ARCHIVED: {
+    value: 'ARCHIVED',
+    label: 'Archived',
+  },
 };
 
 export const TASK_STATUS = {

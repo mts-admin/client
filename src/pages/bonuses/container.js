@@ -9,20 +9,22 @@ import {
   selectBonusesInitLoading,
   selectBonusesTotalCount,
 } from '../../store/bonuses/selectors';
-import { getViewedSortFilter } from './helpers';
-import { BONUSES_TYPE_VALUE } from '../../constants/bonuses';
+import { clearBonuses } from '../../store/bonuses/actions';
 import useCancelToken from '../../hooks/use-cancel-token';
 import {
   getComponentState,
   getPaginationPagesCount,
+  getViewedFilterValue,
 } from '../../utils/general';
+import { VIEWED_FILTER_VALUE } from '../../constants/general';
 
+const DEFAULT_PAGE = 1;
 const MIN_ITEMS_PER_PAGE = 9;
 
 const DEFAULT_STATE = {
   search: '',
-  type: BONUSES_TYPE_VALUE.SHOW_ALL.value,
-  page: 1,
+  type: VIEWED_FILTER_VALUE.SHOW_ALL.value,
+  page: DEFAULT_PAGE,
 };
 
 const useBonusesPageContainer = () => {
@@ -44,7 +46,7 @@ const useBonusesPageContainer = () => {
     () => ({
       page,
       search,
-      ...getViewedSortFilter(type),
+      ...getViewedFilterValue(type),
     }),
     [page, search, type],
   );
@@ -61,6 +63,8 @@ const useBonusesPageContainer = () => {
     return () => cancelRequest();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
+
+  useEffect(() => () => dispatch(clearBonuses()), [dispatch]);
 
   const handleFiltersChange = useCallback(
     (values) => setState((prevState) => ({ ...prevState, ...values })),
