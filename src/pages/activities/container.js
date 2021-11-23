@@ -21,6 +21,7 @@ import {
 } from '../../utils/general';
 import { ACTIVITY_STATUS } from '../../constants/activities';
 import { VIEWED_FILTER_VALUE } from '../../constants/general';
+import useEffectAfterMount from '../../hooks/use-effect-after-mount';
 
 const SATURDAY_NUMBER = 6;
 
@@ -79,6 +80,12 @@ const useActivitiesPageContainer = () => {
 
   useEffect(() => () => dispatch(clearActivities()), [dispatch]);
 
+  useEffectAfterMount(() => {
+    if (page > DEFAULT_PAGE && activities.length === 0) {
+      setState((prevState) => ({ ...prevState, page: DEFAULT_PAGE }));
+    }
+  }, [activities]);
+
   const onTimerExpire = useCallback(() => {
     dispatch(
       handleMyActivitiesGet({
@@ -115,6 +122,7 @@ const useActivitiesPageContainer = () => {
     form,
     page,
     status,
+    params,
     restCount,
     pagesCount,
     activities,
