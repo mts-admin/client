@@ -16,6 +16,7 @@ export const TextWrapper = styled.div`
 export const Text = styled.p`
   margin-right: 16px;
   text-decoration: ${({ checked }) => (checked ? 'line-through' : 'none')};
+  color: ${({ theme, checked }) => (checked ? theme.colors.grey : 'inherit')};
   word-break: break-all;
 `;
 

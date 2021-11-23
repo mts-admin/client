@@ -15,3 +15,10 @@ export const getActivity = (id) =>
     method: 'GET',
     url: endpoints.activities.activityById(id),
   }).then(({ data }) => data);
+
+export const editActivityStatus = (id, body) =>
+  apiRequest({
+    method: 'PATCH',
+    url: endpoints.activities.activityStatus(id),
+    data: body,
+  }).then(({ data }) => data);

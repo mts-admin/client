@@ -27,6 +27,7 @@ const ActivitiesPage = () => {
     form,
     page,
     status,
+    params,
     restCount,
     pagesCount,
     activities,
@@ -70,7 +71,7 @@ const ActivitiesPage = () => {
 
       <CardsWrapper>
         {activities.map((activity) => (
-          <ActivityCard key={activity} id={activity} />
+          <ActivityCard key={activity} id={activity} params={params} />
         ))}
 
         {R.cond([

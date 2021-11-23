@@ -51,6 +51,7 @@ export const endpoints = {
   activities: {
     myActivities: 'api/v1/activities',
     activityById: (id) => `api/v1/activities/${id}`,
+    activityStatus: (id) => `api/v1/activities/${id}/status`,
   },
 };
 

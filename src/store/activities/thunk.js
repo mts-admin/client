@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-import { getMyActivities, getActivity } from '../../api/activities';
+import {
+  getMyActivities,
+  getActivity,
+  editActivityStatus,
+} from '../../api/activities';
 import {
   getActivitiesRequest,
   getActivitiesSuccess,
@@ -13,14 +17,12 @@ import {
 import { clearNavigationBadge } from '../auth/actions';
 
 export const handleMyActivitiesGet =
-  ({ params, cancelToken, callback }) =>
+  ({ params, cancelToken }) =>
   async (dispatch) => {
     try {
       dispatch(getActivitiesRequest());
 
       const { data, count } = await getMyActivities(params, cancelToken);
-
-      callback && callback(count.restCount);
 
       dispatch(getActivitiesSuccess({ data, count }));
       dispatch(clearNavigationBadge('newActivitiesCount'));
@@ -58,3 +60,20 @@ export const handleMyActivityGet = (id) => async (dispatch) => {
     }
   }
 };
+
+export const handleActivityStatusChange =
+  ({ id, body, params }) =>
+  async (dispatch) => {
+    try {
+      dispatch(getActivitiesRequest());
+
+      await editActivityStatus(id, body);
+      const { data, count } = await getMyActivities(params);
+
+      dispatch(getActivitiesSuccess({ data, count }));
+    } catch (error) {
+      if (!axios.isCancel(error)) {
+        dispatch(actionError(error));
+      }
+    }
+  };
