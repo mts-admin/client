@@ -7,7 +7,9 @@ export const getErrorMessage = (error) =>
   error &&
   R.pathOr('Something went wrong', ['response', 'data', 'message'], error);
 
-export const getImageUrl = (url, type = 'user') => {
+export const getImageUrl = (url = '', type = 'user') => {
+  if (url.includes('blob')) return url;
+
   const defaultImage = {
     bonus: '/img/gift.svg',
     user: '/img/default-avatar.svg',

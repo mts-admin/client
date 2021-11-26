@@ -7,6 +7,8 @@ import {
   signInSuccess,
   getMeRequest,
   getMeSuccess,
+  updateMeRequest,
+  updateMeSuccess,
   forgotPasswordRequest,
   forgotPasswordSuccess,
   getInvitationDataRequest,
@@ -14,6 +16,7 @@ import {
   signUpByInvitationRequest,
   signUpByInvitationSuccess,
   clearNavigationBadge,
+  logoutSuccess,
 } from './actions';
 
 const initialState = {
@@ -26,7 +29,15 @@ const initialState = {
 
 const signInSuccessReducer = (state, { payload }) => ({
   ...state,
-  user: payload,
+  user: {
+    ...payload,
+    ...(state.user.newBonusesCount && {
+      newBonusesCount: state.user.newBonusesCount,
+    }),
+    ...(state.user.newActivitiesCount && {
+      newActivitiesCount: state.user.newActivitiesCount,
+    }),
+  },
   loading: false,
   initLoading: false,
   invitationLoading: false,
@@ -48,10 +59,13 @@ const errorReducer = (state, { payload }) => ({
   error: payload,
 });
 
+const logoutSuccessReducer = () => initialState;
+
 const authReducer = handleActions(
   {
     [combineActions(
       signInRequest,
+      updateMeRequest,
       forgotPasswordRequest,
       signUpByInvitationRequest,
     )]: R.mergeDeepLeft({
@@ -66,12 +80,14 @@ const authReducer = handleActions(
     [combineActions(
       signInSuccess,
       getMeSuccess,
+      updateMeSuccess,
       getInvitationDataSuccess,
       signUpByInvitationSuccess,
     )]: signInSuccessReducer,
     [forgotPasswordSuccess]: R.mergeDeepLeft({
       loading: false,
     }),
+    [logoutSuccess]: logoutSuccessReducer,
     [clearNavigationBadge]: clearNavigationBadgeReducer,
     [actionError]: errorReducer,
   },

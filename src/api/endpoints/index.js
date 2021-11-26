@@ -4,7 +4,9 @@ export const endpoints = {
     forgotPassword: '/api/v1/auth/forgot-password',
     resetPassword: (token) => `/api/v1/auth/reset-password/${token}`,
     register: (token) => `/api/v1/auth/signup-by-invitation/${token}`,
-    getMe: '/api/v1/auth/me',
+    me: '/api/v1/auth/me',
+    myEmail: '/api/v1/auth/me/email',
+    myPassword: '/api/v1/auth/me/password',
   },
   schedules: {
     schedules: '/api/v1/schedules',

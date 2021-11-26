@@ -19,3 +19,8 @@ export const VIEWED_FILTER_VALUE = {
     label: 'Show unviewed',
   },
 };
+
+export const MAX_IMAGE_SIZE = {
+  AVATAR: 5,
+  BONUS: 1,
+};

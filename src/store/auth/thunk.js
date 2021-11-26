@@ -8,6 +8,9 @@ import {
   resetPassword,
   getInvitationData,
   signUpByInvitation,
+  updateMe,
+  updateMyEmail,
+  updateMyPassword,
 } from '../../api/auth';
 import {
   actionError,
@@ -15,14 +18,17 @@ import {
   signInSuccess,
   getMeRequest,
   getMeSuccess,
+  updateMeRequest,
+  updateMeSuccess,
   forgotPasswordRequest,
   forgotPasswordSuccess,
   getInvitationDataRequest,
   getInvitationDataSuccess,
   signUpByInvitationRequest,
   signUpByInvitationSuccess,
+  logoutSuccess,
 } from './actions';
-import { setToken } from '../../utils/local-storage';
+import { clearStorage, setToken } from '../../utils/local-storage';
 import { ROUTE } from '../../routes/constants';
 
 export const handleLogin =
@@ -53,6 +59,59 @@ export const handleGetMe = () => async (dispatch) => {
     dispatch(actionError(error));
   }
 };
+
+export const handleUpdateMe =
+  (body, callback, successCallback) => async (dispatch) => {
+    try {
+      dispatch(updateMeRequest());
+
+      const { data } = await updateMe(body);
+
+      dispatch(updateMeSuccess(data));
+      toast.success('Your account settings has been updated successfully!');
+      successCallback && successCallback(data);
+    } catch (error) {
+      dispatch(actionError(error));
+    } finally {
+      callback && callback();
+    }
+  };
+
+export const handleUpdateMyEmail =
+  (body, callback, successCallback) => async (dispatch) => {
+    try {
+      dispatch(updateMeRequest());
+
+      const { data, token } = await updateMyEmail(body);
+
+      setToken(token);
+      dispatch(updateMeSuccess(data));
+      toast.success('Your email has been updated successfully!');
+      successCallback && successCallback(data);
+    } catch (error) {
+      dispatch(actionError(error));
+    } finally {
+      callback && callback();
+    }
+  };
+
+export const handleUpdateMyPassword =
+  (body, callback, successCallback) => async (dispatch) => {
+    try {
+      dispatch(updateMeRequest());
+
+      const { data, token } = await updateMyPassword(body);
+
+      setToken(token);
+      dispatch(updateMeSuccess(data));
+      toast.success('Your password has been updated successfully!');
+      successCallback && successCallback();
+    } catch (error) {
+      dispatch(actionError(error));
+    } finally {
+      callback && callback();
+    }
+  };
 
 export const handleForgotPassword =
   (email, successCallback) => async (dispatch) => {
@@ -122,3 +181,9 @@ export const handleRegisterByInvite =
       dispatch(actionError(error));
     }
   };
+
+export const handleLogout = () => (dispatch) => {
+  clearStorage();
+  dispatch(logoutSuccess());
+  history.push(ROUTE.LOGIN);
+};

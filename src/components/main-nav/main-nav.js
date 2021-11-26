@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Tabs from '@mui/material/Tabs';
@@ -8,15 +8,24 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Badge from '@mui/material/Badge';
 
 import { Drawer, Tab, Nav, MenuButton } from './styled-components';
+import { handleLogout } from '../../store/auth/thunk';
 import { selectAuthUser } from '../../store/auth/selectors';
 import { getMainNavItems } from '../../constants/navigation';
 
 const MainNav = () => {
+  const dispatch = useDispatch();
+
   const location = useLocation();
 
   const { newBonusesCount, newActivitiesCount } = useSelector(selectAuthUser);
 
-  const mainNavItems = getMainNavItems(newBonusesCount, newActivitiesCount);
+  const logout = () => dispatch(handleLogout());
+
+  const mainNavItems = getMainNavItems(
+    logout,
+    newBonusesCount,
+    newActivitiesCount,
+  );
 
   const [open, setOpen] = useState(false);
   const [tabValue, setTabValue] = useState(() =>
@@ -53,20 +62,24 @@ const MainNav = () => {
           orientation="vertical"
           aria-label="main navigation"
         >
-          {mainNavItems.map(({ label, icon: Icon, link, hasBadge }) => (
-            <Tab
-              key={link}
-              onClick={toggleDrawer}
-              icon={<Icon />}
-              label={
-                <Badge variant="dot" color="info" invisible={!hasBadge}>
-                  {label}
-                </Badge>
-              }
-              component={Link}
-              to={link}
-            />
-          ))}
+          {mainNavItems.map(
+            ({ label, icon: Icon, link, hasBadge, onClick }) => (
+              <Tab
+                key={link || label}
+                onClick={() => {
+                  isMdDown && toggleDrawer();
+                  onClick && onClick();
+                }}
+                icon={<Icon />}
+                label={
+                  <Badge variant="dot" color="info" invisible={!hasBadge}>
+                    {label}
+                  </Badge>
+                }
+                {...(link && { component: Link, to: link })}
+              />
+            ),
+          )}
         </Tabs>
       </Drawer>
     </Nav>

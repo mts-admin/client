@@ -14,7 +14,9 @@ const ControlledInputPassword = ({
   rules,
   control,
   variant,
+  disabled,
   fullWidth,
+  placeholder,
   defaultValue,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -30,6 +32,8 @@ const ControlledInputPassword = ({
         <TextField
           {...field}
           label={label}
+          placeholder={placeholder}
+          disabled={disabled}
           type={showPassword ? 'text' : 'password'}
           fullWidth={fullWidth}
           variant={variant}
@@ -57,18 +61,22 @@ const ControlledInputPassword = ({
 ControlledInputPassword.defaultProps = {
   variant: 'outlined',
   defaultValue: '',
+  placeholder: '',
   rules: {},
   fullWidth: true,
+  disabled: false,
 };
 
 ControlledInputPassword.propTypes = {
   control: object.isRequired,
   name: string.isRequired,
   label: string.isRequired,
+  placeholder: string,
   rules: object,
   variant: string,
   defaultValue: string,
   fullWidth: bool,
+  disabled: bool,
 };
 
 export default ControlledInputPassword;

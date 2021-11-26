@@ -1,8 +1,9 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { Layout, Content } from './styled-components';
 import routesConfig from '../../routes/routes-config';
+import { ROUTE } from '../../routes/constants';
 
 const Routes = () => (
   <Switch>
@@ -13,6 +14,7 @@ const Routes = () => (
           <Component />
         </Route>
       ))}
+    <Redirect to={ROUTE.LOGIN} />
   </Switch>
 );
 

@@ -5,6 +5,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import NoAuthLayout from '../layouts/no-auth-layout';
 import AuthLayout from '../layouts/auth-layout';
+import ErrorPage from '../components/error-page';
+import NotFoundPage from '../components/not-found-page';
 import { handleGetMe } from '../store/auth/thunk';
 import { selectInitLoading } from '../store/auth/selectors';
 import { getToken } from '../utils/local-storage';
@@ -34,8 +36,9 @@ const AppRoutes = () => {
         <AuthLayout />
       </Route>
 
-      {/* TODO: add 404 and 500 error pages */}
-      {/* <Route component={NotFound} /> */}
+      <Route exact path={ROUTE.ERROR} component={ErrorPage} />
+
+      <Route component={NotFoundPage} />
     </Switch>
   );
 };

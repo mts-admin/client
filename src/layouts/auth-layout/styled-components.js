@@ -6,7 +6,7 @@ export const Layout = styled.section`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   padding: 24px 0;
 
   ${({ theme }) => theme.breakpoints.down('lg')} {

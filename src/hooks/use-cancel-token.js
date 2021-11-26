@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useCallback, useRef } from 'react';
 
-// TODO: think about moving cancel() call inside useEffect in this hook
 const useCancelToken = () => {
   const cancelToken = useRef(null);
 
