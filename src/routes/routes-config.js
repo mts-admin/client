@@ -13,6 +13,7 @@ import SprintsPage from '../pages/sprints';
 import TasksPage from '../pages/tasks';
 import BonusesPage from '../pages/bonuses';
 import ActivitiesPage from '../pages/activities';
+import SettingsPage from '../pages/settings';
 import { ROUTE } from './constants';
 
 const routesConfig = [
@@ -90,6 +91,11 @@ const routesConfig = [
     auth: true,
     path: ROUTE.ACTIVITIES,
     component: ActivitiesPage,
+  },
+  {
+    auth: true,
+    path: ROUTE.SETTINGS,
+    component: SettingsPage,
   },
 ];
 

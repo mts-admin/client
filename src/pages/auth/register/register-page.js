@@ -39,6 +39,9 @@ const RegisterPage = () => {
           label="Name"
           control={control}
           InputProps={{ disabled: true }}
+          rules={FormRules()
+            .required('Name is required!')
+            .maxLength(50, 'Name must be no more than 50 characters long')}
         />
 
         <ControlledInput

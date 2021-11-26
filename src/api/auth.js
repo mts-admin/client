@@ -4,7 +4,28 @@ import { endpoints } from './endpoints';
 export const getMe = () =>
   apiRequest({
     method: 'GET',
-    url: endpoints.auth.getMe,
+    url: endpoints.auth.me,
+  }).then(({ data }) => data);
+
+export const updateMe = (body) =>
+  apiRequest({
+    method: 'PATCH',
+    url: endpoints.auth.me,
+    data: body,
+  }).then(({ data }) => data);
+
+export const updateMyEmail = (body) =>
+  apiRequest({
+    method: 'PATCH',
+    url: endpoints.auth.myEmail,
+    data: body,
+  }).then(({ data }) => data);
+
+export const updateMyPassword = (body) =>
+  apiRequest({
+    method: 'PATCH',
+    url: endpoints.auth.myPassword,
+    data: body,
   }).then(({ data }) => data);
 
 export const loginRequest = ({ email, password }) =>

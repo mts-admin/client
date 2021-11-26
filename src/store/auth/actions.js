@@ -3,15 +3,20 @@ import { createAction } from 'redux-actions';
 export const types = {
   SIGN_IN: 'auth/SIGN_IN',
   GET_ME: 'auth/GET_ME',
+  UPDATE_ME: 'auth/UPDATE_ME',
   FORGOT_PASSWORD: 'auth/FORGOT_PASSWORD',
   GET_INVITATION_DATA: 'auth/GET_INVITATION_DATA',
   SIGN_UP_BY_INVITATION: 'auth/SIGN_UP_BY_INVITATION',
   CLEAR_NAVIGATION_BADGE: 'auth/CLEAR_NAVIGATION_BADGE',
+  LOGOUT: 'auth/LOGOUT',
   ERROR: 'auth/error',
 };
 
 export const getMeRequest = createAction(`${types.GET_ME}_REQUEST`);
 export const getMeSuccess = createAction(`${types.GET_ME}_SUCCESS`);
+
+export const updateMeRequest = createAction(`${types.UPDATE_ME}_REQUEST`);
+export const updateMeSuccess = createAction(`${types.UPDATE_ME}_SUCCESS`);
 
 export const signInRequest = createAction(`${types.SIGN_IN}_REQUEST`);
 export const signInSuccess = createAction(`${types.SIGN_IN}_SUCCESS`);
@@ -36,6 +41,8 @@ export const signUpByInvitationRequest = createAction(
 export const signUpByInvitationSuccess = createAction(
   `${types.SIGN_UP_BY_INVITATION}_SUCCESS`,
 );
+
+export const logoutSuccess = createAction(types.LOGOUT);
 
 export const clearNavigationBadge = createAction(types.CLEAR_NAVIGATION_BADGE);
 

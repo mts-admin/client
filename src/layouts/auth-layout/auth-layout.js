@@ -1,11 +1,12 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 
 import AuthRoute from '../../routes/auth-route';
 import MainNav from '../../components/main-nav';
 import ModalWindow from '../../modals/modal-window';
 import { Layout, Container } from './styled-components';
 import routesConfig from '../../routes/routes-config';
+import { ROUTE } from '../../routes/constants';
 
 const Routes = () => (
   <Switch>
@@ -16,6 +17,7 @@ const Routes = () => (
           <Component />
         </AuthRoute>
       ))}
+    <Redirect to={ROUTE.SCHEDULES} />
   </Switch>
 );
 

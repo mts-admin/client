@@ -5,9 +5,10 @@ import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBullet
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { ROUTE } from '../routes/constants';
 
-export const getMainNavItems = (hasBonuses, hasActivities) => [
+export const getMainNavItems = (logout, hasBonuses, hasActivities) => [
   {
     label: 'Schedules',
     icon: ScheduleOutlinedIcon,
@@ -44,5 +45,10 @@ export const getMainNavItems = (hasBonuses, hasActivities) => [
     label: 'Settings',
     icon: SettingsOutlinedIcon,
     link: ROUTE.SETTINGS,
+  },
+  {
+    label: 'Logout',
+    icon: LogoutIcon,
+    onClick: logout,
   },
 ];
