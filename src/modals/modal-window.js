@@ -26,6 +26,10 @@ import EditSprintModal from './sprints/edit-sprint';
 import DeleteSprintModal from './sprints/delete-sprint';
 import ViewBonusModal from './bonuses/view-bonus';
 import ViewActivityModal from './activities/view-activity';
+import ViewUserModal from './users/view-user';
+import InviteUserModal from './users/invite-user';
+import EditUserModal from './users/edit-user';
+import CancelInvitationModal from './users/cancel-invitation';
 
 const modals = {
   [MODAL_NAME.SCHEDULE_DETAILS]: ScheduleDetailsModal,
@@ -50,6 +54,10 @@ const modals = {
   [MODAL_NAME.DELETE_SPRINT]: DeleteSprintModal,
   [MODAL_NAME.VIEW_BONUS]: ViewBonusModal,
   [MODAL_NAME.VIEW_ACTIVITY]: ViewActivityModal,
+  [MODAL_NAME.VIEW_USER]: ViewUserModal,
+  [MODAL_NAME.INVITE_USER]: InviteUserModal,
+  [MODAL_NAME.EDIT_USER]: EditUserModal,
+  [MODAL_NAME.CANCEL_INVITATION]: CancelInvitationModal,
   empty: () => null,
 };
 

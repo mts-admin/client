@@ -10,10 +10,8 @@ import {
   selectNotesLoading,
 } from '../../../store/notes/selectors';
 import { clearNotes } from '../../../store/notes/actions';
-import { openModal } from '../../../modals/modal-reducer';
 import { getComponentState, getErrorMessage } from '../../../utils/general';
 import { DYNAMIC_ROUTE, ROUTE } from '../../../routes/constants';
-import { MODAL_NAME } from '../../../modals/constants';
 
 const useViewNotePageContainer = () => {
   const dispatch = useDispatch();
@@ -39,13 +37,6 @@ const useViewNotePageContainer = () => {
   );
 
   const handleEditButtonClick = () => push(DYNAMIC_ROUTE.EDIT_NOTE(id));
-  const handleDeleteButtonClick = () =>
-    dispatch(
-      openModal({
-        name: MODAL_NAME.DELETE_NOTE,
-        payload: { id },
-      }),
-    );
   const handleBackButtonClick = () => push(ROUTE.NOTES);
 
   const errorMessage = error && getErrorMessage(error);
@@ -56,7 +47,6 @@ const useViewNotePageContainer = () => {
     componentState,
     handleBackButtonClick,
     handleEditButtonClick,
-    handleDeleteButtonClick,
   };
 };
 

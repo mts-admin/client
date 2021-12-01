@@ -14,7 +14,9 @@ import TasksPage from '../pages/tasks';
 import BonusesPage from '../pages/bonuses';
 import ActivitiesPage from '../pages/activities';
 import SettingsPage from '../pages/settings';
+import AdminPanelPage from '../pages/admin-panel';
 import { ROUTE } from './constants';
+import { USER_ROLE } from '../constants/users';
 
 const routesConfig = [
   {
@@ -96,6 +98,12 @@ const routesConfig = [
     auth: true,
     path: ROUTE.SETTINGS,
     component: SettingsPage,
+  },
+  {
+    auth: true,
+    path: ROUTE.ADMIN,
+    component: AdminPanelPage,
+    allowedRoles: [USER_ROLE.ADMIN, USER_ROLE.OWNER],
   },
 ];
 

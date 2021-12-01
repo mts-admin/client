@@ -8,6 +8,12 @@ export const endpoints = {
     myEmail: '/api/v1/auth/me/email',
     myPassword: '/api/v1/auth/me/password',
   },
+  users: {
+    users: '/api/v1/users',
+    userById: (id) => `/api/v1/users/${id}`,
+    invitation: '/api/v1/users/invitation',
+    invitationById: (id) => `/api/v1/users/invitation/${id}`,
+  },
   schedules: {
     schedules: '/api/v1/schedules',
     schedulesByType: (type) => `/api/v1/schedules/${type}`,

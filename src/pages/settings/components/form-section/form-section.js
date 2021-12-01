@@ -23,4 +23,4 @@ FormSection.propTypes = {
   children: node.isRequired,
 };
 
-export default FormSection;
+export default React.memo(FormSection);

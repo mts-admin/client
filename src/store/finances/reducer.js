@@ -83,9 +83,11 @@ const clearFinancesReducer = () => initialState;
 const financesReducer = handleActions(
   {
     [getFinancesRequest]: R.mergeDeepLeft({ initLoading: true }),
-    [combineActions(manageFinancesRequest, editFinancesRequest)]:
-      R.mergeDeepLeft({ loading: true }),
-    [getFinancesStatisticsRequest]: R.mergeDeepLeft({ loading: true }),
+    [combineActions(
+      manageFinancesRequest,
+      editFinancesRequest,
+      getFinancesStatisticsRequest,
+    )]: R.mergeDeepLeft({ loading: true }),
     [getFinancesSuccess]: getFinancesSuccessReducer,
     [editFinancesSuccess]: editFinanceSuccessReducer,
     [manageFinancesSuccess]: manageFinancesSuccessReducer,

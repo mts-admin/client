@@ -8,7 +8,6 @@ export const Content = styled.section`
 
 export const Title = styled.h2`
   font-size: ${({ theme }) => theme.fontSize.h2};
-  text-align: center;
   font-weight: 600;
   text-align: center;
   margin: 20px 0 40px 0;

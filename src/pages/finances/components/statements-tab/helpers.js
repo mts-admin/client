@@ -105,14 +105,6 @@ export const getDataSource = (data) =>
     ])(type),
   }));
 
-export const getSortValue = (order, orderBy) => {
-  const sortDirection = {
-    asc: '',
-    desc: '-',
-  };
-  return `${sortDirection[order]}${orderBy}`;
-};
-
 export const getDefaultFormState = () => ({
   dateRange: [DateTime.now().startOf('month'), DateTime.now().endOf('month')],
   search: '',

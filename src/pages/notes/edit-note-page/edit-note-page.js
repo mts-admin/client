@@ -3,7 +3,13 @@ import CircularProgress from '@mui/material/CircularProgress';
 import * as R from 'ramda';
 
 import useEditNotePageContainer from './container';
-import { Content, Title, Form, Buttons } from './styled-components';
+import {
+  Content,
+  Title,
+  Form,
+  Buttons,
+  DeleteButton,
+} from './styled-components';
 import {
   ControlledInput,
   ControlledTagsInput,
@@ -23,6 +29,7 @@ const EditNotePage = () => {
     componentState,
     handleFormSubmit,
     handleCancelButtonClick,
+    handleDeleteButtonClick,
   } = useEditNotePageContainer();
 
   return (
@@ -69,6 +76,13 @@ const EditNotePage = () => {
               </Form>
 
               <Buttons>
+                <DeleteButton
+                  color="error"
+                  variant="contained"
+                  onClick={handleDeleteButtonClick}
+                >
+                  Delete
+                </DeleteButton>
                 <TextButton
                   onClick={handleCancelButtonClick}
                   disabled={loading}

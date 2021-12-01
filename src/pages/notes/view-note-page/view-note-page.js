@@ -24,7 +24,6 @@ const ViewNotePage = () => {
     componentState,
     handleBackButtonClick,
     handleEditButtonClick,
-    handleDeleteButtonClick,
   } = useViewNotePageContainer();
 
   return (
@@ -50,13 +49,6 @@ const ViewNotePage = () => {
                     onClick={handleEditButtonClick}
                   >
                     Edit
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="error"
-                    onClick={handleDeleteButtonClick}
-                  >
-                    Delete
                   </Button>
                 </Buttons>
               </Header>

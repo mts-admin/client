@@ -34,6 +34,7 @@ export const ForgotPasswordLink = styled(Link)`
 `;
 
 export const SubmitButton = styled(ButtonPrimary)`
+  padding: 10px 0;
   ${({ theme }) => theme.breakpoints.down('md')} {
     margin-top: auto;
   }

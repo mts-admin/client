@@ -9,7 +9,11 @@ import Badge from '@mui/material/Badge';
 
 import { Drawer, Tab, Nav, MenuButton } from './styled-components';
 import { handleLogout } from '../../store/auth/thunk';
-import { selectAuthUser } from '../../store/auth/selectors';
+import {
+  selectAuthUserRole,
+  selectAuthUserNewBonusesCount,
+  selectAuthUserNewActivitiesCount,
+} from '../../store/auth/selectors';
 import { getMainNavItems } from '../../constants/navigation';
 
 const MainNav = () => {
@@ -17,7 +21,9 @@ const MainNav = () => {
 
   const location = useLocation();
 
-  const { newBonusesCount, newActivitiesCount } = useSelector(selectAuthUser);
+  const role = useSelector(selectAuthUserRole);
+  const newBonusesCount = useSelector(selectAuthUserNewBonusesCount);
+  const newActivitiesCount = useSelector(selectAuthUserNewActivitiesCount);
 
   const logout = () => dispatch(handleLogout());
 
@@ -25,7 +31,10 @@ const MainNav = () => {
     logout,
     newBonusesCount,
     newActivitiesCount,
-  );
+  ).filter(({ allowedRoles }) => {
+    if (!allowedRoles) return true;
+    return allowedRoles.includes(role);
+  });
 
   const [open, setOpen] = useState(false);
   const [tabValue, setTabValue] = useState(() =>

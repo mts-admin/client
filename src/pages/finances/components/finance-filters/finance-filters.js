@@ -18,6 +18,7 @@ export const FinanceFilters = ({ onSubmit }) => {
 
     const data = {
       ...(search.length >= MIN_SEARCH_VALUE && { search }),
+      ...(search === '' && { search: '' }),
       ...(start && { start: start.toString() }),
       end: end ? end.endOf('day').toString() : null,
     };
