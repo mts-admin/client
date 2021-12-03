@@ -8,6 +8,12 @@ export const endpoints = {
     myEmail: '/api/v1/auth/me/email',
     myPassword: '/api/v1/auth/me/password',
   },
+  users: {
+    users: '/api/v1/users',
+    userById: (id) => `/api/v1/users/${id}`,
+    invitation: '/api/v1/users/invitation',
+    invitationById: (id) => `/api/v1/users/invitation/${id}`,
+  },
   schedules: {
     schedules: '/api/v1/schedules',
     schedulesByType: (type) => `/api/v1/schedules/${type}`,
@@ -47,13 +53,15 @@ export const endpoints = {
       `api/v1/sprints/${sprintId}/tasks/${taskId}`,
   },
   bonuses: {
-    myBonuses: 'api/v1/bonuses',
+    bonuses: 'api/v1/bonuses',
     bonusById: (id) => `api/v1/bonuses/${id}`,
+    userBonuses: (id) => `api/v1/bonuses/user/${id}`,
   },
   activities: {
-    myActivities: 'api/v1/activities',
+    activities: 'api/v1/activities',
     activityById: (id) => `api/v1/activities/${id}`,
     activityStatus: (id) => `api/v1/activities/${id}/status`,
+    userActivities: (id) => `api/v1/activities/user/${id}`,
   },
 };
 

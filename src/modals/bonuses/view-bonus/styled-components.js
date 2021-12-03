@@ -19,6 +19,8 @@ export const Image = styled.img`
   max-width: 100%;
   margin: 0 auto;
   object-fit: cover;
+  border-radius: ${({ theme }) => theme.borderRadius.small};
+  box-shadow: ${({ theme }) => theme.shadows[4]};
 `;
 
 export const Title = styled.h2`

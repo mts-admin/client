@@ -6,6 +6,6 @@ export const Button = styled(MuiButton)`
   border-radius: ${({ theme }) => theme.borderRadius.small};
   border: 0;
   color: ${({ theme }) => theme.colors.white};
-  padding: 10px 25px;
+  padding: 8px 24px;
   box-shadow: 0 3px 5px 2px rgba(255, 105, 135, 0.3);
 `;

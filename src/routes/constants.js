@@ -16,6 +16,7 @@ export const ROUTE = {
   BONUSES: '/dashboard/bonuses',
   ACTIVITIES: '/dashboard/activities',
   SETTINGS: '/dashboard/settings',
+  ADMIN: '/dashboard/admin',
   ERROR: '/error',
 };
 

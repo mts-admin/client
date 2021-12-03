@@ -8,6 +8,8 @@ import {
   getBonusesSuccess,
   manageBonusesRequest,
   manageBonusesSuccess,
+  editBonusRequest,
+  editBonusSuccess,
   getMyBonusRequest,
   getMyBonusSuccess,
   actionError,
@@ -53,6 +55,20 @@ const getMyBonusSuccessReducer = (state, { payload }) => ({
   },
 });
 
+const editBonusSuccessReducer = (state, { payload }) => ({
+  ...state,
+  loading: false,
+  initLoading: false,
+  error: null,
+  items: {
+    byId: {
+      ...state.items.byId,
+      [payload._id]: payload,
+    },
+    allIds: state.items.allIds,
+  },
+});
+
 const manageBonusesSuccessReducer = (state, { payload }) => ({
   ...state,
   loading: false,
@@ -73,11 +89,13 @@ const clearBonusesReducer = () => initialState;
 const bonusesReducer = handleActions(
   {
     [getBonusesRequest]: R.mergeDeepLeft({ initLoading: true }),
-    [combineActions(manageBonusesRequest, getMyBonusRequest)]: R.mergeDeepLeft({
-      loading: true,
-    }),
+    [combineActions(manageBonusesRequest, getMyBonusRequest, editBonusRequest)]:
+      R.mergeDeepLeft({
+        loading: true,
+      }),
     [getBonusesSuccess]: getBonusesSuccessReducer,
     [manageBonusesSuccess]: manageBonusesSuccessReducer,
+    [editBonusSuccess]: editBonusSuccessReducer,
     [getMyBonusSuccess]: getMyBonusSuccessReducer,
     [actionError]: errorReducer,
     [clearBonuses]: clearBonusesReducer,

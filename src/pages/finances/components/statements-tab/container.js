@@ -17,14 +17,10 @@ import {
   changeTabel,
   changeFilters,
 } from './state';
-import {
-  getSortValue,
-  getColumns,
-  getDataSource,
-  getDefaultFormState,
-} from './helpers';
+import { getColumns, getDataSource, getDefaultFormState } from './helpers';
 import { MODAL_NAME } from '../../../../modals/constants';
 import useEffectAfterMount from '../../../../hooks/use-effect-after-mount';
+import { getSortValue } from '../../../../utils/general';
 
 const DEFAULT_PAGE = 1;
 

@@ -8,6 +8,7 @@ import ControlledDateRangePicker from './controlled-date-range-picker/controlled
 import ControlledSelect from './controlled-select/controlled-select';
 import ControlledInputNumber from './controlled-input-number/controlled-input-number';
 import ControlledTagsInput from './controlled-tags-input/controlled-tags-input';
+import ControlledAutocomplete from './controlled-autocomplete/controlled-autocomplete';
 import SimpleSelect from './simple-select/simple-select';
 
 export {
@@ -21,5 +22,6 @@ export {
   ControlledSelect,
   ControlledInputNumber,
   ControlledTagsInput,
+  ControlledAutocomplete,
   SimpleSelect,
 };

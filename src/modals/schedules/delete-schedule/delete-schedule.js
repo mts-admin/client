@@ -39,7 +39,9 @@ const DeleteScheduleModal = () => {
       </Text>
 
       <Buttons>
-        <CancelButton onClick={closeModal}>Cancel</CancelButton>
+        <CancelButton onClick={closeModal} disabled={loading}>
+          Cancel
+        </CancelButton>
         <ButtonPrimary loading={loading} onClick={onSubmit}>
           Delete
         </ButtonPrimary>

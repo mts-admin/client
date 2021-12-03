@@ -39,6 +39,8 @@ export const Form = styled.form`
 `;
 
 export const SubmitButton = styled(ButtonPrimary)`
+  padding: 10px 0;
+  margin-top: 16px;
   margin-bottom: 8px;
   ${({ theme }) => theme.breakpoints.down('md')} {
     margin-top: auto;

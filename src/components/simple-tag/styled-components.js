@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { hexToRgba } from '../../utils/general';
 
 export const Tag = styled.div`
+  display: inline-block;
   padding: 2px 8px;
   font-size: ${({ theme }) => theme.fontSize.small};
   font-weight: 500;

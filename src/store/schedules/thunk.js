@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import {
   getSchedule,
@@ -18,12 +19,15 @@ import {
   getSchedulesRequest,
   getSchedulesSuccess,
   createScheduleRequest,
+  createScheduleSuccess,
   deleteScheduleRequest,
   leaveScheduleRequest,
   editScheduleRequest,
   editScheduleSuccess,
 } from './actions';
 import { SCHEDULE_TYPE } from '../../constants/schedules';
+import { DYNAMIC_ROUTE } from '../../routes/constants';
+import history from '../history';
 
 export const handleScheduleGet =
   (scheduleId, cancelToken) => async (dispatch) => {
@@ -55,16 +59,20 @@ export const handleSchedulesGet =
   };
 
 export const handleScheduleCreate =
-  ({ body, callback, cancelToken }) =>
+  ({ body, callback }) =>
   async (dispatch) => {
     try {
       dispatch(createScheduleRequest());
 
-      await createSchedule(body);
+      const { data } = await createSchedule(body);
 
-      dispatch(handleSchedulesGet({ type: SCHEDULE_TYPE.MY, cancelToken }));
+      dispatch(createScheduleSuccess());
 
       callback && callback();
+
+      history.push(DYNAMIC_ROUTE.SCHEDULE(data._id));
+
+      toast.success('Schedule has been created successfully!');
     } catch (error) {
       dispatch(actionError(error));
     }

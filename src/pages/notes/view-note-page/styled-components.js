@@ -41,12 +41,7 @@ export const Buttons = styled.div`
     border-radius: ${({ theme }) => theme.borderRadius.small};
 
     &:first-child {
-      margin-right: 8px;
       color: ${({ theme }) => theme.colors.blue};
-    }
-
-    &:last-child {
-      color: ${({ theme }) => theme.colors.error};
     }
   }
 
@@ -56,7 +51,6 @@ export const Buttons = styled.div`
     margin-bottom: 16px;
 
     button:first-child {
-      margin-right: 8px;
       margin-bottom: 0px;
     }
   }

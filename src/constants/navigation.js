@@ -5,8 +5,10 @@ import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBullet
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { ROUTE } from '../routes/constants';
+import { USER_ROLE } from './users';
 
 export const getMainNavItems = (logout, hasBonuses, hasActivities) => [
   {
@@ -45,6 +47,12 @@ export const getMainNavItems = (logout, hasBonuses, hasActivities) => [
     label: 'Settings',
     icon: SettingsOutlinedIcon,
     link: ROUTE.SETTINGS,
+  },
+  {
+    label: 'Admin panel',
+    icon: AdminPanelSettingsOutlinedIcon,
+    link: ROUTE.ADMIN,
+    allowedRoles: [USER_ROLE.ADMIN, USER_ROLE.OWNER],
   },
   {
     label: 'Logout',

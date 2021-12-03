@@ -8,7 +8,7 @@ import {
   AddButton,
 } from './styled-components';
 import useStatementsTabContainer from './container';
-import DataTable from '../../../../components/data-table/data-table';
+import DataTable from '../../../../components/data-table';
 import { FinanceFilters } from '../finance-filters/finance-filters';
 
 const StatementsTab = () => {

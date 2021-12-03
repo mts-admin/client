@@ -35,7 +35,11 @@ const ControlledSelect = ({
     render={({ field, fieldState }) => (
       <FormControl fullWidth={fullWidth} {...rest}>
         {label && (
-          <InputLabel id={`${name}-controlled-select-label`} size={size}>
+          <InputLabel
+            id={`${name}-controlled-select-label`}
+            error={R.hasPath(['error', 'message'], fieldState)}
+            size={size}
+          >
             {label}
           </InputLabel>
         )}
@@ -44,6 +48,7 @@ const ControlledSelect = ({
           label={label}
           size={size}
           labelId={`${name}-controlled-select-label`}
+          error={R.hasPath(['error', 'message'], fieldState)}
         >
           {data.map((elem) => (
             <MenuItem key={elem.value} value={elem.value}>

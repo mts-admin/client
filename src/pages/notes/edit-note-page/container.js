@@ -12,6 +12,8 @@ import {
 } from '../../../store/notes/selectors';
 import useEffectAfterMount from '../../../hooks/use-effect-after-mount';
 import { getComponentState, getErrorMessage } from '../../../utils/general';
+import { openModal } from '../../../modals/modal-reducer';
+import { MODAL_NAME } from '../../../modals/constants';
 
 const useEditNotePageContainer = () => {
   const dispatch = useDispatch();
@@ -48,6 +50,13 @@ const useEditNotePageContainer = () => {
   });
 
   const handleCancelButtonClick = () => goBack();
+  const handleDeleteButtonClick = () =>
+    dispatch(
+      openModal({
+        name: MODAL_NAME.DELETE_NOTE,
+        payload: { id },
+      }),
+    );
 
   const componentState = useMemo(
     () => getComponentState(loading, error),
@@ -63,6 +72,7 @@ const useEditNotePageContainer = () => {
     componentState,
     handleFormSubmit,
     handleCancelButtonClick,
+    handleDeleteButtonClick,
   };
 };
 

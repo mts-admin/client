@@ -39,7 +39,9 @@ const DeleteVisitModal = () => {
       <Text>You will not be able to restore this visit</Text>
 
       <Buttons>
-        <CancelButton onClick={closeModal}>Cancel</CancelButton>
+        <CancelButton onClick={closeModal} disabled={loading}>
+          Cancel
+        </CancelButton>
         <ButtonPrimary loading={loading} onClick={onSubmit}>
           Delete
         </ButtonPrimary>

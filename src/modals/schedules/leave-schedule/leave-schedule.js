@@ -37,7 +37,9 @@ const LeaveScheduleModal = () => {
       <Text>You will lose access to all data in this schedule</Text>
 
       <Buttons>
-        <CancelButton onClick={closeModal}>Cancel</CancelButton>
+        <CancelButton onClick={closeModal} disabled={loading}>
+          Cancel
+        </CancelButton>
         <ButtonPrimary loading={loading} onClick={onSubmit}>
           Leave
         </ButtonPrimary>

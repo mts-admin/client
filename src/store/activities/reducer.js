@@ -8,6 +8,8 @@ import {
   getActivitiesSuccess,
   manageActivitiesRequest,
   manageActivitiesSuccess,
+  editActivityRequest,
+  editActivitySuccess,
   getMyActivityRequest,
   getMyActivitySuccess,
   actionError,
@@ -37,7 +39,7 @@ const getActivitiesSuccessReducer = (state, { payload }) => ({
     allIds: payload.data.map(({ _id }) => _id),
   },
   totalCount: payload.count.currentCount,
-  restCount: payload.count.restCount,
+  restCount: payload.count.restCount || 0,
 });
 
 const getMyActivitySuccessReducer = (state, { payload }) => ({
@@ -52,6 +54,20 @@ const getMyActivitySuccessReducer = (state, { payload }) => ({
       ...state.items.byId,
       [payload._id]: payload,
     },
+  },
+});
+
+const editActivitySuccessReducer = (state, { payload }) => ({
+  ...state,
+  loading: false,
+  initLoading: false,
+  error: null,
+  items: {
+    byId: {
+      ...state.items.byId,
+      [payload._id]: payload,
+    },
+    allIds: state.items.allIds,
   },
 });
 
@@ -75,12 +91,16 @@ const clearActivitiesReducer = () => initialState;
 const activitiesReducer = handleActions(
   {
     [getActivitiesRequest]: R.mergeDeepLeft({ initLoading: true }),
-    [combineActions(manageActivitiesRequest, getMyActivityRequest)]:
-      R.mergeDeepLeft({
-        loading: true,
-      }),
+    [combineActions(
+      manageActivitiesRequest,
+      getMyActivityRequest,
+      editActivityRequest,
+    )]: R.mergeDeepLeft({
+      loading: true,
+    }),
     [getActivitiesSuccess]: getActivitiesSuccessReducer,
     [manageActivitiesSuccess]: manageActivitiesSuccessReducer,
+    [editActivitySuccess]: editActivitySuccessReducer,
     [getMyActivitySuccess]: getMyActivitySuccessReducer,
     [actionError]: errorReducer,
     [clearActivities]: clearActivitiesReducer,

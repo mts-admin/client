@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from '@mui/material/Button';
 
 export const Content = styled.section`
   position: relative;
@@ -12,13 +13,21 @@ export const Title = styled.h1`
   text-align: center;
 `;
 
-export const Form = styled.form``;
+export const Form = styled.form`
+  margin-bottom: 16px;
+`;
 
 export const Buttons = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  button:first-child {
-    margin-right: 8px;
+  button:last-child {
+    margin-left: 8px;
+    padding: 4px 20px;
   }
+`;
+
+export const DeleteButton = styled(Button)`
+  margin-right: auto;
+  border-radius: ${({ theme }) => theme.borderRadius.small};
 `;

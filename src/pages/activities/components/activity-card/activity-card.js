@@ -66,7 +66,7 @@ const ActivityCard = ({ id, params }) => {
       minHeight="100px"
     >
       <Footer>
-        <Text>{formatISO(activity.madeActiveAt, 'D')}</Text>
+        <Text>{formatISO(activity.becameActiveAt, 'D')}</Text>
         <UserImagesList images={giftedByImage} size="22px" />
       </Footer>
     </SimpleCard>

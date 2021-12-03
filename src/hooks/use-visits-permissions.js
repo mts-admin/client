@@ -9,6 +9,7 @@ const visitsPermissionsType = {
   [SCHEDULE_PERMISSIONS.PATCH.value]: 'editable',
   [SCHEDULE_PERMISSIONS.DELETE.value]: 'deletable',
 };
+
 // ['creatable', 'editable', 'deletable'] => { creatable: true, editable: true, deletable: true }
 const getFormattedPermissions = (data, value) =>
   data.reduce((acc, item) => ({ ...acc, [item]: value }), {});

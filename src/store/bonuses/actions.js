@@ -4,6 +4,7 @@ export const types = {
   GET_BONUSES: 'bonuses/GET_BONUSES',
   MANAGE_BONUSES: 'bonuses/MANAGE_BONUSES',
   GET_MY_BONUS: 'bonuses/GET_MY_BONUS',
+  EDIT_BONUS: 'bonuses/EDIT_BONUS',
   CLEAR: 'bonuses/CLEAR',
   ERROR: 'bonuses/error',
 };
@@ -17,6 +18,9 @@ export const manageBonusesRequest = createAction(
 export const manageBonusesSuccess = createAction(
   `${types.MANAGE_BONUSES}_SUCCESS`,
 );
+
+export const editBonusRequest = createAction(`${types.EDIT_BONUS}_REQUEST`);
+export const editBonusSuccess = createAction(`${types.EDIT_BONUS}_SUCCESS`);
 
 export const getMyBonusRequest = createAction(`${types.GET_MY_BONUS}_REQUEST`);
 export const getMyBonusSuccess = createAction(`${types.GET_MY_BONUS}_SUCCESS`);

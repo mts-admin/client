@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef } from 'react';
-import { func, node, number, oneOfType, string } from 'prop-types';
+import { bool, func, node, number, oneOfType, string } from 'prop-types';
 import { toast } from 'react-toastify';
 import ReactCrop from 'react-image-crop';
 import Button from '@mui/material/Button';
@@ -17,17 +17,17 @@ import { TextButton } from '../buttons';
 
 import 'react-image-crop/dist/ReactCrop.css';
 
-const DEFAULT_STATE = {
+const getDefaultState = (aspect) => ({
   src: null,
   crop: {
     unit: '%',
     width: 50,
-    aspect: 1 / 1,
+    ...(aspect && { aspect }),
   },
-};
+});
 
-const ImageUpload = ({ onSave, label, maxSize }) => {
-  const [state, setState] = useState(DEFAULT_STATE);
+const ImageUpload = ({ onSave, label, maxSize, aspect }) => {
+  const [state, setState] = useState(() => getDefaultState(aspect));
 
   const imageRef = useRef(null);
 
@@ -58,9 +58,15 @@ const ImageUpload = ({ onSave, label, maxSize }) => {
     [handleStateUpdate, maxSize],
   );
 
-  const onImageLoaded = useCallback((image) => {
-    imageRef.current = image;
-  }, []);
+  const onImageLoaded = useCallback(
+    (image) => {
+      imageRef.current = image;
+      handleStateUpdate({
+        crop: { width: image.width / 2, height: image.height / 2 },
+      });
+    },
+    [handleStateUpdate],
+  );
 
   const onCropChange = useCallback(
     (crop) => {
@@ -121,10 +127,10 @@ const ImageUpload = ({ onSave, label, maxSize }) => {
         onSave({ file, croppedImageUrl });
 
         imageRef.current = null;
-        setState(DEFAULT_STATE);
+        setState(() => getDefaultState(aspect));
       }
     },
-    [onSave],
+    [aspect, onSave],
   );
 
   const onCropComplete = useCallback(() => {
@@ -133,8 +139,8 @@ const ImageUpload = ({ onSave, label, maxSize }) => {
 
   const onCropCancel = useCallback(() => {
     imageRef.current = null;
-    setState(DEFAULT_STATE);
-  }, []);
+    setState(() => getDefaultState(aspect));
+  }, [aspect]);
 
   const { crop, src } = state;
 
@@ -182,12 +188,14 @@ const ImageUpload = ({ onSave, label, maxSize }) => {
 ImageUpload.defaultProps = {
   label: 'Choose file',
   maxSize: 1,
+  aspect: 1 / 1,
 };
 
 ImageUpload.propTypes = {
   onSave: func.isRequired,
   label: oneOfType([string, node]),
   maxSize: number,
+  aspect: oneOfType([number, bool]),
 };
 
 export default React.memo(ImageUpload);
