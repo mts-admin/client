@@ -1,10 +1,24 @@
 import axios from 'axios';
+import { useCallback, useRef } from 'react';
 
 const useCancelToken = () => {
-  const { CancelToken } = axios;
-  const source = CancelToken.source();
+  const cancelToken = useRef(null);
 
-  return [source.token, source.cancel];
+  // this func should be invoked only with api request
+  const generateCancelToken = useCallback(() => {
+    cancelToken.current = axios.CancelToken.source();
+    return cancelToken.current.token;
+  }, []);
+
+  // this func should be invoked inside useEffect before new request
+  // if some api request is pending it will be cannceled when new one appears
+  const cancelRequest = useCallback(() => {
+    if (cancelToken.current) {
+      cancelToken.current.cancel();
+    }
+  }, [cancelToken]);
+
+  return [generateCancelToken, cancelRequest];
 };
 
 export default useCancelToken;

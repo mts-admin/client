@@ -1,16 +1,29 @@
 import React from 'react';
-import { node } from 'prop-types';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { Layout, Wrapper } from './styled-components';
+import { Layout, Content } from './styled-components';
+import routesConfig from '../../routes/routes-config';
+import { ROUTE } from '../../routes/constants';
 
-const NoAuthLayout = ({ children }) => (
+const Routes = () => (
+  <Switch>
+    {routesConfig
+      .filter(({ auth }) => !auth)
+      .map(({ path, component: Component }) => (
+        <Route key={path} path={path} exact>
+          <Component />
+        </Route>
+      ))}
+    <Redirect to={ROUTE.LOGIN} />
+  </Switch>
+);
+
+const NoAuthLayout = () => (
   <Layout>
-    <Wrapper>{children}</Wrapper>
+    <Content>
+      <Routes />
+    </Content>
   </Layout>
 );
 
-NoAuthLayout.propTypes = {
-  children: node.isRequired,
-};
-
-export default NoAuthLayout;
+export default React.memo(NoAuthLayout);
