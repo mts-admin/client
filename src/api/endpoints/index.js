@@ -53,8 +53,9 @@ export const endpoints = {
       `api/v1/sprints/${sprintId}/tasks/${taskId}`,
   },
   bonuses: {
-    myBonuses: 'api/v1/bonuses',
+    bonuses: 'api/v1/bonuses',
     bonusById: (id) => `api/v1/bonuses/${id}`,
+    userBonuses: (id) => `api/v1/bonuses/user/${id}`,
   },
   activities: {
     activities: 'api/v1/activities',

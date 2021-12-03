@@ -25,6 +25,9 @@ import CreateSprintModal from './sprints/create-sprint';
 import EditSprintModal from './sprints/edit-sprint';
 import DeleteSprintModal from './sprints/delete-sprint';
 import ViewBonusModal from './bonuses/view-bonus';
+import CreateBonusModal from './bonuses/create-bonus';
+import EditBonusModal from './bonuses/edit-bonus';
+import DeleteBonusModal from './bonuses/delete-bonus';
 import ViewActivityModal from './activities/view-activity';
 import ViewUserActivityModal from './activities/view-user-activity';
 import CreateActivityModal from './activities/create-activity';
@@ -57,6 +60,9 @@ const modals = {
   [MODAL_NAME.EDIT_SPRINT]: EditSprintModal,
   [MODAL_NAME.DELETE_SPRINT]: DeleteSprintModal,
   [MODAL_NAME.VIEW_BONUS]: ViewBonusModal,
+  [MODAL_NAME.CREATE_BONUS]: CreateBonusModal,
+  [MODAL_NAME.EDIT_BONUS]: EditBonusModal,
+  [MODAL_NAME.DELETE_BONUS]: DeleteBonusModal,
   [MODAL_NAME.VIEW_ACTIVITY]: ViewActivityModal,
   [MODAL_NAME.VIEW_USER_ACTIVITY]: ViewUserActivityModal,
   [MODAL_NAME.CREATE_ACTIVITY]: CreateActivityModal,

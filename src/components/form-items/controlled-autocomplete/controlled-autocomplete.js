@@ -23,7 +23,6 @@ const ControlledAutocomplete = ({
     control={control}
     rules={rules}
     defaultValue={defaultValue}
-    {...rest}
     render={({ field, fieldState }) => (
       <Autocomplete
         {...field}
@@ -32,6 +31,7 @@ const ControlledAutocomplete = ({
         disableClearable={disableClearable}
         disablePortal={disablePortal}
         fullWidth={fullWidth}
+        {...rest}
         renderInput={(params) => (
           <TextField
             {...params}
