@@ -9,7 +9,7 @@ import {
   ButtonInvite,
   TableWrapper,
 } from './styled-components';
-import { UsersFilters } from './components/users-filters/users-filters';
+import UsersFilters from './components/users-filters/users-filters';
 import DataTable from '../../../../components/data-table';
 import { PERMISSION_ACTIONS } from '../../../../hooks/use-app-permissions';
 

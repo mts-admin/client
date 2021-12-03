@@ -2,7 +2,11 @@ import styled from 'styled-components';
 
 import { ButtonPrimary } from '../../../../components/buttons';
 
-export const Content = styled.section``;
+export const Content = styled.section`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`;
 
 export const Header = styled.section`
   display: flex;
@@ -13,7 +17,13 @@ export const Header = styled.section`
   }
 `;
 
-export const ButtonInvite = styled(ButtonPrimary)`
+export const Description = styled.p`
+  margin: auto;
+  font-size: ${({ theme }) => theme.fontSize.h2};
+  text-align: center;
+`;
+
+export const ButtonAdd = styled(ButtonPrimary)`
   padding: 7.5px 20px;
   margin-left: 16px;
   flex-shrink: 0;
@@ -32,17 +42,4 @@ export const ButtonInvite = styled(ButtonPrimary)`
 export const TableWrapper = styled.section`
   border-radius: ${({ theme }) => theme.borderRadius.small};
   overflow: hidden;
-`;
-
-export const UserTableItem = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-export const UserImage = styled.img`
-  width: 25px;
-  height: 25px;
-  margin-right: 8px;
-  object-fit: cover;
-  border-radius: 50%;
 `;

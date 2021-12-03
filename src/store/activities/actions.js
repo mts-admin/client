@@ -3,6 +3,7 @@ import { createAction } from 'redux-actions';
 export const types = {
   GET_ACTIVITIES: 'activities/GET_ACTIVITIES',
   MANAGE_ACTIVITIES: 'activities/MANAGE_ACTIVITIES',
+  EDIT_ACTIVITY: 'activities/EDIT_ACTIVITY',
   GET_MY_ACTIVITY: 'activities/GET_MY_ACTIVITY',
   CLEAR: 'activities/CLEAR',
   ERROR: 'activities/error',
@@ -20,6 +21,13 @@ export const manageActivitiesRequest = createAction(
 );
 export const manageActivitiesSuccess = createAction(
   `${types.MANAGE_ACTIVITIES}_SUCCESS`,
+);
+
+export const editActivityRequest = createAction(
+  `${types.EDIT_ACTIVITY}_REQUEST`,
+);
+export const editActivitySuccess = createAction(
+  `${types.EDIT_ACTIVITY}_SUCCESS`,
 );
 
 export const getMyActivityRequest = createAction(

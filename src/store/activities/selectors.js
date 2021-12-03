@@ -1,3 +1,5 @@
+import { createSelector } from 'reselect';
+
 export const selectActivity = (state, id) =>
   state.activities.items.byId[id] || {};
 
@@ -18,3 +20,10 @@ export const selectActivitiesInitLoading = (state) =>
   state.activities.initLoading;
 
 export const selectActivitiesError = (state) => state.activities.error;
+
+export const makeSelectActivities = () =>
+  createSelector(
+    (state) => state.activities.items.allIds,
+    (state) => state.activities.items.byId,
+    (allIds, byId) => allIds.map((id) => byId[id]),
+  );

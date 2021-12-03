@@ -19,7 +19,7 @@ import {
 
 const MIN_SEARCH_VALUE = 3;
 
-export const UsersFilters = ({ onSubmit }) => {
+const UsersFilters = ({ onSubmit }) => {
   const { control, handleSubmit, watch } = useFormContext();
 
   const [statusValue, roleValue] = watch(['status', 'role']);
@@ -89,3 +89,5 @@ export const UsersFilters = ({ onSubmit }) => {
 UsersFilters.propTypes = {
   onSubmit: func.isRequired,
 };
+
+export default React.memo(UsersFilters);

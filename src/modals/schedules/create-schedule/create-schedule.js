@@ -5,7 +5,7 @@ import * as R from 'ramda';
 
 import { ControlledInput } from '../../../components/form-items';
 import { ButtonPrimary } from '../../../components/buttons';
-import { closeCurrentModal, selectModalPayload } from '../../modal-reducer';
+import { closeCurrentModal } from '../../modal-reducer';
 import { selectSchedulesLoading } from '../../../store/schedules/selectors';
 import FormRules from '../../../utils/form-input-rules';
 import {
@@ -23,20 +23,14 @@ const CreateScheduleModal = () => {
   const dispatch = useDispatch();
 
   const loading = useSelector(selectSchedulesLoading);
-  const payload = useSelector(selectModalPayload);
 
   const closeModal = () => dispatch(closeCurrentModal());
   const onSubmit = handleSubmit((values) => {
     const body = R.filter(Boolean, values);
-    const callback = () => {
-      R.is(Function, payload.callback) && payload.callback();
-      closeModal();
-    };
     dispatch(
       handleScheduleCreate({
         body,
-        callback,
-        cancelToken: payload.cancelToken,
+        callback: closeModal,
       }),
     );
   });
@@ -67,7 +61,9 @@ const CreateScheduleModal = () => {
         />
 
         <Buttons>
-          <CancelButton onClick={closeModal}>Cancel</CancelButton>
+          <CancelButton onClick={closeModal} disabled={loading}>
+            Cancel
+          </CancelButton>
           <ButtonPrimary loading={loading} type="submit">
             Create
           </ButtonPrimary>

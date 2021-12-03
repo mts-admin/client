@@ -111,16 +111,10 @@ const useSchedulesPageContainer = () => {
   const onTypeChange = (_, value) => stateDispatch(changeType(value));
   const onPageChange = (_, value) => stateDispatch(changePage(value));
 
-  const createScheduleCallback = () => onPageChange(null, DEFAULT_PAGE);
-
   const onCreateButtonClick = () =>
     dispatch(
       openModal({
         name: MODAL_NAME.CREATE_SCHEDULE,
-        payload: {
-          callback: createScheduleCallback,
-          cancelToken: generateCancelToken(),
-        },
       }),
     );
 

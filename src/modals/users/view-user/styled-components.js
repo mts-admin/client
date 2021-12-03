@@ -19,6 +19,10 @@ export const Section = styled.div`
     border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
   }
 
+  &:first-of-type {
+    padding-top: 0;
+  }
+
   &:last-of-type {
     padding-bottom: 0;
   }

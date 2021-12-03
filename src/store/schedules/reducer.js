@@ -12,6 +12,7 @@ import {
   getSchedulesRequest,
   getSchedulesSuccess,
   createScheduleRequest,
+  createScheduleSuccess,
   deleteScheduleRequest,
   leaveScheduleRequest,
   editScheduleRequest,
@@ -35,7 +36,7 @@ const getScheduleSuccessReducer = (state, { payload }) => ({
   loading: false,
   initLoading: false,
   error: null,
-  currentItem: payload,
+  currentItem: payload || {},
 });
 
 const getSchedulesSuccessReducer = (state, { payload }) => ({
@@ -93,7 +94,8 @@ const schedulesReducer = handleActions(
       editScheduleRequest,
     )]: R.mergeDeepLeft({ loading: true }),
     [getSchedulesSuccess]: getSchedulesSuccessReducer,
-    [getScheduleSuccess]: getScheduleSuccessReducer,
+    [combineActions(getScheduleSuccess, createScheduleSuccess)]:
+      getScheduleSuccessReducer,
     [editScheduleSuccess]: editScheduleSuccessReducer,
     [actionError]: errorReducer,
     [clearCurrentSchedule]: clearCurrentScheduleReducer,

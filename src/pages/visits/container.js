@@ -103,12 +103,18 @@ const useVisitsPageContainer = () => {
     [calendarRange, id, dispatch],
   );
   const handleDateRangeChange = useCallback(
-    (data) =>
+    (data) => {
+      const start = dateToISOString(data.start);
+      const end = dateToISOString(data.end);
+
+      if (calendarRange.start === start && calendarRange.end === end) return;
+
       setDateRange({
         start: dateToISOString(data.start),
         end: dateToISOString(data.end),
-      }),
-    [],
+      });
+    },
+    [calendarRange],
   );
   const handleDateSelect = useCallback(
     (selectInfo) => {

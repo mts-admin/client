@@ -57,9 +57,10 @@ export const endpoints = {
     bonusById: (id) => `api/v1/bonuses/${id}`,
   },
   activities: {
-    myActivities: 'api/v1/activities',
+    activities: 'api/v1/activities',
     activityById: (id) => `api/v1/activities/${id}`,
     activityStatus: (id) => `api/v1/activities/${id}/status`,
+    userActivities: (id) => `api/v1/activities/user/${id}`,
   },
 };
 

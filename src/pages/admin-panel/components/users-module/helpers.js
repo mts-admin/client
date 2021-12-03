@@ -10,6 +10,8 @@ import {
 } from '../../../../constants/users';
 import { PERMISSION_ACTIONS } from '../../../../hooks/use-app-permissions';
 import { COLORS } from '../../../../styles/theme';
+import { getImageUrl } from '../../../../utils/general';
+import { UserImage, UserTableItem } from './styled-components';
 
 const STATUS_COLORS = {
   INVITED: COLORS.BLUE,
@@ -68,6 +70,12 @@ export const getColumns = (
     align: 'left',
     width: '55%',
     sortable: true,
+    render: (data) => (
+      <UserTableItem>
+        <UserImage src={getImageUrl(data.avatar)} alt={`${data.name} avatar`} />
+        {data.name}
+      </UserTableItem>
+    ),
   },
   {
     name: 'role',

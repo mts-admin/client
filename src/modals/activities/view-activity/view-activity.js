@@ -52,7 +52,7 @@ const ViewActivityModal = () => {
             <Text>
               Created by:<TextBold>{activity.createdBy?.name}</TextBold>
             </Text>
-            <Text>{formatISO(activity.madeActiveAt, 'D')}</Text>
+            <Text>{formatISO(activity.becameActiveAt, 'D')}</Text>
           </AdditionalInfo>
         </Content>
       ),
