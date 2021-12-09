@@ -35,7 +35,7 @@ export const Image = styled.img`
   width: 175px;
   height: 175px;
   margin-bottom: 12px;
-  border-radius: 50%;
+  border-radius: ${({ theme }) => theme.borderRadius.small};
   object-fit: cover;
 `;
 
